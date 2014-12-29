@@ -1,0 +1,106 @@
+<div class="footer-container"><!-- Begin Footer -->
+    <div class="container">
+        <!--noindex-->
+        <div class="row footer-row">
+            <div class="span3 footer-col">
+                <div class="h5">Мы в соц. сетях</div>
+                <img src="{{ asset('bundles/acmemain/images/logoD.png') }}" alt="Logo" /><br /><br />
+                {#<address>#}
+                    {#<strong>Design Team</strong><br />#}
+                    {#123 Main St, Suite 500<br />#}
+                    {#New York, NY 12345<br />#}
+                {#</address>#}
+                <ul class="social-icons">
+                    <li>
+                        <a href="https://www.facebook.com/dvestrahovki" target="_blank" rel="nofollow" class="social-icon facebook"></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/dvestrahovki" target="_blank" rel="nofollow" class="social-icon twitter"></a>
+                    </li>
+                    <li>
+                        <a href="https://vk.com/dvestrahovki" target="_blank" rel="nofollow" class="social-icon vk"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="span3 footer-col">
+                <div class="h5">ТОП компаний</div>
+                    {% for company in companies %}
+                        {% if loop.index < 7  %}
+                            <div style="float: left;margin: 10px;">
+                                <a href="{{ path('client_company_show', {
+                                "country_url": company.city.country.url,
+                                "city_url": company.city.url,
+                                "company_url": company.url
+                                }) }}" rel="nofollow">
+                                    <img src="{{ company.getWebPath() | apply_filter('thumbnail_footer_post') }}" alt="Gallery" class="img-circle" width="60" height="60"/>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+            <div class="span3 footer-col">
+                <div class="h5">Рубрики</div>
+                <ul class="post-list">
+                    {% for entity in entities %}
+                        <li>
+                            {% if main == entity.url and route_name == 'client_category_show' %}
+                                <span>{{ entity.name }}</span>
+                            {% else %}
+                                <a rel="nofollow" href="{{ path('client_category_show',{ 'category_url': entity.url }) }}">
+                                    {{ entity.name }}
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="span3 footer-col">
+                <div class="h5">Карта картинок</div>
+                <ul class="img-feed">
+                    {% for post in posts %}
+                        <li>
+                            <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">
+                                <img src="{{ post.getWebPath() | apply_filter('thumbnail_footer_post') }}" alt="{{ post.imageAlt }}" width="60" height="60">
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!--/noindex-->
+        <div class="row"><!-- Begin Sub Footer -->
+            <div class="span12 footer-col footer-sub">
+                <div class="row no-margin">
+                    <!--noindex-->
+                    <div class="span6">
+                        <span class="left">© 2001 - {{ "now"|date('Y') }} Все права защищены</span>
+                    </div>
+                    <!--/noindex-->
+                    <div class="span6">
+                        <span class="right">
+                            <!--noindex-->
+                            {% if route_name != 'page_home' %}
+                            <a rel="nofollow" href="{{ path('page_home') }}">Главная</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            {% if route_name != 'page_catalog' %}
+                            <a rel="nofollow" href="{{ path('page_catalog') }}">Каталог</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            {% if route_name != 'page_contact' %}
+                            <a rel="nofollow" href="{{ path('page_contact') }}">Контакты</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            {% if route_name != 'page_advertising' %}
+                            <a rel="nofollow" href="{{ path('page_advertising') }}">Реклама на сайте</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            <!--/noindex-->
+                            <a href="{{ path('page_sitemap') }}">Карта сайта</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Sub Footer -->
+    </div>
+</div><!-- End Footer -->

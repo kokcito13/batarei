@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Полный список публикаций на сайте DveStrahovki.ru{% endblock %}
+{% block description %}Ваш путиводитель по сайту DveStrahovki.ru{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <!-- Blog Posts
+        ================================================== -->
+        <div class="span8 blog">
+            <h1>Карта сайта</h1>
+            <ul class="post-category-list" style="list-style-type: none;">
+                {% for entity in categories %}
+                <li>
+                    <a href="{{ path('client_category_show',{ 'category_url': entity.url }) }}"><i class="icon-plus-sign"></i>{{ entity.name }}</a>
+                    <ul>
+                        {% for post in entity.getPosts %}
+                            <li>
+                                <a href="{{ path('client_post_show',{'category_url':entity.url, 'post_url':post.url }) }}">{#<i class="icon-plus-sign"></i>#}{{ post.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+
+                <li>
+                    <a href="{{ path('page_catalog') }}"><i class="icon-plus-sign"></i>Каталог</a>
+                    <ul>
+                        {% for country in countries %}
+                            <li>
+                                <a href="{{ path('page_catalog', {"country":country.url}) }}">{#<i class="icon-plus-sign"></i>#}{{ country.name }}</a>
+                                <ul class="post-category-list" style="list-style-type: none;">
+                                    {% for city in country.cities %}
+                                        <li>
+                                            <a href="{{ path('page_catalog', {"country":city.country.url, 'city':city.url}) }}"><i class="icon-asterisk"></i>{{ city.name }}</a>
+                                            <ul>
+                                                {% for company in city.companies %}
+                                                    <li>
+                                                        <a href="{{ path('client_company_show', {
+                                                        "country_url": country.url,
+                                                        "city_url": city.url,
+                                                        "company_url": company.url
+                                                        }) }}">{{ company.name }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            {#
+            <!-- Pagination -->
+            <div class="pagination">
+                <ul>
+                    <li class="active"><a href="#">Prev</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+            #}
+        </div>
+        <!-- Blog Sidebar
+        ================================================== -->
+        {{ render(controller('AcmeMainBundle:PageLayout:rightSidebar', {
+        'post': false
+        })) }}
+        <!-- End sidebar column -->
+    </div>
+{% endblock %}
