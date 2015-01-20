@@ -165,6 +165,12 @@ avalanche_imagine:
         user_avatar:
             type:    thumbnail
             options: { size: [88, 88], mode: outbound }
+        thumbnail_category_main:
+            type:    thumbnail
+            options: { size: [750, 214], mode: outbound }
+        thumbnail_category_middle:
+            type:    thumbnail
+            options: { size: [360, 102], mode: outbound }
 
 knp_paginator:
     page_range: 5                      # default page range used in pagination control

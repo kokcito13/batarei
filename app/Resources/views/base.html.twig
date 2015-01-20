@@ -107,99 +107,95 @@
     </head>
 <body id="main" class="  parentid-101  com_content view-featured frontpage itemid-101 loggedout  no-rtl">
     <div class="wrapper" id="page">
-
-    {{ render(controller('AcmeMainBundle:PageLayout:navigate', {
-    'main': mainCategory,
-    'route_name':  app.request.get('_route')
-    })) }}
-    {% block body %}{% endblock %}
-    {{ render(controller('AcmeMainBundle:PageLayout:footer', {
+        {{ render(controller('AcmeMainBundle:PageLayout:navigate', {
         'main': mainCategory,
-        'route_name':  app.request.get('_route'),
-        'post': currentPost,
-        'company': currentCompany,
-    })) }}
-    <div id="mm-sidebar">
-    <div id="panel-overview">
-        <div style="text-align: center;">
-            <a href="index.html" class="fa fa-home fa-2x"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#page"
-                                                                                               class="fa fa-times-circle-o fa-2x"></a>
+        'route_name':  app.request.get('_route')
+        })) }}
+        {% block body %}{% endblock %}
+        {{ render(controller('AcmeMainBundle:PageLayout:footer', {
+            'main': mainCategory,
+            'route_name':  app.request.get('_route'),
+            'post': currentPost,
+            'company': currentCompany,
+        })) }}
+        <div id="mm-sidebar">
+            <div id="panel-overview">
+            <div style="text-align: center;">
+                <a href="index.html" class="fa fa-home fa-2x"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#page"
+                                                                                                   class="fa fa-times-circle-o fa-2x"></a>
+            </div>
+
+            <ul class="nav menu nav navbar-nav navbar-nav">
+                <li class="item-101 current active"><a href="index.html">Home</a></li>
+                <li class="item-145 deeper parent dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                               href="features/overview.html">Features <span
+                                class="caret"></span></a>
+                    <ul class="nav-child unstyled small dropdown-menu">
+                        <li class="item-115"><a href="features/overview.html">Features Overview</a></li>
+                        <li class="item-146"><a href="features/typography.html">Typography</a></li>
+                        <li class="item-147"><a href="features/menu-options.html">Menu Options</a></li>
+                        <li class="item-148"><a href="features/glyphicons.html">Glyphicons</a></li>
+                        <li class="item-149"><a href="features/fontawesome-icons.html">FontAwesome Icons</a></li>
+                        <li class="item-150"><a href="features/included-extensions.html">Included Extensions</a></li>
+                    </ul>
+                </li>
+                <li class="item-143 deeper parent dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+                                                               href="view/module-positions.html">Layouts <span
+                                class="caret"></span></a>
+                    <ul class="nav-child unstyled small dropdown-menu">
+                        <li class="item-116"><a href="view/module-positions.html">Module Positions</a></li>
+                        <li class="item-132"><a href="view/portfolio-layout.html">Portfolio Layout</a></li>
+                        <li class="item-144"><a href="view/bootstrap-infinite-layout.html">Bootstrap Infinite Layout</a>
+                        </li>
+                        <li class="item-111"><a href="view/gallery.html">Gallery</a></li>
+                    </ul>
+                </li>
+                <li class="item-110"><a href="article.html">Blog View</a></li>
+                <li class="item-112 deeper parent dropdown"><a href="contact.html">Contact <span class="caret"></span></a>
+                    <ul class="nav-child unstyled small dropdown-menu">
+                        <li class="item-124"><a href="contact/login.html">Login</a></li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
-
-        <ul class="nav menu nav navbar-nav navbar-nav">
-            <li class="item-101 current active"><a href="index.html">Home</a></li>
-            <li class="item-145 deeper parent dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                           href="features/overview.html">Features <span
-                            class="caret"></span></a>
-                <ul class="nav-child unstyled small dropdown-menu">
-                    <li class="item-115"><a href="features/overview.html">Features Overview</a></li>
-                    <li class="item-146"><a href="features/typography.html">Typography</a></li>
-                    <li class="item-147"><a href="features/menu-options.html">Menu Options</a></li>
-                    <li class="item-148"><a href="features/glyphicons.html">Glyphicons</a></li>
-                    <li class="item-149"><a href="features/fontawesome-icons.html">FontAwesome Icons</a></li>
-                    <li class="item-150"><a href="features/included-extensions.html">Included Extensions</a></li>
-                </ul>
-            </li>
-            <li class="item-143 deeper parent dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                           href="view/module-positions.html">Layouts <span
-                            class="caret"></span></a>
-                <ul class="nav-child unstyled small dropdown-menu">
-                    <li class="item-116"><a href="view/module-positions.html">Module Positions</a></li>
-                    <li class="item-132"><a href="view/portfolio-layout.html">Portfolio Layout</a></li>
-                    <li class="item-144"><a href="view/bootstrap-infinite-layout.html">Bootstrap Infinite Layout</a>
-                    </li>
-                    <li class="item-111"><a href="view/gallery.html">Gallery</a></li>
-                </ul>
-            </li>
-            <li class="item-110"><a href="article.html">Blog View</a></li>
-            <li class="item-112 deeper parent dropdown"><a href="contact.html">Contact <span class="caret"></span></a>
-                <ul class="nav-child unstyled small dropdown-menu">
-                    <li class="item-124"><a href="contact/login.html">Login</a></li>
-                </ul>
-            </li>
-        </ul>
-
-    </div>
-</div>
-    <div>
-        <a href="#" class="go-top">
-            Go To Top <i class="glyphicon glyphicon-circle-arrow-up"></i>
-        </a>
-    </div>
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery('.tooltip').tooltip({
-                html: true
+        </div>
+        <div>
+            <a href="#" class="go-top">
+                Go To Top <i class="glyphicon glyphicon-circle-arrow-up"></i>
+            </a>
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery('.tooltip').tooltip({
+                    html: true
+                });
             });
-        });
-    </script>
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery("div#mm-sidebar").mmenu({
-                classes: "mm-light",
-                offCanvas: {
-                    position: "right",
-                    zposition: "front"
-                },
-                header: {
-                    title: "Menu",
-                    add: true,
-                    update: "true"
-                }
+        </script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery("div#mm-sidebar").mmenu({
+                    classes: "mm-light",
+                    offCanvas: {
+                        position: "right",
+                        zposition: "front"
+                    },
+                    header: {
+                        title: "Menu",
+                        add: true,
+                        update: "true"
+                    }
+                });
             });
-        });
-    </script>
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery('#menu').scrollupbar();
-        });
-    </script>
-    <script src="http://corporate.joostrap.com/templates/corporate-v3-5/js/bsUpdate.js" type="text/javascript"></script>
-
-
-
-
-    {% block javascripts %}{% endblock %}
-
+        </script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery('#menu').scrollupbar();
+            });
+        </script>
+        <script src="http://corporate.joostrap.com/templates/corporate-v3-5/js/bsUpdate.js" type="text/javascript"></script>
+        {% block javascripts %}{% endblock %}
+    </div>
+    <div id="mm-blocker"></div>
 </body>
 </html>
