@@ -1,401 +1,106 @@
-{#<div class="footer-container"><!-- Begin Footer -->#}
-    {#<div class="container">#}
-        {#<!--noindex-->#}
-        {#<div class="row footer-row">#}
-            {#<div class="span3 footer-col">#}
-                {#<div class="h5">Мы в соц. сетях</div>#}
-                {#<img src="{{ asset('bundles/acmemain/images/logoD.png') }}" alt="Logo" /><br /><br />#}
-                {#&#123;&#35;<address>&#35;&#125;#}
-                    {#&#123;&#35;<strong>Design Team</strong><br />&#35;&#125;#}
-                    {#&#123;&#35;123 Main St, Suite 500<br />&#35;&#125;#}
-                    {#&#123;&#35;New York, NY 12345<br />&#35;&#125;#}
-                {#&#123;&#35;</address>&#35;&#125;#}
-                {#<ul class="social-icons">#}
-                    {#<li>#}
-                        {#<a href="https://www.facebook.com/dvestrahovki" target="_blank" rel="nofollow" class="social-icon facebook"></a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="https://twitter.com/dvestrahovki" target="_blank" rel="nofollow" class="social-icon twitter"></a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="https://vk.com/dvestrahovki" target="_blank" rel="nofollow" class="social-icon vk"></a>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#</div>#}
-            {#<div class="span3 footer-col">#}
-                {#<div class="h5">ТОП компаний</div>#}
-                    {#{% for company in companies %}#}
-                        {#{% if loop.index < 7  %}#}
-                            {#<div style="float: left;margin: 10px;">#}
-                                {#<a href="{{ path('client_company_show', {#}
-                                {#"country_url": company.city.country.url,#}
-                                {#"city_url": company.city.url,#}
-                                {#"company_url": company.url#}
-                                {#}) }}" rel="nofollow">#}
-                                    {#<img src="{{ company.getWebPath() | apply_filter('thumbnail_footer_post') }}" alt="Gallery" class="img-circle" width="60" height="60"/>#}
-                                {#</a>#}
-                            {#</div>#}
-                        {#{% endif %}#}
-                    {#{% endfor %}#}
-            {#</div>#}
-            {#<div class="span3 footer-col">#}
-                {#<div class="h5">Рубрики</div>#}
-                {#<ul class="post-list">#}
-                    {#{% for entity in entities %}#}
-                        {#<li>#}
-                            {#{% if main == entity.url and route_name == 'client_category_show' %}#}
-                                {#<span>{{ entity.name }}</span>#}
-                            {#{% else %}#}
-                                {#<a rel="nofollow" href="{{ path('client_category_show',{ 'category_url': entity.url }) }}">#}
-                                    {#{{ entity.name }}#}
-                                {#</a>#}
-                            {#{% endif %}#}
-                        {#</li>#}
-                    {#{% endfor %}#}
-                {#</ul>#}
-            {#</div>#}
-            {#<div class="span3 footer-col">#}
-                {#<div class="h5">Карта картинок</div>#}
-                {#<ul class="img-feed">#}
-                    {#{% for post in posts %}#}
-                        {#<li>#}
-                            {#<a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">#}
-                                {#<img src="{{ post.getWebPath() | apply_filter('thumbnail_footer_post') }}" alt="{{ post.imageAlt }}" width="60" height="60">#}
-                            {#</a>#}
-                        {#</li>#}
-                    {#{% endfor %}#}
-                {#</ul>#}
-            {#</div>#}
-        {#</div>#}
-        {#<!--/noindex-->#}
-        {#<div class="row"><!-- Begin Sub Footer -->#}
-            {#<div class="span12 footer-col footer-sub">#}
-                {#<div class="row no-margin">#}
-                    {#<!--noindex-->#}
-                    {#<div class="span6">#}
-                        {#<span class="left">© 2001 - {{ "now"|date('Y') }} Все права защищены</span>#}
-                    {#</div>#}
-                    {#<!--/noindex-->#}
-                    {#<div class="span6">#}
-                        {#<span class="right">#}
-                            {#<!--noindex-->#}
-                            {#{% if route_name != 'page_home' %}#}
-                            {#<a rel="nofollow" href="{{ path('page_home') }}">Главная</a>#}
-                            {#&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;#}
-                            {#{% endif %}#}
-                            {#{% if route_name != 'page_catalog' %}#}
-                            {#<a rel="nofollow" href="{{ path('page_catalog') }}">Каталог</a>#}
-                            {#&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;#}
-                            {#{% endif %}#}
-                            {#{% if route_name != 'page_contact' %}#}
-                            {#<a rel="nofollow" href="{{ path('page_contact') }}">Контакты</a>#}
-                            {#&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;#}
-                            {#{% endif %}#}
-                            {#{% if route_name != 'page_advertising' %}#}
-                            {#<a rel="nofollow" href="{{ path('page_advertising') }}">Реклама на сайте</a>#}
-                            {#&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;#}
-                            {#{% endif %}#}
-                            {#<!--/noindex-->#}
-                            {#<a href="{{ path('page_sitemap') }}">Карта сайта</a>#}
-                        {#</span>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div><!-- End Sub Footer -->#}
-    {#</div>#}
-{#</div><!-- End Footer -->#}
-
-{#
-<div id="bottom1" class="clearfix">
-    <div class="module">
-
-        <div class="module-content">
-
-
-            <div class="custom" style="
-background-attachment: fixed;background-repeat: repeat;background-size: cover;background-position:50% 50%;background-image:url(http://corporate.joostrap.com/images/testimonial-bg.jpg)">
-                <p><br/><br/>
-
-                <div class="moduletable container testimonials">
-
-
-                    <div id="joostrap-article-carousel" class="joostrap-article-carousel carousel slide thumbs">
-                        <div class="arrows pull-right">
-                            <a class="left carousel-control" href="#joostrap-article-carousel" data-slide="prev"><i
-                                        class="glyphicon glyphicon-chevron-left"></i></a>
-                            <a class="right carousel-control" href="#joostrap-article-carousel" data-slide="next"><i
-                                        class="glyphicon glyphicon-chevron-right"></i></a>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="item thumbs active">
-                                <div class="col-md-12 position-1 first row-first row-last">
-                                    <a href="view/portfolio-layout/16-love-these-templates.html" class="thumbnail">
-                                        <img src="http://corporate.joostrap.com/cache/resized/dd968bed68ff1dd4ea38d1cf9d743088.jpg"
-                                             alt="" title="" class="" style="bottom: 0;"/> </a>
-
-                                    <div class="box-color">
-                                        <!-- Title -->
-                                        <h4 class="carousel-text" style="text-align: center;">
-                                            <a href="view/portfolio-layout/16-love-these-templates.html">
-                                                Love these templates<br/>
-                                            </a>
-                                        </h4>
-                                        <!-- Description -->
-                                        <div class="carousel-text" style="text-align: center;">
-                                            <blockquote class="fadeInUp animated ">“Nunc velit risus, dapibus non
-                                                interdum quis, suscipit nec dolor. Vivamus tempor tempus mauris vitae
-                                                fermentum. In vitae nulla lacus. Sed sagittis tortor vel arcu
-                                                sollicitudin.“
-                                            </blockquote>
-                                            <p>Philip Locke, Google Inc.</p></div>
-                                        <div class="carousel-readmore" style="text-align: center;">
-                                            <a href="view/portfolio-layout/16-love-these-templates.html">LEARN MORE</a>
-                                        </div>
-                                    </div>
-                                </div>
+<div class="footer-container"><!-- Begin Footer -->
+    <div class="container">
+        <!--noindex-->
+        <div class="row footer-row">
+            <div class="span3 footer-col">
+                <div class="h5">Мы в соц. сетях</div>
+                <img src="{{ asset('bundles/acmemain/images/logoD.png') }}" alt="Logo" /><br /><br />
+                {#<address>#}
+                    {#<strong>Design Team</strong><br />#}
+                    {#123 Main St, Suite 500<br />#}
+                    {#New York, NY 12345<br />#}
+                {#</address>#}
+                <ul class="social-icons">
+                    <li>
+                        <a href="https://www.facebook.com/dvestrahovki" target="_blank" rel="nofollow" class="social-icon facebook"></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/dvestrahovki" target="_blank" rel="nofollow" class="social-icon twitter"></a>
+                    </li>
+                    <li>
+                        <a href="https://vk.com/dvestrahovki" target="_blank" rel="nofollow" class="social-icon vk"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="span3 footer-col">
+                <div class="h5">ТОП компаний</div>
+                    {% for company in companies %}
+                        {% if loop.index < 7  %}
+                            <div style="float: left;margin: 10px;">
+                                <a href="{{ path('client_company_show', {
+                                "country_url": company.city.country.url,
+                                "city_url": company.city.url,
+                                "company_url": company.url
+                                }) }}" rel="nofollow">
+                                    <img src="{{ company.getWebPath() | apply_filter('thumbnail_footer_post') }}" alt="{{ company.getImageAltView() }}" class="img-circle" width="60" height="60"/>
+                                </a>
                             </div>
-                            <div class="item thumbs ">
-                                <div class="col-md-12 position-2  row-first row-last">
-                                    <a href="view/portfolio-layout/17-blew-my-mind.html" class="thumbnail">
-                                        <img src="http://corporate.joostrap.com/cache/resized/5e3428a4259a78b7a2b84eb820534964.jpg"
-                                             alt="" title="" class="" style="bottom: 0;"/> </a>
-
-                                    <div class="box-color">
-                                        <!-- Title -->
-                                        <h4 class="carousel-text" style="text-align: center;">
-                                            <a href="view/portfolio-layout/17-blew-my-mind.html">
-                                                Blew My Mind<br/>
-                                            </a>
-                                        </h4>
-                                        <!-- Description -->
-                                        <div class="carousel-text" style="text-align: center;">
-                                            <blockquote class="fadeInUp animated">“Nunc velit risus, dapibus non
-                                                interdum quis, suscipit nec dolor. Vivamus tempor tempus mauris vitae
-                                                fermentum. In vitae nulla lacus. Sed sagittis tortor vel arcu
-                                                sollicitudin.“
-                                            </blockquote>
-                                            <p>Max Lynam, Google Inc.</p></div>
-                                        <div class="carousel-readmore" style="text-align: center;">
-                                            <a href="view/portfolio-layout/17-blew-my-mind.html">LEARN MORE</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item thumbs ">
-                                <div class="col-md-12 position-3  row-first row-last">
-                                    <a href="view/portfolio-layout/18-joomla-templates.html" class="thumbnail">
-                                        <img src="http://corporate.joostrap.com/cache/resized/cac70430b74cb919181966fb8b1cf736.jpg"
-                                             alt="" title="" class="" style="bottom: 0;"/> </a>
-
-                                    <div class="box-color">
-                                        <!-- Title -->
-                                        <h4 class="carousel-text" style="text-align: center;">
-                                            <a href="view/portfolio-layout/18-joomla-templates.html">
-                                                Joomla Templates !!!<br/>
-                                            </a>
-                                        </h4>
-                                        <!-- Description -->
-                                        <div class="carousel-text" style="text-align: center;">
-                                            <blockquote class="fadeInUp animated">“Nunc velit risus, dapibus non
-                                                interdum quis, suscipit nec dolor. Vivamus tempor tempus mauris vitae
-                                                fermentum. In vitae nulla lacus. Sed sagittis tortor vel arcu
-                                                sollicitudin.“
-                                            </blockquote>
-                                            <p>Philip Locke, Google Inc.</p></div>
-                                        <div class="carousel-readmore" style="text-align: center;">
-                                            <a href="view/portfolio-layout/18-joomla-templates.html">LEARN MORE</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item thumbs ">
-                                <div class="col-md-12 position-4  row-first row-last last">
-                                    <a href="view/portfolio-layout/19-wow-weeeee.html" class="thumbnail">
-                                        <img src="http://corporate.joostrap.com/cache/resized/5e3428a4259a78b7a2b84eb820534964.jpg"
-                                             alt="" title="" class="" style="bottom: 0;"/> </a>
-
-                                    <div class="box-color">
-                                        <!-- Title -->
-                                        <h4 class="carousel-text" style="text-align: center;">
-                                            <a href="view/portfolio-layout/19-wow-weeeee.html">
-                                                WOW..weeeee<br/>
-                                            </a>
-                                        </h4>
-                                        <!-- Description -->
-                                        <div class="carousel-text" style="text-align: center;">
-                                            <blockquote class="fadeInUp animated">“Nunc velit risus, dapibus non
-                                                interdum quis, suscipit nec dolor. Vivamus tempor tempus mauris vitae
-                                                fermentum. In vitae nulla lacus. Sed sagittis tortor vel arcu
-                                                sollicitudin.“
-                                            </blockquote>
-                                            <p>Max Lynam, Google Inc.</p></div>
-                                        <div class="carousel-readmore" style="text-align: center;">
-                                            <a href="view/portfolio-layout/19-wow-weeeee.html">LEARN MORE</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 		<ol class="carousel-indicators">
-                                                    <li data-target="#joostrap-article-carousel" data-slide-to="0" class="active"></li>
-                                                    <li data-target="#joostrap-article-carousel" data-slide-to="1" ></li>
-                                                    <li data-target="#joostrap-article-carousel" data-slide-to="2" ></li>
-                                                    <li data-target="#joostrap-article-carousel" data-slide-to="3" ></li>
-                                            </ol> -->
-
-                    </div>
-                    <script>
-                        //<![CDATA[
-                        jQuery(function ($) {
-                            $('.carousel').carousel({
-                                interval: 5000,
-                                pause: 'hover'
-                            })
-                        });
-                        //]]>
-                    </script>
-                </div>
-                <br/><br/><br/></p></div>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+            <div class="span3 footer-col">
+                <div class="h5">Рубрики</div>
+                <ul class="post-list">
+                    {% for entity in entities %}
+                        <li>
+                            {% if main == entity.url and route_name == 'client_category_show' %}
+                                <span>{{ entity.name }}</span>
+                            {% else %}
+                                <a rel="nofollow" href="{{ path('client_category_show',{ 'category_url': entity.url }) }}">
+                                    {{ entity.name }}
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="span3 footer-col">
+                <div class="h5">Карта картинок</div>
+                <ul class="img-feed">
+                    {% for post in posts %}
+                        <li>
+                            <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">
+                                <img src="{{ post.getWebPath() | apply_filter('thumbnail_footer_post') }}" alt="{{ post.imageAlt }}" width="60" height="60">
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-    </div>
-
-</div>#}
-{#<div id="bottom2" class="clearfix">#}
-    {#<div class="container">#}
-        {#<div class="module">#}
-
-            {#<div class="module-content">#}
-
-                {#<div class="custom">#}
-                    {#<div class="row client-logo">#}
-                        {#<div class="col-sm-12 col-md-12 company-logo">#}
-                            {#<ul class="list-unstyled list-inline text-center">#}
-                                {#<li><img src="http://corporate.joostrap.com/images/client-logo1.jpg" alt="client name"/>#}
-                                {#</li>#}
-                                {#<li><img src="http://corporate.joostrap.com/images/client-logo2.jpg" alt="client name"/>#}
-                                {#</li>#}
-                                {#<li><img src="http://corporate.joostrap.com/images/client-logo3.jpg" alt="client name"/>#}
-                                {#</li>#}
-                                {#<li><img src="http://corporate.joostrap.com/images/client-logo4.jpg" alt="client name"/>#}
-                                {#</li>#}
-                                {#<li><img src="http://corporate.joostrap.com/images/client-logo5.jpg" alt="client name"/>#}
-                                {#</li>#}
-                                {#<li><img src="http://corporate.joostrap.com/images/client-logo1.jpg" alt="client name"/>#}
-                                {#</li>#}
-                                {#<li><img src="http://corporate.joostrap.com/images/client-logo2.jpg" alt="client name"/>#}
-                                {#</li>#}
-                            {#</ul>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-
-    {#</div>#}
-{#</div>#}
-<footer class="footer clearfix">
-    <div class="footer-1">
-        <div class="navbar footer-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="module">
-
-                            <div class="module-content">
-
-                                <div class="custom">
-                                    <ul class="nav navbar-nav hidden-sm hidden-xs">
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="#">Terms</a></li>
-                                        <li><a href="#">Privacy</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
+        <!--/noindex-->
+        <div class="row"><!-- Begin Sub Footer -->
+            <div class="span12 footer-col footer-sub">
+                <div class="row no-margin">
+                    <!--noindex-->
+                    <div class="span6">
+                        <span class="left">© 2001 - {{ "now"|date('Y') }} Все права защищены</span>
                     </div>
-                    <div class="input-group search-bar col-md-7">
-                        <div class="module">
-
-                            <div class="module-content">
-                                <div class="search-module ">
-                                    <form action="http://corporate.joostrap.com/" method="post" class="form-inline">
-                                        <label for="mod-search-searchword" class="sr-only">Search...</label>
-                                        <input name="searchword" maxlength="20"
-                                                class="inputbox search-query input-medium" type="text" size="20"
-                                                value="" placeholder="Поиск"/>
-                                        <button data-placement="right" class="button btn btn-default btn-xs hasTooltip"
-                                                title="Go!" onclick="this.form.searchword.focus();">Go!
-                                        </button>
-                                        <input type="hidden" name="task" value="search"/>
-                                        <input type="hidden" name="option" value="com_search"/>
-                                        <input type="hidden" name="Itemid" value="101"/>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
+                    <!--/noindex-->
+                    <div class="span6">
+                        <span class="right">
+                            <!--noindex-->
+                            {% if route_name != 'page_home' %}
+                            <a rel="nofollow" href="{{ path('page_home') }}">Главная</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            {% if route_name != 'page_catalog' %}
+                            <a rel="nofollow" href="{{ path('page_catalog') }}">Каталог</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            {% if route_name != 'page_contact' %}
+                            <a rel="nofollow" href="{{ path('page_contact') }}">Контакты</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            {% if route_name != 'page_advertising' %}
+                            <a rel="nofollow" href="{{ path('page_advertising') }}">Реклама на сайте</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                            <!--/noindex-->
+                            <a href="{{ path('page_sitemap') }}">Карта сайта</a>
+                        </span>
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- End Sub Footer -->
     </div>
-    <div class="footer-2">
-        <div class="container">
-            <div class="row">
-                <div class="module">
-
-                    <div class="module-content">
-
-                        <div class="custom">
-                            <p>&nbsp;</p>
-
-                            <div class="col-sm-12 col-md-4 about">
-                                <h4>About Us</h4>
-
-                                <p>Duo probo dicunt efficiendi in, cu vim graecis invidunt, nemore pat rioque pri id.
-                                    Mei aliquip menandri sedaea.</p>
-
-                                <p>Duo probo dicunt efficiendi in, cu vim graecis invidunt, nemore pat rioque pri
-                                    id.</p>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="address">
-                                    <h4>Get in Touch With us</h4>
-                                    <address><strong>Joostrap Ltd</strong><br/> 123 Pretend Ave<br/> London<br/> NW10
-                                        6YY
-                                    </address>
-                                    <address><i class="glyphicon glyphicon-earphone">&nbsp;</i> (123) 456-7890<br/><a
-                                                href="mailto:"><i class="glyphicon glyphicon-envelope">&nbsp;</i>email@domainnanme.com</a>
-                                    </address>
-                                </div>
-                                <div class="social-icons">&nbsp;</div>
-                            </div>
-                            <div class="col-sm-6 col-md-4 subscribe">
-                                <h4>Subscribe Now</h4>
-
-                                <p>Duo probo dicunt efficiendi in, cu vim graecis invidunt, nemore pat rioque pri id.
-                                    Mei aliquip menandri sedaea.</p>
-
-                                <form role="form"><input type="email" placeholder="Your email Id" required=""/>
-                                    <button type="submit" class="btn btn-sm btn-defalut">Subscribe</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="footer-3 text-center">
-        <p>
-            <span class="sm-cr-circle1"></span><span class="sm-cr-circle2"></span>
-            &copy; 2012 - {{ 'now' | date('Y') }} {{ app.request.httpHost }} <span class="sm-cr-circle1"></span><span class="sm-cr-circle2"></span>
-        </p>
-    </div>
-</footer>
+</div><!-- End Footer -->

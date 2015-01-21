@@ -9,260 +9,70 @@
 {% endblock %}
 
 {% block body %}
-    <div id="breadcrumbs">
-        <div class="container">
-            <div class="module">
-
-                <div class="module-content">
-
-                    <ul class="breadcrumb">
-                        <li class="active"><span class="divider icon-location"></span></li>
-                        <li><a href="index.html" class="pathway">Home</a><span class="divider"><img
-                                        src="http://corporate.joostrap.com/media/system/images/arrow.png" alt=""/></span></li>
-                        <li class="active"><span>Blog View</span></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Mainbody -->
-    <div id="mainbody" class="clearfix">
-    <div class="container">
     <div class="row">
-    <!-- Content Block -->
-    <div id="content" class="col-md-8">
-        <div id="message-component">
-            <div id="system-message-container">
-            </div>
+        <!-- Blog Posts
+        ================================================== -->
+        <div class="span8 blog">
+            {% for item in entities %}
+                <article class="clearfix">
+                    {% if item.imageName != null %}
+                        <!--noindex-->
+                        <a rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">
+                            <img src="{{ item.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="{{ item.imageAlt }}" class="align-left"
+                                    style="border: 1px solid #333;padding: 4px;"
+                                    >
+                        </a>
+                        <!--/noindex-->
+                    {% endif %}
+                    <div class="h4 title-bg">
+                        <a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">{{ item.name }}</a>
+                    </div>
+                    <!--noindex-->
+                    <p>{{ item.getPreviewText() }} ...</p>
 
-        </div>
-        <div id="content-area">
-            <div class="blog" itemscope itemtype="http://schema.org/Blog">
-                {% for item in entities %}
-                    {% if loop.index == 1 %}
-                        <div class="items-leading clearfix">
-                            <div class="leading-0"
-                                 itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-                                <div class="page-header">
-                                    <h2 itemprop="name">
-                                        <a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}" itemprop="url">{{ item.name }}</a>
-                                    </h2>
-                                </div>
-                                {% if item.imageName != null %}
-                                    <!--noindex-->
-                                    <a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">
-                                        <div class="pull-left">
-                                            <div>
-                                                <img src="{{ item.getWebPath() | apply_filter('thumbnail_category_main') }}" alt="{{ item.imageAlt }}"/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!--/noindex-->
-                                {% endif %}
-                                <p>{{ item.getPreviewText() }} ...</p>
-                                <p class="readmore">
-                                    <a class="btn" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}" itemprop="url">
-                                        <span class="icon-chevron-right"></span>
-                                        Читать дальше</a>
-                                </p>
-                            </div>
-                        </div>
-                      {% endif %}
-                {% endfor %}
-
-
-                <div class="items-row cols-2 row-0 row-fluid clearfix">
-                    {% for item in entities %}
-                        {% if loop.index == 2 or loop.index == 3  %}
-                            <div class="span6">
-                                <div class="item column-1"
-                                     itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-                                    <div class="page-header">
-                                        <h2 itemprop="name">
-                                            <a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}" itemprop="url">
-                                                {{ item.name }}</a>
-                                        </h2>
-                                    </div>
-                                    {% if item.imageName != null %}
-                                        <!--noindex-->
-                                        <a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">
-                                            <div class="pull-left">
-                                                <div>
-                                                    <img src="{{ item.getWebPath() | apply_filter('thumbnail_category_middle') }}" alt="{{ item.imageAlt }}"/>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <!--/noindex-->
-                                    {% endif %}
-                                    <p>{{ item.getPreviewText() }} ...</p>
-                                    <p class="readmore">
-                                        <a class="btn" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}" itemprop="url">
-                                            <span class="icon-chevron-right"></span>
-                                            Читать дальше</a>
-                                    </p>
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="items-more">
-                    <ol class="nav nav-tabs nav-stacked">
-                        {% for item in entities %}
-                            {% if loop.index > 3  %}
+                    <div class="post-summary-footer">
+                        <ul class="post-data-3">
+                            <li><i class="icon-comment"></i> <a rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}#block_comments">0 Комментариев</a></li>
+                            <li><a rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}" class="btn btn-mini btn-inverse">Читать дальше</a></li>
+                            {% if item.tags|length > 0 %}
                                 <li>
-                                    <a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">{{ item.name }}</a>
+                                    <i class="icon-tags"></i>
+                                    {% for tag in entity.tags %}
+                                        <a rel="nofollow" href="{{ path('client_tag_show', {'tag_url': tag.url}) }}" class="gray-btn">{{ tag.name }}</a>
+                                    {% endfor %}
                                 </li>
                             {% endif %}
-                        {% endfor %}
-                    </ol>
-                </div>
-
-                {#<div class="pagination">#}
-                    {#<p class="counter pull-right"> Page 1 of 2 </p>#}
-                    {#<ul>#}
-                        {#<li class="pagination-start"><span class="pagenav">Start</span></li>#}
-                        {#<li class="pagination-prev"><span class="pagenav">Prev</span></li>#}
-                        {#<li><span class="pagenav">1</span></li>#}
-                        {#<li><a href="articlef0e5.html?start=3" class="pagenav">2</a></li>#}
-                        {#<li class="pagination-next"><a title="Next" href="articlef0e5.html?start=3"#}
-                                                       {#class="hasTooltip pagenav">Next</a></li>#}
-                        {#<li class="pagination-end"><a title="End" href="articlef0e5.html?start=3"#}
-                                                      {#class="hasTooltip pagenav">End</a></li>#}
-                    {#</ul>#}
-                {#</div>#}
-            </div>
-
-        </div>
-    </div>
-    <aside class="sidebar-right col-md-4">
-        <div class="module">
-
-            <div class="headline">
-                <h3>Search</h3>
-            </div>
-            <div class="module-content">
-                <div class="search-module ">
-                    <form action="http://corporate.joostrap.com/article" method="post" class="form-inline">
-                        <label for="mod-search-searchword" class="sr-only">Search...</label> <input name="searchword"
-                                                                                                    id="mod-search-searchword"
-                                                                                                    maxlength="20"
-                                                                                                    class="inputbox search-query input-medium"
-                                                                                                    type="text" size="20"
-                                                                                                    value="Search..."
-                                                                                                    onblur="if (this.value=='') this.value='Search...';"
-                                                                                                    onfocus="if (this.value=='Search...') this.value='';"/>
-                        <button data-placement="right" class="button btn btn-default btn-xs hasTooltip" title="Go!"
-                                onclick="this.form.searchword.focus();">Go!
-                        </button>
-                        <input type="hidden" name="task" value="search"/>
-                        <input type="hidden" name="option" value="com_search"/>
-                        <input type="hidden" name="Itemid" value="110"/>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="module">
-
-            <div class="module-content">
-
-                <div class="custom">
-                    <div class="headline">
-                        <h4>Categories</h4>
+                        </ul>
                     </div>
-                    <ul class="ul-list list-unstyled">
-                        <li><a href="#">Nam Interdum Tellus Nisi</a></li>
-                        <li><a href="#">Nullam Pharetra Velit Quam</a></li>
-                        <li><a href="#">Phasellus Blandit Cursus </a></li>
-                        <li><a href="#">Donec Vulputate Justo </a></li>
-                        <li><a href="#">Nulla Commodo Leo </a></li>
-                        <li><a href="#">Nam Interdum Tellus Nisi</a></li>
-                        <li><a href="#">Nullam Pharetra Velit Quam</a></li>
-                        <li><a href="#">Phasellus Blandit Cursus </a></li>
-                        <li><a href="#">Donec Vulputate Justo </a></li>
-                        <li><a href="#">Nulla Commodo Leo </a></li>
-                    </ul>
-                    <aside class="widget gallery-flickr">
-                        <div class="headline">
-                            <h4>Flickr Photostream</h4>
-                        </div>
-                        <div class="flickr-widget clearfix" id="flickr_badge_wrapper">
-                            <div class="flickr_badge_image" id="flickr_badge_image1"><a href="http://www.flickr.com/photos/62747150@N02/10821005613/" target="_blank"><img src="http://farm4.staticflickr.com/3802/10821005613_c86df5b470_s.jpg" alt="A photo on Flickr" title="IMG_1726" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image2"><a href="http://www.flickr.com/photos/62747150@N02/10820998163/" target="_blank"><img src="http://farm6.staticflickr.com/5529/10820998163_6008690c5e_s.jpg" alt="A photo on Flickr" title="IMG_1738" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image3"><a href="http://www.flickr.com/photos/62747150@N02/8945386817/" target="_blank"><img src="http://farm8.staticflickr.com/7337/8945386817_be3a33ba28_s.jpg" alt="A photo on Flickr" title="IMG_1177" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image4"><a href="http://www.flickr.com/photos/62747150@N02/10820815744/" target="_blank"><img src="http://farm6.staticflickr.com/5549/10820815744_29af62f674_s.jpg" alt="A photo on Flickr" title="IMG_1762" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image5"><a href="http://www.flickr.com/photos/62747150@N02/10820871544/" target="_blank"><img src="http://farm4.staticflickr.com/3753/10820871544_afac11f40b_s.jpg" alt="A photo on Flickr" title="IMG_1695" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image6"><a href="http://www.flickr.com/photos/62747150@N02/10821031333/" target="_blank"><img src="http://farm4.staticflickr.com/3743/10821031333_26cbc228b6_s.jpg" alt="A photo on Flickr" title="IMG_1674" height="75" width="75"></a></div><span style="position:absolute;left:-999em;top:-999em;visibility:hidden" class="flickr_badge_beacon"><img src="http://geo.yahoo.com/p?s=792600102&amp;t=19d55209a54c9adbc629341575b9d5f9&amp;r=http%3A%2F%2Fbatarei.lc%2Fapp_dev.php%2Fenergia&amp;fl_ev=0&amp;lang=en&amp;intl=ua" width="0" height="0" alt=""></span>
-                        </div>
-                    </aside>
-                </div>
+                    <!--/noindex-->
+                </article>
+            {% endfor %}
+            {#
+            <!-- Pagination -->
+            <div class="pagination">
+                <ul>
+                    <li class="active"><a href="#">Prev</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
             </div>
+            #}
         </div>
 
-    </aside>
+        <!-- Blog Sidebar
+        ================================================== -->
+        {{ render(controller('AcmeMainBundle:PageLayout:rightSidebar', {
+        'post': entity
+        })) }}
+        <!-- End sidebar column -->
     </div>
+    <div class="row" id="about">
+        <div class="span12">
+            {#<h1>{{ entity.name }}</h1>#}
+            {{ entity.text|raw }}
+        </div>
     </div>
-    </div>
-
-    {#<div class="row">#}
-        {#<!-- Blog Posts#}
-        {#================================================== -->#}
-        {#<div class="span8 blog">#}
-            {#{% for item in entities %}#}
-                {#<article class="clearfix">#}
-                    {#{% if item.imageName != null %}#}
-                        {#<!--noindex-->#}
-                        {#<a rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">#}
-                            {#<img src="{{ item.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="{{ item.imageAlt }}" class="align-left"#}
-                                    {#style="border: 1px solid #333;padding: 4px;"#}
-                                    {#>#}
-                        {#</a>#}
-                        {#<!--/noindex-->#}
-                    {#{% endif %}#}
-                    {#<div class="h4 title-bg">#}
-                        {#<a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">{{ item.name }}</a>#}
-                    {#</div>#}
-                    {#<!--noindex-->#}
-                    {#<p>{{ item.getPreviewText() }} ...</p>#}
-
-                    {#<div class="post-summary-footer">#}
-                        {#<ul class="post-data-3">#}
-                            {#<li><i class="icon-comment"></i> <a rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}#block_comments">0 Комментариев</a></li>#}
-                            {#<li><a rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}" class="btn btn-mini btn-inverse">Читать дальше</a></li>#}
-                            {#{% if item.tags|length > 0 %}#}
-                                {#<li>#}
-                                    {#<i class="icon-tags"></i>#}
-                                    {#{% for tag in entity.tags %}#}
-                                        {#<a rel="nofollow" href="{{ path('client_tag_show', {'tag_url': tag.url}) }}" class="gray-btn">{{ tag.name }}</a>#}
-                                    {#{% endfor %}#}
-                                {#</li>#}
-                            {#{% endif %}#}
-                        {#</ul>#}
-                    {#</div>#}
-                    {#<!--/noindex-->#}
-                {#</article>#}
-            {#{% endfor %}#}
-            {#&#123;&#35;#}
-            {#<!-- Pagination -->#}
-            {#<div class="pagination">#}
-                {#<ul>#}
-                    {#<li class="active"><a href="#">Prev</a></li>#}
-                    {#<li class="active"><a href="#">1</a></li>#}
-                    {#<li><a href="#">2</a></li>#}
-                    {#<li><a href="#">3</a></li>#}
-                    {#<li><a href="#">4</a></li>#}
-                    {#<li><a href="#">Next</a></li>#}
-                {#</ul>#}
-            {#</div>#}
-            {#&#35;&#125;#}
-        {#</div>#}
-
-        {#<!-- Blog Sidebar#}
-        {#================================================== -->#}
-        {#{{ render(controller('AcmeMainBundle:PageLayout:rightSidebar', {#}
-        {#'post': entity#}
-        {#})) }}#}
-        {#<!-- End sidebar column -->#}
-    {#</div>#}
-    {#<div class="row" id="about">#}
-        {#<div class="span12">#}
-            {#&#123;&#35;<h1>{{ entity.name }}</h1>&#35;&#125;#}
-            {#{{ entity.text|raw }}#}
-        {#</div>#}
-    {#</div>#}
 {% endblock %}

@@ -23,6 +23,8 @@ class PageController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('AcmeMainBundle:Post')->findForPage(false, 8);
 
+        //$this->get('cache.m')->set('first', 123);
+
         return array(
             'entities' => $entities
         );
@@ -33,10 +35,10 @@ class PageController extends Controller
      */
     public function viewSitemapXmlAction(Request $request)
     {
-//        $cacheKey = 'bohenon_sitemap_xml_test';
-//        $cache = new ApcCache();
-//        $sitemap = $cache->fetch($cacheKey);
-//        if (!$sitemap ) {
+        $cacheKey = 'dvestrahovki_sitemap_xml';
+        $cache = $this->get('cache.m');
+        $sitemap = $cache->fetch($cacheKey);
+        if (!$sitemap ) {
 
             $countries = $this->getDoctrine()->getRepository('AcmeMainBundle:Country')->findAll();
 
@@ -108,8 +110,8 @@ class PageController extends Controller
                 }
             }
             $sitemap = $rootNode->asXML();
-//            $cache->save($cacheKey, $sitemap, (864000)); // 10 days cache 24*10*60*60
-//        }
+            $cache->save($cacheKey, $sitemap, (2*24*60*60)); // 2 days cache 24*10*60*60
+        }
 
         return new Response($sitemap);
     }
@@ -212,7 +214,6 @@ class PageController extends Controller
         $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('AcmeMainBundle:Country')->findAll();
         $cities = $em->getRepository('AcmeMainBundle:City')->findAll();
-        $companies = $em->getRepository('AcmeMainBundle:Company')->findAll();
 
         $title = 'Список страховых компаний с фильтром по странам и городам';
         $description = 'Каталог компаний которые связанные со страхованием. Также частные агенты - страхователи.';
@@ -228,7 +229,20 @@ class PageController extends Controller
                 $title = 'Каталог страховых компаний страны - '.$country->getName().' и города - '.$city->getName();
                 $description = 'Информации о всех страховых компаниях страны - '.$country->getName().' и города - '.$city->getName();
                 $keywords = 'каталог компании '.mb_strtolower($country->getName(), 'UTF8').' страховые агенты '.mb_strtolower($city->getName(), 'UTF8');
+                $companies = $em->getRepository('AcmeMainBundle:Company')->findBy(array(
+                    'city' => $city
+                ));
+            } else {
+                $cIds = array();
+                foreach ($country->getCities() as $c) {
+                    $cIds[] = $c->getId();
+                }
+                $companies = $em->getRepository('AcmeMainBundle:Company')->findBy(array(
+                    'city' => $cIds
+                ));
             }
+        } else {
+            $companies = $em->getRepository('AcmeMainBundle:Company')->findAll();
         }
 
         return array(

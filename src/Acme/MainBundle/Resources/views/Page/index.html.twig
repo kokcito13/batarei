@@ -8,758 +8,84 @@
 {% endblock %}
 {% block javascripts %}{% endblock %}
 {% block body %}
-    {#<!--noindex-->#}
-    {#<div class="row headline"><!-- Begin Headline -->#}
-        {#<!-- Slider Carousel#}
-       {#================================================== -->#}
-        {#<div class="span8">#}
-            {#<div class="flexslider">#}
-                {#<ul class="slides">#}
-                    {#<li>#}
-                        {#<a href="/health">#}
-                            {#<img src="{{ asset('bundles/acmemain/images/prettyPhoto/img114.jpg') | apply_filter('index_banner') }}" alt="" />#}
-                        {#</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="/insurer">#}
-                            {#<img src="{{ asset('bundles/acmemain/images/banner1.jpg') | apply_filter('index_banner') }}" alt="" />#}
-                        {#</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="/social">#}
-                            {#<img src="{{ asset('bundles/acmemain/images/banner2.jpg') | apply_filter('index_banner') }}" alt="" />#}
-                        {#</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="/auto">#}
-                            {#<img src="{{ asset('bundles/acmemain/images/banner3.jpg') | apply_filter('index_banner') }}" alt="" />#}
-                        {#</a>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#</div>#}
-        {#</div>#}
-        {#<!-- Headline Text#}
-        {#================================================== -->#}
-        {#<div class="span4">#}
-            {#<div class="h3">О проекте</div>#}
-            {#<p>Абсолютно все из нас сталкивались с таким понятием как страхование. У одних есть только медицинский страховой полюс, у других страховка на автомобиль, а есть и те кто страхует свой бизнес, имущество и даже жизнь.</p>#}
-            {#<a href="#about"><i class="icon-plus-sign"></i>Читать больше</a>#}
-        {#</div>#}
-    {#</div><!-- End Headline -->#}
-    {#<!--/noindex-->#}
-    {#<div class="row gallery-row"><!-- Begin Gallery Row -->#}
-        {#<div class="span12">#}
-            {#<div class="title-bg">Последние публикации#}
-                {#&#123;&#35;<button class="btn btn-mini btn-inverse hidden-phone" type="button">View Portfolio</button>&#35;&#125;#}
-            {#</div>#}
-            {#<!-- Gallery Thumbnails#}
-            {#================================================== -->#}
-            {#<div class="row clearfix no-margin">#}
-                {#<ul class="gallery-post-grid holder">#}
-                    {#{% for post in entities %}#}
-                        {#<li  class="span3 gallery-item" data-id="id-{{ post.id }}" data-type="illustration">#}
-                            {#<span class="gallery-hover-4col hidden-phone hidden-tablet">#}
-                                {#<span class="gallery-icons">#}
-                                    {#<a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}" class="item-details-link"></a>#}
-                                {#</span>#}
-                            {#</span>#}
-                            {#<a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">#}
-                                {#<img src="{{ post.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="{{ post.imageAlt }}">#}
-                            {#</a>#}
-                            {#<span class="project-details">#}
-                                {#<a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">{{ post.name }}</a>#}
-                            {#</span>#}
-                        {#</li>#}
-                    {#{% endfor %}#}
-                {#</ul>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div><!-- End Gallery Row -->#}
-    {#<div class="row" id="about">#}
-        {#<div class="span12">#}
-            {#<h1>О проекте «Две страховки»</h1>#}
-            {#<p>Абсолютно все из нас сталкивались с таким понятием как страхование. У одних есть только медицинский страховой полюс, у других страховка на автомобиль, а есть и те кто страхует свой бизнес, имущество и даже жизнь.</p>#}
-            {#<p>Чтобы правильно выполнить всю процедуру страховки и не наткнуться на огромное количество подводных камней, требуется квалифицированная помощь специалиста. Если полагаться исключительно на свои познания или ощущения можно в итоге, при наступлении страхового случая, получить компенсацию в заниженном размере или что еще хуже вообще оказаться без возмещения ущерба.</p>#}
-            {#<p>Найти хорошего специалиста в области страхования не трудно. Сейчас существует множество частных адвокатов и страховых компаний, которые с удовольствием предложат весь спектр своих услуг и самых лучших специалистов, чтобы угодить клиенту. Существует лишь одно «но» - стоимость.</p>#}
-            {#<p>Многие могут скептически отнестись к этому нюансу и подойти к вопросу со словами «раз решил застраховаться, значить есть на это деньги». Отчасти это правильно, но любой даже успешный предприниматель всегда экономит не только свое время, но и свои финансы.</p>#}
-            {#<p>Для тех кто действительно не хочет тратить время зря, а желает получить исчерпывающую информацию о любом виде страхования был создан ресурс «Две страховки». В наше время развития интернет технологий с помощью нескольких нажатий можно не только узнать о стоимости, условиях и принципах страхования. Все желающие могут получить онлайн консультации на интересующие темы.</p>#}
-            {#<p>Больше не понадобится записываться на прием к страховому агенту, ехать через весь город и оплачивать серьезные суммы за разъяснения по и так понятным вопросам. Проект «Две страховки» разработан так же для тех кто только думает застраховать имущество, но нет времени или особого желания платить за консультации.</p>#}
-            {#<p>Пролистав страницы проекта многие могут задуматься о том, что страхование не только груз ответственности и дополнительные финансовые затраты, но и серьезная помощь при незапланированных и экстремальных ситуациях, которые в нашей жизни отнюдь не редкость.</p>#}
-            {#<p>Вложив определенную сумму сейчас можно действительно обезопасить себя в будущем. И даже если страховой случай не наступит, что уже само по себе очень хорошо, вложенные деньги дают уверенность в завтрашнем дне, а это очень важно в наше не стабильное время.</p>#}
-        {#</div>#}
-    {#</div>#}
-    <div id="slider">
-    <div class="module  corp-demo">
-
-    <div class="module-content">
-    <!-- START REVOLUTION SLIDER 4.6.5 fullwidth mode -->
-
-    <div id="rev_slider_3_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
-         style="margin:0px auto;padding:0px;margin-top:0px;margin-bottom:0px;max-height:400px;position:relative;z-index:0;">
-    <div id="rev_slider_3_1" class="rev_slider fullwidthabanner" style="display:none;max-height:400px;height:400px;">
-    <ul>
-    <!-- SLIDE  1-->
-    <li data-transition="parallaxtoright,parallaxtoleft" data-slotamount="7" data-randomtransition="on"
-        data-masterspeed="300" data-saveperformance="off">
-        <!-- MAIN IMAGE -->
-        <img src="http://corporate.joostrap.com/media/com_uniterevolution2/assets/images/dummy.png" alt="responsive"
-             data-lazyload="http://corporate.joostrap.com/media/com_uniterevolution2/assets/images/transparent.png"
-             data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-        <!-- LAYERS -->
-
-        <!-- LAYER NR. 1 -->
-        <div class="tp-caption randomrotate"
-             data-x="right" data-hoffset="0"
-             data-y="center" data-voffset="14"
-             data-speed="1000"
-             data-start="100"
-             data-easing="Power3.easeInOut"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-
-             style="z-index: 5;"><img src="http://corporate.joostrap.com/media/com_uniterevolution2/assets/images/dummy.png"
-                                      alt="" data-lazyload="http://corporate.joostrap.com/images/slider/responsive.png">
-        </div>
-
-        <!-- LAYER NR. 2 -->
-        <div class="tp-caption corp-demo-lge lft tp-resizeme"
-             data-x="21"
-             data-y="51"
-             data-speed="1200"
-             data-start="500"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-
-             style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">AWESOME CORPORATE TEMPLATE
-        </div>
-
-        <!-- LAYER NR. 3 -->
-        <div class="tp-caption corp-demo-text lfb tp-resizeme"
-             data-x="21"
-             data-y="101"
-             data-speed="1200"
-             data-start="750"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-end="4750"
-
-             style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">Cras justo odio, dapibus ac
-            facilisis in, egestas eget quam ac facilisis in, egestas
-        </div>
-
-        <!-- LAYER NR. 4 -->
-        <div class="tp-caption corp-demo-text lfb tp-resizeme"
-             data-x="21"
-             data-y="141"
-             data-speed="1200"
-             data-start="1000"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-end="4750"
-
-             style="z-index: 8; max-width: auto; max-height: auto; white-space: nowrap;">eget quam. Donec id elit non mi
-            porta gravida at eget metus. Nullam id dolor id
-        </div>
-
-        <!-- LAYER NR. 5 -->
-        <div class="tp-caption corp-demo-text lfb tp-resizeme"
-             data-x="21"
-             data-y="181"
-             data-speed="1200"
-             data-start="1200"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-end="4750"
-
-             style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">nibh ultricies vehicula ut id elit.
-        </div>
-
-        <!-- LAYER NR. 6 -->
-        <div class="tp-caption randomrotate tp-resizeme"
-             data-x="21"
-             data-y="230"
-             data-speed="1200"
-             data-start="1750"
-             data-easing="Power3.easeInOut"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-endspeed="300"
-
-             style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn-grey'>Read
-                more</a>
-        </div>
-    </li>
-    <!-- SLIDE  2-->
-    <li data-transition="parallaxtoright,parallaxtoleft" data-slotamount="7" data-randomtransition="on"
-        data-masterspeed="300" data-saveperformance="off">
-        <!-- MAIN IMAGE -->
-        <img src="http://corporate.joostrap.com/media/com_uniterevolution2/assets/images/dummy.png" alt="responsive"
-             data-lazyload="http://corporate.joostrap.com/media/com_uniterevolution2/assets/images/transparent.png"
-             data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-        <!-- LAYERS -->
-
-        <!-- LAYER NR. 1 -->
-        <div class="tp-caption randomrotate"
-             data-x="right" data-hoffset="0"
-             data-y="center" data-voffset="-12"
-             data-speed="1000"
-             data-start="100"
-             data-easing="Power3.easeInOut"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-
-             style="z-index: 5;"><img src="http://corporate.joostrap.com/media/com_uniterevolution2/assets/images/dummy.png"
-                                      alt="" data-ww="500" data-hh="180"
-                                      data-lazyload="http://corporate.joostrap.com/images/slider/css3html5jquerybootstrap.png">
-        </div>
-
-        <!-- LAYER NR. 2 -->
-        <div class="tp-caption corp-demo-lge lft tp-resizeme"
-             data-x="21"
-             data-y="51"
-             data-speed="1200"
-             data-start="500"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-
-             style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">AWESOME CORPORATE TEMPLATE
-        </div>
-
-        <!-- LAYER NR. 3 -->
-        <div class="tp-caption corp-demo-text lfb tp-resizeme"
-             data-x="21"
-             data-y="101"
-             data-speed="1200"
-             data-start="750"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-end="4750"
-
-             style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">Cras justo odio, dapibus ac
-            facilisis in, egestas eget quam ac facilisis in, egestas
-        </div>
-
-        <!-- LAYER NR. 4 -->
-        <div class="tp-caption corp-demo-text lfb tp-resizeme"
-             data-x="21"
-             data-y="141"
-             data-speed="1200"
-             data-start="1000"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-end="4750"
-
-             style="z-index: 8; max-width: auto; max-height: auto; white-space: nowrap;">eget quam. Donec id elit non mi
-            porta gravida at eget metus. Nullam id dolor id
-        </div>
-
-        <!-- LAYER NR. 5 -->
-        <div class="tp-caption corp-demo-text lfb tp-resizeme"
-             data-x="21"
-             data-y="181"
-             data-speed="1200"
-             data-start="1200"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-end="4750"
-
-             style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">nibh ultricies vehicula ut id elit.
-        </div>
-
-        <!-- LAYER NR. 6 -->
-        <div class="tp-caption randomrotate tp-resizeme"
-             data-x="21"
-             data-y="230"
-             data-speed="1200"
-             data-start="1750"
-             data-easing="Power3.easeInOut"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-endspeed="300"
-
-             style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn-grey'>Read
-                more</a>
-        </div>
-    </li>
-    <!-- SLIDE  3-->
-    <li data-transition="parallaxtoright,parallaxtoleft" data-slotamount="7" data-randomtransition="on"
-        data-masterspeed="300" data-saveperformance="off">
-        <!-- MAIN IMAGE -->
-        <img src="http://corporate.joostrap.com/media/com_uniterevolution2/assets/images/dummy.png" alt="responsive"
-             data-lazyload="http://corporate.joostrap.com/media/com_uniterevolution2/assets/images/transparent.png"
-             data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-        <!-- LAYERS -->
-
-        <!-- LAYER NR. 1 -->
-        <div class="tp-caption randomrotate"
-             data-x="right" data-hoffset="-141"
-             data-y="center" data-voffset="3"
-             data-speed="1000"
-             data-start="100"
-             data-easing="Power3.easeInOut"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-
-             style="z-index: 5;"><img src="http://corporate.joostrap.com/media/com_uniterevolution2/assets/images/dummy.png"
-                                      alt="" data-ww="302.73333333333335" data-hh="266"
-                                      data-lazyload="http://corporate.joostrap.com/images/slider/joomla-bootstrap.png">
-        </div>
-
-        <!-- LAYER NR. 2 -->
-        <div class="tp-caption corp-demo-lge lft tp-resizeme"
-             data-x="21"
-             data-y="51"
-             data-speed="1200"
-             data-start="500"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-
-             style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">JOOMLA &amp; TWITTER BOOTSTRAP 3
-        </div>
-
-        <!-- LAYER NR. 3 -->
-        <div class="tp-caption corp-demo-text lfb tp-resizeme"
-             data-x="21"
-             data-y="101"
-             data-speed="1200"
-             data-start="750"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-end="4750"
-
-             style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">Cras justo odio, dapibus ac
-            facilisis in, egestas eget quam ac facilisis in, egestas
-        </div>
-
-        <!-- LAYER NR. 4 -->
-        <div class="tp-caption corp-demo-text lfb tp-resizeme"
-             data-x="21"
-             data-y="141"
-             data-speed="1200"
-             data-start="1000"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-end="4750"
-
-             style="z-index: 8; max-width: auto; max-height: auto; white-space: nowrap;">eget quam. Donec id elit non mi
-            porta gravida at eget metus. Nullam id dolor id
-        </div>
-
-        <!-- LAYER NR. 5 -->
-        <div class="tp-caption corp-demo-text lfb tp-resizeme"
-             data-x="21"
-             data-y="181"
-             data-speed="1200"
-             data-start="1200"
-             data-easing="Power3.easeIn"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-end="4750"
-
-             style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">nibh ultricies vehicula ut id elit.
-        </div>
-
-        <!-- LAYER NR. 6 -->
-        <div class="tp-caption randomrotate tp-resizeme"
-             data-x="21"
-             data-y="230"
-             data-speed="1200"
-             data-start="1750"
-             data-easing="Power3.easeInOut"
-             data-splitin="none"
-             data-splitout="none"
-             data-elementdelay="0.1"
-             data-endelementdelay="0.1"
-             data-endspeed="300"
-
-             style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn-grey'>Read
-                more</a>
-        </div>
-    </li>
-    </ul>
-    <div class="tp-bannertimer tp-bottom" style="display:none; visibility: hidden !important;"></div>
-    </div>
-
-    <script type="text/javascript">
-
-
-        /******************************************
-         -    PREPARE PLACEHOLDER FOR SLIDER    -
-         ******************************************/
-
-
-        var setREVStartSize = function () {
-            var tpopt = new Object();
-            tpopt.startwidth = 1200;
-            tpopt.startheight = 400;
-            tpopt.container = jQuery('#rev_slider_3_1');
-            tpopt.fullScreen = "off";
-            tpopt.forceFullWidth = "on";
-
-            tpopt.container.closest(".rev_slider_wrapper").css({height: tpopt.container.height()});
-            tpopt.width = parseInt(tpopt.container.width(), 0);
-            tpopt.height = parseInt(tpopt.container.height(), 0);
-            tpopt.bw = tpopt.width / tpopt.startwidth;
-            tpopt.bh = tpopt.height / tpopt.startheight;
-            if (tpopt.bh > tpopt.bw)tpopt.bh = tpopt.bw;
-            if (tpopt.bh < tpopt.bw)tpopt.bw = tpopt.bh;
-            if (tpopt.bw < tpopt.bh)tpopt.bh = tpopt.bw;
-            if (tpopt.bh > 1) {
-                tpopt.bw = 1;
-                tpopt.bh = 1
-            }
-            if (tpopt.bw > 1) {
-                tpopt.bw = 1;
-                tpopt.bh = 1
-            }
-            tpopt.height = Math.round(tpopt.startheight * (tpopt.width / tpopt.startwidth));
-            if (tpopt.height > tpopt.startheight && tpopt.autoHeight != "on")tpopt.height = tpopt.startheight;
-            if (tpopt.fullScreen == "on") {
-                tpopt.height = tpopt.bw * tpopt.startheight;
-                var cow = tpopt.container.parent().width();
-                var coh = jQuery(window).height();
-                if (tpopt.fullScreenOffsetContainer != undefined) {
-                    try {
-                        var offcontainers = tpopt.fullScreenOffsetContainer.split(",");
-                        jQuery.each(offcontainers, function (e, t) {
-                            coh = coh - jQuery(t).outerHeight(true);
-                            if (coh < tpopt.minFullScreenHeight)coh = tpopt.minFullScreenHeight
-                        })
-                    } catch (e) {
-                    }
-                }
-                tpopt.container.parent().height(coh);
-                tpopt.container.height(coh);
-                tpopt.container.closest(".rev_slider_wrapper").height(coh);
-                tpopt.container.closest(".forcefullwidth_wrapper_tp_banner").find(".tp-fullwidth-forcer").height(coh);
-                tpopt.container.css({height: "100%"});
-                tpopt.height = coh;
-            } else {
-                tpopt.container.height(tpopt.height);
-                tpopt.container.closest(".rev_slider_wrapper").height(tpopt.height);
-                tpopt.container.closest(".forcefullwidth_wrapper_tp_banner").find(".tp-fullwidth-forcer").height(tpopt.height);
-            }
-        };
-
-        /* CALL PLACEHOLDER */
-        setREVStartSize();
-
-
-        var tpj = jQuery;
-        tpj.noConflict();
-        var revapi3;
-
-
-        tpj(document).ready(function () {
-
-
-            if (tpj('#rev_slider_3_1').revolution == undefined) {
-                revslider_showDoubleJqueryError('#rev_slider_3_1');
-            } else {
-                revapi3 = tpj('#rev_slider_3_1').show().revolution(
-                        {
-
-                            dottedOverlay: "none",
-                            delay: 6000,
-                            startwidth: 1200,
-                            startheight: 400,
-                            hideThumbs: 200,
-
-                            thumbWidth: 100,
-                            thumbHeight: 50,
-                            thumbAmount: 3,
-
-                            simplifyAll: "off",
-                            navigationType: "none",
-                            navigationArrows: "none",
-                            navigationStyle: "round",
-                            touchenabled: "on",
-                            onHoverStop: "on",
-                            nextSlideOnWindowFocus: "on",
-
-                            swipe_threshold: 75,
-                            swipe_min_touches: 1,
-                            drag_block_vertical: false,
-
-
-                            keyboardNavigation: "off",
-
-                            navigationHAlign: "center",
-                            navigationVAlign: "bottom",
-                            navigationHOffset: 0,
-                            navigationVOffset: 20,
-
-                            soloArrowLeftHalign: "left",
-                            soloArrowLeftValign: "center",
-                            soloArrowLeftHOffset: 20,
-                            soloArrowLeftVOffset: 0,
-
-                            soloArrowRightHalign: "right",
-                            soloArrowRightValign: "center",
-                            soloArrowRightHOffset: 20,
-                            soloArrowRightVOffset: 0,
-
-                            shadow: 0,
-                            fullWidth: "on",
-                            fullScreen: "off",
-
-                            spinner: "off",
-
-                            stopLoop: "off",
-                            stopAfterLoops: -1,
-                            stopAtSlide: -1,
-
-                            shuffle: "off",
-
-                            autoHeight: "off",
-                            forceFullWidth: "on",
-
-
-                            hideTimerBar: "on",
-                            hideThumbsOnMobile: "off",
-                            hideNavDelayOnMobile: 1500,
-                            hideBulletsOnMobile: "off",
-                            hideArrowsOnMobile: "off",
-                            hideThumbsUnderResolution: 0,
-
-                            hideSliderAtLimit: 0,
-                            hideCaptionAtLimit: 0,
-                            hideAllCaptionAtLilmit: 0,
-                            startWithSlide: 0,
-                            isJoomla: true
-                        });
-
-
-            }
-        });
-        /*ready*/
-
-    </script>
-    </div>
-    <!-- END REVOLUTION SLIDER -->                </div>
-    </div>
-
-    </div>
-
-    <div id="top" class="clearfix top services-top">
-        <div class="container">
-            <div class="module">
-
-                <div class="module-content">
-
-                    <div class="custom">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-4">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-12">
-                                        <i class="glyphicon glyphicon-phone icon-circle icon-gold"></i>
-                                    </div>
-                                    <div class="col-md-9 col-sm-12">
-                                        <h4>Responsive Web Design</h4>
-
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur fre adipiscing elit.
-                                            Donec posuere ac odio a as faucibus. Maecenas ullamcorper,
-                                            ipsum et tristique tincidunt, velit odio.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-12">
-                                        <i class="glyphicon glyphicon-cloud-upload icon-circle icon-gold"></i>
-                                    </div>
-                                    <div class="col-md-9 col-sm-12">
-                                        <h4>Joomla + Bootstrap 3</h4>
-
-                                        <p>
-                                            Ipsum dolor be sit amet, consectetur fre adipiscing elit.
-                                            Donec posuere ac odio . Maecenas ullamcorper,
-                                            ipsum et tristique tincidunt, velit odio.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-12">
-                                        <i class="glyphicon glyphicon-plane icon-circle icon-gold"></i>
-                                    </div>
-                                    <div class="col-md-9 col-sm-12">
-                                        <h4>Ready to Launch</h4>
-
-                                        <p>
-                                            Rorem ipsum dolor sit amet, consectetur fre adipiscing elit.
-                                            Donec posuere ac odio a as faucibus. Maecenas ullamcorper,
-                                            ipsum et tristique tincidunt, velit odio.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         
-                    </div>
-                </div>
-            </div>
-            <div class="module">
-
-                <div class="module-content">
-
-                    <div class="custom">
-                        <div class="row ">
-                            <div class="col-md-7 col-sm-12 about-block">
-                                <h4>Who we are</h4>
-
-                                <div class="row">
-                                    <div class="col-md-5 col-sm-6 about-img"><img
-                                                src="http://corporate.joostrap.com/images/about-img.jpg" alt=""
-                                                class="img-responsive"/></div>
-                                    <div class="col-md-7 col-sm-6 about-details">
-                                        <h5>Welcome To The Joostrap Landing Page</h5>
-
-                                        <p>Pellentesque venenatis non urna non vehicula. In rutrum nibh arcu, sit amet
-                                            lacinia nulla eleifend in. In vulputate nec est ac ultrices. Vestibulum
-                                            venenatis lobortis ipsum.</p>
-
-                                        <p>Phasellus lectus lacus, porta eget augue vel,odio at dolor condimentum tristique.
-                                            In vulputate nec est ac ultrices.</p>
-                                        <a href="#"> Read More </a></div>
-                                </div>
-                                <!--End .row--></div>
-                            <!--End .about-block-->
-                            <div class="col-md-5 col-sm-12 whyus-block">
-                                <h4>Why Choose Us</h4>
-
-                                <div class="row">
-                                    <ol class="ol-circle">
-                                        <li class="fadeInRight ani-delay1">Pellentesque venenatis non urna non vehicula</li>
-                                        <li class="fadeInRight ani-delay2">Rerta eget augue vel,odio at dolor condimentum
-                                            tristique
-                                        </li>
-                                        <li class="fadeInRight ani-delay3">Vestibulum venenatis lobortis ipsumnon vehicula
-                                        </li>
-                                        <li class="fadeInRight ani-delay4">In rutrum nibh arcu, sit amet lacinia nulla</li>
-                                    </ol>
-                                </div>
-                                <!--End .row--></div>
-                            <!--End .whyus-block--></div>
-                        <!--End .row-->
-                        <div class="row recent-work">
-                            <div class="col-md-3 col-sm-12 ">
-                                <h4>Our showcase</h4>
-
-                                <p>Pellentesque venenatis non urna non aew vehicula. In rutrum nibh arcu, sit amet lacinia
-                                    nulla eleifend in. In vulputate nec est ac re br ultrices.</p>
-
-                                <p>Vestibulum venenatis lobortis ipsum. Is wret Phasellus lectus lacus. venenatis.Phasellus
-                                    lectus lacu.</p>
-                                <a href="view/gallery.html" class="btn btn-default"> View All Templates <i
-                                            class="glyphicon glyphicon-chevron-right">&nbsp;</i> </a></div>
-                            <div class="col-md-3 col-sm-12 recent-item smothIn ani-delay1"><a href="#"> <img
-                                            src="http://corporate.joostrap.com/images/recent-img1.jpg" alt=""
-                                            class="img-responsive"/>
-
-                                    <div class="image-overlay-bg">
-                                        <div class="image-overlay-link">&nbsp;</div>
-                                    </div>
-                                </a>
-
-                                <div class="rw-details text-center">
-                                    <h5>Latest Template 1</h5>
-
-                                    <p>In rutrum nibh arcu sit amet lae</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-12 recent-item smothIn ani-delay2"><a href="#"><img
-                                            src="http://corporate.joostrap.com/images/recent-img1.jpg" alt=""
-                                            class="img-responsive"/>
-
-                                    <div class="image-overlay-bg">
-                                        <div class="image-overlay-link">&nbsp;</div>
-                                    </div>
-                                </a>
-
-                                <div class="rw-details text-center">
-                                    <h5>Latest Template 2</h5>
-
-                                    <p>In rutrum nibh arcu sit amet lae</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-12 recent-item smothIn ani-delay3"><a href="#"><img
-                                            src="http://corporate.joostrap.com/images/recent-img1.jpg" alt=""
-                                            class="img-responsive"/>
-
-                                    <div class="image-overlay-bg">
-                                        <div class="image-overlay-link">&nbsp;</div>
-                                    </div>
-                                </a>
-
-                                <div class="rw-details text-center">
-                                    <h5>Latest Template 3</h5>
-
-                                    <p>In rutrum nibh arcu sit amet lae</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!--noindex-->
+    <div class="row headline"><!-- Begin Headline -->
+        <!-- Slider Carousel
+       ================================================== -->
+        <div class="span8">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <a href="/health">
+                            <img src="{{ asset('bundles/acmemain/images/prettyPhoto/img114.jpg') | apply_filter('index_banner') }}" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/insurer">
+                            <img src="{{ asset('bundles/acmemain/images/banner1.jpg') | apply_filter('index_banner') }}" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/social">
+                            <img src="{{ asset('bundles/acmemain/images/banner2.jpg') | apply_filter('index_banner') }}" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/auto">
+                            <img src="{{ asset('bundles/acmemain/images/banner3.jpg') | apply_filter('index_banner') }}" alt="" />
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-    <div id="mainbody" class="clearfix">
-        <div class="container">
-            <div class="row">
-                <div id="content" class="col-md-12">
-                    <div id="message-component">
-                        <div id="system-message-container">
-                        </div>
-                    </div>
-                    <div id="content-area">
-                        <div class="blog-featured" itemscope itemtype="http://schema.org/Blog">
-                        </div>
-                    </div>
-                </div>
+        <!-- Headline Text
+        ================================================== -->
+        <div class="span4">
+            <div class="h3">О проекте</div>
+            <p>Абсолютно все из нас сталкивались с таким понятием как страхование. У одних есть только медицинский страховой полюс, у других страховка на автомобиль, а есть и те кто страхует свой бизнес, имущество и даже жизнь.</p>
+            <a href="#about"><i class="icon-plus-sign"></i>Читать больше</a>
+        </div>
+    </div><!-- End Headline -->
+    <!--/noindex-->
+    <div class="row gallery-row"><!-- Begin Gallery Row -->
+        <div class="span12">
+            <div class="title-bg">Последние публикации
+                {#<button class="btn btn-mini btn-inverse hidden-phone" type="button">View Portfolio</button>#}
             </div>
+            <!-- Gallery Thumbnails
+            ================================================== -->
+            <div class="row clearfix no-margin">
+                <ul class="gallery-post-grid holder">
+                    {% for post in entities %}
+                        <li  class="span3 gallery-item" data-id="id-{{ post.id }}" data-type="illustration">
+                            <span class="gallery-hover-4col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">
+                                <img src="{{ post.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="{{ post.imageAlt }}">
+                            </a>
+                            <span class="project-details">
+                                <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">{{ post.name }}</a>
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div><!-- End Gallery Row -->
+    <div class="row" id="about">
+        <div class="span12">
+            <h1>О проекте «Две страховки»</h1>
+            <p>Абсолютно все из нас сталкивались с таким понятием как страхование. У одних есть только медицинский страховой полюс, у других страховка на автомобиль, а есть и те кто страхует свой бизнес, имущество и даже жизнь.</p>
+            <p>Чтобы правильно выполнить всю процедуру страховки и не наткнуться на огромное количество подводных камней, требуется квалифицированная помощь специалиста. Если полагаться исключительно на свои познания или ощущения можно в итоге, при наступлении страхового случая, получить компенсацию в заниженном размере или что еще хуже вообще оказаться без возмещения ущерба.</p>
+            <p>Найти хорошего специалиста в области страхования не трудно. Сейчас существует множество частных адвокатов и страховых компаний, которые с удовольствием предложат весь спектр своих услуг и самых лучших специалистов, чтобы угодить клиенту. Существует лишь одно «но» - стоимость.</p>
+            <p>Многие могут скептически отнестись к этому нюансу и подойти к вопросу со словами «раз решил застраховаться, значить есть на это деньги». Отчасти это правильно, но любой даже успешный предприниматель всегда экономит не только свое время, но и свои финансы.</p>
+            <p>Для тех кто действительно не хочет тратить время зря, а желает получить исчерпывающую информацию о любом виде страхования был создан ресурс «Две страховки». В наше время развития интернет технологий с помощью нескольких нажатий можно не только узнать о стоимости, условиях и принципах страхования. Все желающие могут получить онлайн консультации на интересующие темы.</p>
+            <p>Больше не понадобится записываться на прием к страховому агенту, ехать через весь город и оплачивать серьезные суммы за разъяснения по и так понятным вопросам. Проект «Две страховки» разработан так же для тех кто только думает застраховать имущество, но нет времени или особого желания платить за консультации.</p>
+            <p>Пролистав страницы проекта многие могут задуматься о том, что страхование не только груз ответственности и дополнительные финансовые затраты, но и серьезная помощь при незапланированных и экстремальных ситуациях, которые в нашей жизни отнюдь не редкость.</p>
+            <p>Вложив определенную сумму сейчас можно действительно обезопасить себя в будущем. И даже если страховой случай не наступит, что уже само по себе очень хорошо, вложенные деньги дают уверенность в завтрашнем дне, а это очень важно в наше не стабильное время.</p>
         </div>
     </div>
 {% endblock %}

@@ -20,9 +20,9 @@ class CompanyAdmin extends Admin
             ->add('name')
             ->add('url')
             ->add('title')
-            ->add('description')
-            ->add('keywords')
-            ->add('text')
+//            ->add('description')
+//            ->add('keywords')
+//            ->add('text')
         ;
     }
 
@@ -33,11 +33,11 @@ class CompanyAdmin extends Admin
     {
         $listMapper
             ->add('name')
-            ->add('url')
-            ->add('title')
-            ->add('description')
-            ->add('keywords')
-            ->add('text')
+//            ->add('url')
+//            ->add('title')
+//            ->add('description')
+//            ->add('keywords')
+//            ->add('text')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -71,6 +71,7 @@ class CompanyAdmin extends Admin
             ->with('Главное')
                 ->add('name', 'text', array('label' => 'Название'))
                 ->add('file', 'file', $fileFieldOptions)
+                ->add('imageAlt', 'text', array('label' => 'Описание картинки'))
                 ->add('site', 'text', array('label' => 'Сайт'))
                 ->add('url')
                 ->add('city', 'entity',
@@ -79,6 +80,7 @@ class CompanyAdmin extends Admin
                 ->add('services', 'textarea', array('label' => 'Виды услуг', 'attr' => array('class' => 'ckeditor')))
                 ->add('contacts', 'textarea', array('label' => 'Контакты', 'attr' => array('class' => 'ckeditor')))
                 ->add('text', 'textarea', array('label' => 'Инфо', 'attr' => array('class' => 'ckeditor')))
+                ->add('rating', 'integer', array('label' => 'Рейтинг'))
             ->end()
             ->with('СЕО')
                 ->add('title')

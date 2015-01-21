@@ -106,7 +106,7 @@ fos_user:
             type: fos_user_profile
 
 sonata_admin:
-    title:      EkoBatarei.com
+    title:      EkoBatarei
     templates:
         edit:    AcmeMainBundle:CRUD:edit.html.twig
 #    title_logo: /path/to/logo.png
@@ -165,12 +165,6 @@ avalanche_imagine:
         user_avatar:
             type:    thumbnail
             options: { size: [88, 88], mode: outbound }
-        thumbnail_category_main:
-            type:    thumbnail
-            options: { size: [750, 214], mode: outbound }
-        thumbnail_category_middle:
-            type:    thumbnail
-            options: { size: [360, 102], mode: outbound }
 
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
@@ -184,5 +178,5 @@ knp_paginator:
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig
 
 ornicar_apc:
-      host: http://ekobatarei.com
+      host: http://batarei.ru
       web_dir: %kernel.root_dir%/../www

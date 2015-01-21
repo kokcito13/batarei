@@ -8,7 +8,7 @@
     {#<meta property="og:title" content="{{ entity.title }}"/>#}
     {#<meta property="og:type" content="website"/>#}
     {#<meta property="og:url" content="{{ app.request.uri }}"/>#}
-    {#<meta property="og:site_name" content="EkoBatarei.com"/>#}
+    {#<meta property="og:site_name" content="DveStrahovki.ru"/>#}
     {#<meta property="og:description" content="{{ entity.description }}"/>#}
     {#<meta property="og:image:secure_url" content="{{ app.request.uri }}{{ entity.getWebPath() | apply_filter('big_post') }}" />#}
     {#<meta property="og:image" content="{{ app.request.uri }}{{ entity.getWebPath() | apply_filter('big_post') }}"/>#}
@@ -24,20 +24,23 @@
             <div class="row">
                 <div class="span4">
                     <div class="clearfix">
-                        <img src="{{ entity.getWebPath() | apply_filter('in_company') }}" width="170" class="thumbnail align-left" alt="логотип компании {{ entity.name }}">
+                        <img src="{{ entity.getWebPath() | apply_filter('in_company') }}" width="170" class="thumbnail align-left" alt="{{ entity.getImageAltView() }}">
                     </div>
-                    <div class="clearfix">
-                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- strah_company_page1 -->
-                        <ins class="adsbygoogle"
-                             style="display:inline-block;width:336px;height:280px"
-                             data-ad-client="ca-pub-3861532892125732"
-                             data-ad-slot="1561466494"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+                    {#<div class="clearfix">#}
+                        {#<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>#}
+                        {#<!-- strah_company_page1 -->#}
+                        {#<ins class="adsbygoogle"#}
+                             {#style="display:inline-block;width:336px;height:280px"#}
+                             {#data-ad-client="ca-pub-3861532892125732"#}
+                             {#data-ad-slot="1561466494"></ins>#}
+                        {#<script>#}
+                            {#(adsbygoogle = window.adsbygoogle || []).push({});#}
+                        {#</script>#}
+                    {#</div>#}
+                    <div class="project-info">
+                        <div class="h6">Виды услуг:</div>
+                        {{ entity.services|raw }}
                     </div>
-                    {{ entity.text|raw }}
                 </div>
                 <div class="span4">
                     <h1>{{ entity.name }}</h1>
@@ -46,12 +49,16 @@
                     <div style="padding-left: 15px;">
                         {{ entity.contacts|raw }}
                     </div>
-                    <div class="project-info">
-                        <div class="h6">Виды услуг:</div>
-                        {{ entity.services|raw }}
-                    </div>
+
                     {#<button class="btn btn-inverse pull-left" type="button">Visit Website</button>#}
                     {#<a href="#" class="pull-right"><i class="icon-arrow-left"></i>Back to Gallery</a>#}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span8">
+                    <!--start_content-->
+                    {{ entity.text|raw }}
+                    <!--end_content-->
                 </div>
             </div>
         </div>
