@@ -8,84 +8,329 @@
 {% endblock %}
 {% block javascripts %}{% endblock %}
 {% block body %}
-    <!--noindex-->
-    <div class="row headline"><!-- Begin Headline -->
-        <!-- Slider Carousel
-       ================================================== -->
-        <div class="span8">
-            <div class="flexslider">
-                <ul class="slides">
-                    <li>
-                        <a href="/health">
-                            <img src="{{ asset('bundles/acmemain/images/prettyPhoto/img114.jpg') | apply_filter('index_banner') }}" alt="" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/insurer">
-                            <img src="{{ asset('bundles/acmemain/images/banner1.jpg') | apply_filter('index_banner') }}" alt="" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/social">
-                            <img src="{{ asset('bundles/acmemain/images/banner2.jpg') | apply_filter('index_banner') }}" alt="" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/auto">
-                            <img src="{{ asset('bundles/acmemain/images/banner3.jpg') | apply_filter('index_banner') }}" alt="" />
-                        </a>
-                    </li>
-                </ul>
+    <div class="row magazine-page">
+    <!-- Begin Content -->
+    <div class="col-md-9">
+        <!-- Magazine Slider -->
+        <div class="carousel slide carousel-v1 margin-bottom-40" id="myCarousel-1">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img alt="" src="http://htmlstream.com/preview/unify-v1.6-production/assets/img/posts/2.jpg">
+                    <div class="carousel-caption">
+                        <p>Facilisis odio, dapibus ac justo acilisis gestinas.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img alt="" src="http://htmlstream.com/preview/unify-v1.6-production/assets/img/posts/1.jpg">
+                    <div class="carousel-caption">
+                        <p>Cras justo odio, dapibus ac facilisis into egestas.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img alt="" src="http://htmlstream.com/preview/unify-v1.6-production/assets/img/posts/3.jpg">
+                    <div class="carousel-caption">
+                        <p>Justo cras odio apibus ac afilisis lingestas de.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-arrow">
+                <a data-slide="prev" href="http://htmlstream.com/preview/unify-v1.6-production/page_home6.html#myCarousel-1" class="left carousel-control">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a data-slide="next" href="http://htmlstream.com/preview/unify-v1.6-production/page_home6.html#myCarousel-1" class="right carousel-control">
+                    <i class="fa fa-angle-right"></i>
+                </a>
             </div>
         </div>
-        <!-- Headline Text
-        ================================================== -->
-        <div class="span4">
-            <div class="h3">О проекте</div>
-            <p>Абсолютно все из нас сталкивались с таким понятием как страхование. У одних есть только медицинский страховой полюс, у других страховка на автомобиль, а есть и те кто страхует свой бизнес, имущество и даже жизнь.</p>
-            <a href="#about"><i class="icon-plus-sign"></i>Читать больше</a>
-        </div>
-    </div><!-- End Headline -->
-    <!--/noindex-->
-    <div class="row gallery-row"><!-- Begin Gallery Row -->
-        <div class="span12">
-            <div class="title-bg">Последние публикации
-                {#<button class="btn btn-mini btn-inverse hidden-phone" type="button">View Portfolio</button>#}
-            </div>
-            <!-- Gallery Thumbnails
-            ================================================== -->
-            <div class="row clearfix no-margin">
-                <ul class="gallery-post-grid holder">
-                    {% for post in entities %}
-                        <li  class="span3 gallery-item" data-id="id-{{ post.id }}" data-type="illustration">
-                            <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                                <span class="gallery-icons">
-                                    <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}" class="item-details-link"></a>
-                                </span>
-                            </span>
-                            <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">
-                                <img src="{{ post.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="{{ post.imageAlt }}">
-                            </a>
-                            <span class="project-details">
-                                <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">{{ post.name }}</a>
-                            </span>
-                        </li>
-                    {% endfor %}
-                </ul>
+        <!-- End Magazine Slider -->
+
+        <!-- Magazine News -->
+        <div class="magazine-news">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="magazine-news-img">
+                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/9.jpg" alt=""></a>
+                        <span class="magazine-badge label-red">Travel</span>
+                    </div>
+                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
+                    <div class="by-author">
+                        <strong>By Jack Villo</strong>
+                        <span>/ September 19, 2013</span>
+                    </div>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="magazine-news-img">
+                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/10.jpg" alt=""></a>
+                        <span class="magazine-badge label-blue">Event</span>
+                    </div>
+                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
+                    <div class="by-author">
+                        <strong>By Admin</strong>
+                        <span>/ September 19, 2013</span>
+                    </div>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
+                </div>
             </div>
         </div>
-    </div><!-- End Gallery Row -->
-    <div class="row" id="about">
-        <div class="span12">
-            <h1>О проекте «Две страховки»</h1>
-            <p>Абсолютно все из нас сталкивались с таким понятием как страхование. У одних есть только медицинский страховой полюс, у других страховка на автомобиль, а есть и те кто страхует свой бизнес, имущество и даже жизнь.</p>
-            <p>Чтобы правильно выполнить всю процедуру страховки и не наткнуться на огромное количество подводных камней, требуется квалифицированная помощь специалиста. Если полагаться исключительно на свои познания или ощущения можно в итоге, при наступлении страхового случая, получить компенсацию в заниженном размере или что еще хуже вообще оказаться без возмещения ущерба.</p>
-            <p>Найти хорошего специалиста в области страхования не трудно. Сейчас существует множество частных адвокатов и страховых компаний, которые с удовольствием предложат весь спектр своих услуг и самых лучших специалистов, чтобы угодить клиенту. Существует лишь одно «но» - стоимость.</p>
-            <p>Многие могут скептически отнестись к этому нюансу и подойти к вопросу со словами «раз решил застраховаться, значить есть на это деньги». Отчасти это правильно, но любой даже успешный предприниматель всегда экономит не только свое время, но и свои финансы.</p>
-            <p>Для тех кто действительно не хочет тратить время зря, а желает получить исчерпывающую информацию о любом виде страхования был создан ресурс «Две страховки». В наше время развития интернет технологий с помощью нескольких нажатий можно не только узнать о стоимости, условиях и принципах страхования. Все желающие могут получить онлайн консультации на интересующие темы.</p>
-            <p>Больше не понадобится записываться на прием к страховому агенту, ехать через весь город и оплачивать серьезные суммы за разъяснения по и так понятным вопросам. Проект «Две страховки» разработан так же для тех кто только думает застраховать имущество, но нет времени или особого желания платить за консультации.</p>
-            <p>Пролистав страницы проекта многие могут задуматься о том, что страхование не только груз ответственности и дополнительные финансовые затраты, но и серьезная помощь при незапланированных и экстремальных ситуациях, которые в нашей жизни отнюдь не редкость.</p>
-            <p>Вложив определенную сумму сейчас можно действительно обезопасить себя в будущем. И даже если страховой случай не наступит, что уже само по себе очень хорошо, вложенные деньги дают уверенность в завтрашнем дне, а это очень важно в наше не стабильное время.</p>
+        <!-- End Magazine News -->
+
+        <div class="margin-bottom-35"><hr class="hr-md"></div>
+
+        <!-- Magazine News -->
+        <div class="magazine-news">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="magazine-news-img">
+                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/7.jpg" alt=""></a>
+                        <span class="magazine-badge label-yellow">Media</span>
+                    </div>
+                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
+                    <div class="by-author">
+                        <strong>By Jack Villo</strong>
+                        <span>/ September 19, 2013</span>
+                    </div>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="magazine-news-img">
+                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/11.jpg" alt=""></a>
+                        <span class="magazine-badge label-green">Education</span>
+                    </div>
+                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
+                    <div class="by-author">
+                        <strong>By Admin</strong>
+                        <span>/ September 19, 2013</span>
+                    </div>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
+                </div>
+            </div>
         </div>
+        <!-- End Magazine News -->
+
+        <div class="margin-bottom-35"><hr class="hr-md"></div>
+
+        <!-- Magazine News -->
+        <div class="magazine-news">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="magazine-news-img">
+                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/3(1).jpg" alt=""></a>
+                        <span class="magazine-badge label-purple">Media</span>
+                    </div>
+                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
+                    <div class="by-author">
+                        <strong>By Jack Villo</strong>
+                        <span>/ September 19, 2013</span>
+                    </div>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="magazine-news-img">
+                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/5.jpg" alt=""></a>
+                        <span class="magazine-badge label-dark-blue">Education</span>
+                    </div>
+                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
+                    <div class="by-author">
+                        <strong>By Admin</strong>
+                        <span>/ September 19, 2013</span>
+                    </div>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
+                </div>
+            </div>
+        </div>
+        <!-- End Magazine News -->
+
+        {#<div class="text-center">#}
+        {#<ul class="pagination">#}
+        {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">«</a></li>#}
+        {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">1</a></li>#}
+        {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">2</a></li>#}
+        {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">3</a></li>#}
+        {#<li class="active"><a href="./Unify   Welcome..._files/Unify   Welcome....html">4</a></li>#}
+        {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">5</a></li>#}
+        {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">6</a></li>#}
+        {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">7</a></li>#}
+        {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">»</a></li>#}
+        {#</ul>#}
+        {#</div>#}
     </div>
+    <!-- End Content -->
+
+    <!-- Begin Sidebar -->
+    <div class="col-md-3">
+        <!-- Magazine Posts -->
+        <div class="row margin-bottom-40">
+            <div class="magazine-posts col-md-12 col-sm-6 margin-bottom-30">
+                <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Bootstrap 3 Template</a></h3>
+                <span><i class="color-green">By htmlstream</i> / March 19, 2014</span>
+                <div class="magazine-posts-img">
+                    <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/10.jpg" alt=""></a>
+                    <span class="magazine-badge magazine-badge-red">Unify</span>
+                </div>
+            </div>
+            <div class="magazine-posts col-md-12 col-sm-6">
+                <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Parralax One Page</a></h3>
+                <span><i class="color-green">By Taylor Miller</i> / July 19, 2014</span>
+                <div class="magazine-posts-img">
+                    <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/1(1).jpg" alt=""></a>
+                    <span class="magazine-badge magazine-badge-green">Bootstrap 3</span>
+                </div>
+            </div>
+        </div>
+        <!-- End Magazine Posts -->
+
+        <!-- Quick Links -->
+        <div class="magazine-sb-categories margin-bottom-20">
+            <div class="headline headline-md"><h2>Quick Links</h2></div>
+            <div class="row">
+                <ul class="list-unstyled col-xs-6">
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Revolution Slider</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Parralax Page</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Backgrounds</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Parralax Slider</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Responsive</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Bootstrap 3x</a></li>
+                </ul>
+                <ul class="list-unstyled col-xs-6">
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">50+ Valid Pages</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Layer Slider</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Bootstrap 2x</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Fixed Header</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Best Template</a></li>
+                    <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">And Many More</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- End Quick Links -->
+
+        <!-- Photo Stream -->
+        <div class="headline"><h2>Photo Stream</h2></div>
+        <ul class="list-unstyled blog-photos margin-bottom-35">
+            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="hover-effect" alt="" src="./Unify   Welcome..._files/5(1).jpg"></a></li>
+            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="hover-effect" alt="" src="./Unify   Welcome..._files/6.jpg"></a></li>
+            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="hover-effect" alt="" src="./Unify   Welcome..._files/8.jpg"></a></li>
+            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="hover-effect" alt="" src="./Unify   Welcome..._files/10(1).jpg"></a></li>
+            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="hover-effect" alt="" src="./Unify   Welcome..._files/11(1).jpg"></a></li>
+            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="hover-effect" alt="" src="./Unify   Welcome..._files/1(2).jpg"></a></li>
+            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="hover-effect" alt="" src="./Unify   Welcome..._files/2(1).jpg"></a></li>
+            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="hover-effect" alt="" src="./Unify   Welcome..._files/7(1).jpg"></a></li>
+        </ul>
+        <!-- End Photo Stream -->
+
+        <!-- Latest News -->
+        <div class="margin-bottom-40">
+            <div class="magazine-mini-news">
+                <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Blanditiis Praesentium Volupeto</a></h3>
+                <div class="post-author">
+                    <strong>By Adam Bvio</strong>
+                    <span>/ September 19, 2013</span>
+                </div>
+                <p>At vero eos et accusamus et iusto odiodig nissimos ducimus usce condimentum eleifend enim a feugiat.</p>
+            </div>
+            <hr class="hr-md">
+            <div class="magazine-mini-news">
+                <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Blanditiis Praesentium Volupeto</a></h3>
+                <div class="post-author">
+                    <strong>By Kate Baur</strong>
+                    <span>/ September 19, 2013</span>
+                </div>
+                <p>At vero eos et accusamus et iusto odiodig nissimos ducimus usce condimentum eleifend enim a feugiat.</p>
+            </div>
+            <hr class="hr-md">
+            <div class="magazine-mini-news">
+                <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Blanditiis Praesentium Volupeto</a></h3>
+                <div class="post-author">
+                    <strong>By Admin</strong>
+                    <span>/ September 19, 2013</span>
+                </div>
+                <p>At vero eos et accusamus et iusto odiodig nissimos ducimus usce condimentum eleifend enim a feugiat.</p>
+            </div>
+        </div>
+        <!-- End Latest News -->
+    </div>
+    <!-- End Sidebar -->
+    </div>
+
+    {#<!--noindex-->#}
+    {#<div class="row headline"><!-- Begin Headline -->#}
+        {#<!-- Slider Carousel#}
+       {#================================================== -->#}
+        {#<div class="span8">#}
+            {#<div class="flexslider">#}
+                {#<ul class="slides">#}
+                    {#<li>#}
+                        {#<a href="/health">#}
+                            {#<img src="{{ asset('bundles/acmemain/images/prettyPhoto/img114.jpg') | apply_filter('index_banner') }}" alt="" />#}
+                        {#</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="/insurer">#}
+                            {#<img src="{{ asset('bundles/acmemain/images/banner1.jpg') | apply_filter('index_banner') }}" alt="" />#}
+                        {#</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="/social">#}
+                            {#<img src="{{ asset('bundles/acmemain/images/banner2.jpg') | apply_filter('index_banner') }}" alt="" />#}
+                        {#</a>#}
+                    {#</li>#}
+                    {#<li>#}
+                        {#<a href="/auto">#}
+                            {#<img src="{{ asset('bundles/acmemain/images/banner3.jpg') | apply_filter('index_banner') }}" alt="" />#}
+                        {#</a>#}
+                    {#</li>#}
+                {#</ul>#}
+            {#</div>#}
+        {#</div>#}
+        {#<!-- Headline Text#}
+        {#================================================== -->#}
+        {#<div class="span4">#}
+            {#<div class="h3">О проекте</div>#}
+            {#<p>Абсолютно все из нас сталкивались с таким понятием как страхование. У одних есть только медицинский страховой полюс, у других страховка на автомобиль, а есть и те кто страхует свой бизнес, имущество и даже жизнь.</p>#}
+            {#<a href="#about"><i class="icon-plus-sign"></i>Читать больше</a>#}
+        {#</div>#}
+    {#</div><!-- End Headline -->#}
+    {#<!--/noindex-->#}
+    {#<div class="row gallery-row"><!-- Begin Gallery Row -->#}
+        {#<div class="span12">#}
+            {#<div class="title-bg">Последние публикации#}
+                {#&#123;&#35;<button class="btn btn-mini btn-inverse hidden-phone" type="button">View Portfolio</button>&#35;&#125;#}
+            {#</div>#}
+            {#<!-- Gallery Thumbnails#}
+            {#================================================== -->#}
+            {#<div class="row clearfix no-margin">#}
+                {#<ul class="gallery-post-grid holder">#}
+                    {#{% for post in entities %}#}
+                        {#<li  class="span3 gallery-item" data-id="id-{{ post.id }}" data-type="illustration">#}
+                            {#<span class="gallery-hover-4col hidden-phone hidden-tablet">#}
+                                {#<span class="gallery-icons">#}
+                                    {#<a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}" class="item-details-link"></a>#}
+                                {#</span>#}
+                            {#</span>#}
+                            {#<a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">#}
+                                {#<img src="{{ post.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="{{ post.imageAlt }}">#}
+                            {#</a>#}
+                            {#<span class="project-details">#}
+                                {#<a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">{{ post.name }}</a>#}
+                            {#</span>#}
+                        {#</li>#}
+                    {#{% endfor %}#}
+                {#</ul>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div><!-- End Gallery Row -->#}
+    {#<div class="row" id="about">#}
+        {#<div class="span12">#}
+            {#<h1>О проекте «Две страховки»</h1>#}
+            {#<p>Абсолютно все из нас сталкивались с таким понятием как страхование. У одних есть только медицинский страховой полюс, у других страховка на автомобиль, а есть и те кто страхует свой бизнес, имущество и даже жизнь.</p>#}
+            {#<p>Чтобы правильно выполнить всю процедуру страховки и не наткнуться на огромное количество подводных камней, требуется квалифицированная помощь специалиста. Если полагаться исключительно на свои познания или ощущения можно в итоге, при наступлении страхового случая, получить компенсацию в заниженном размере или что еще хуже вообще оказаться без возмещения ущерба.</p>#}
+            {#<p>Найти хорошего специалиста в области страхования не трудно. Сейчас существует множество частных адвокатов и страховых компаний, которые с удовольствием предложат весь спектр своих услуг и самых лучших специалистов, чтобы угодить клиенту. Существует лишь одно «но» - стоимость.</p>#}
+            {#<p>Многие могут скептически отнестись к этому нюансу и подойти к вопросу со словами «раз решил застраховаться, значить есть на это деньги». Отчасти это правильно, но любой даже успешный предприниматель всегда экономит не только свое время, но и свои финансы.</p>#}
+            {#<p>Для тех кто действительно не хочет тратить время зря, а желает получить исчерпывающую информацию о любом виде страхования был создан ресурс «Две страховки». В наше время развития интернет технологий с помощью нескольких нажатий можно не только узнать о стоимости, условиях и принципах страхования. Все желающие могут получить онлайн консультации на интересующие темы.</p>#}
+            {#<p>Больше не понадобится записываться на прием к страховому агенту, ехать через весь город и оплачивать серьезные суммы за разъяснения по и так понятным вопросам. Проект «Две страховки» разработан так же для тех кто только думает застраховать имущество, но нет времени или особого желания платить за консультации.</p>#}
+            {#<p>Пролистав страницы проекта многие могут задуматься о том, что страхование не только груз ответственности и дополнительные финансовые затраты, но и серьезная помощь при незапланированных и экстремальных ситуациях, которые в нашей жизни отнюдь не редкость.</p>#}
+            {#<p>Вложив определенную сумму сейчас можно действительно обезопасить себя в будущем. И даже если страховой случай не наступит, что уже само по себе очень хорошо, вложенные деньги дают уверенность в завтрашнем дне, а это очень важно в наше не стабильное время.</p>#}
+        {#</div>#}
+    {#</div>#}
 {% endblock %}
