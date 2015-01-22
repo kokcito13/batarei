@@ -14,7 +14,7 @@
     <meta name="description" content="{% block description %}DveStrahovki.ru{% endblock %}"/>
     <meta name="keywords" content="{% block keywords %}DveStrahovki.ru{% endblock %}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta content="width=device-width, target-densityDpi=device-dpi" name="viewport"/>
+    {#<meta content="width=device-width, target-densityDpi=device-dpi" name="viewport"/>#}
 
     {% block meta %}{% endblock %}
     {% block stylesheets %}{% endblock %}
@@ -28,14 +28,13 @@
     <link rel="stylesheet" href="{{ asset('bundles/acmemain/css/font-awesome.min.css') }}">
 
     <!-- CSS Page Style -->
-    <link rel="stylesheet" href="http://htmlstream.com/preview/unify-v1.6-production/assets/css/pages/blog_magazine.css">
+    <link rel="stylesheet" href="{{ asset('bundles/acmemain/css/pages/blog_magazine.css') }}">
 
     <!-- CSS Theme -->
-    <link rel="stylesheet" href="http://htmlstream.com/preview/unify-v1.6-production/assets/css/theme-colors/default.css" id="style_color">
-    <link rel="stylesheet" href="http://htmlstream.com/preview/unify-v1.6-production/assets/css/theme-skins/dark.css">
+    {#<link rel="stylesheet" href="http://htmlstream.com/preview/unify-v1.6-production/assets/css/theme-skins/dark.css">#}
 
     <!-- CSS Customization -->
-    <link rel="stylesheet" href="http://htmlstream.com/preview/unify-v1.6-production/assets/css/custom.css">
+    {#<link rel="stylesheet" href="http://htmlstream.com/preview/unify-v1.6-production/assets/css/custom.css">#}
 
 
     {#<script type="text/javascript" src="{{ asset('bundles/acmemain/js/jquery.min.js') }}"></script>#}
@@ -102,24 +101,24 @@
 </div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->
-<script type="text/javascript" src="http://htmlstream.com/preview/unify-v1.6-production/assets/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="http://htmlstream.com/preview/unify-v1.6-production/assets/plugins/jquery/jquery-migrate.min.js"></script>
-<script type="text/javascript" src="http://htmlstream.com/preview/unify-v1.6-production/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ asset('bundles/acmemain/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/acmemain/js/jquery/jquery-migrate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/acmemain/js/bootstrap.min.js') }}"></script>
 <!-- JS Implementing Plugins -->
-<script type="text/javascript" src="http://htmlstream.com/preview/unify-v1.6-production/assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="{{ asset('bundles/acmemain/js/back-to-top.js') }}"></script>
 <!-- JS Customization -->
-<script type="text/javascript" src="http://htmlstream.com/preview/unify-v1.6-production/assets/js/custom.js"></script>
+<script type="text/javascript" src="{{ asset('bundles/acmemain/js/custom.js') }}"></script>
 <!-- JS Page Level -->
-<script type="text/javascript" src="http://htmlstream.com/preview/unify-v1.6-production/assets/js/app.js"></script>
+<script type="text/javascript" src="{{ asset('bundles/acmemain/js/app.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
     });
 </script>
 <!--[if lt IE 9]>
-<script src="http://htmlstream.com/preview/unify-v1.6-production/assets/plugins/respond.js"></script>
-<script src="http://htmlstream.com/preview/unify-v1.6-production/assets/plugins/html5shiv.js"></script>
-<script src="http://htmlstream.com/preview/unify-v1.6-production/assets/js/plugins/placeholder-IE-fixes.js"></script>
+<script src="{{ asset('bundles/acmemain/js/plugins/respond.js') }}"></script>
+<script src="{{ asset('bundles/acmemain/js/plugins/html5shiv.js') }}"></script>
+<script src="{{ asset('bundles/acmemain/js/plugins/placeholder-IE-fixes.js') }}"></script>
 <![endif]-->
 
 
