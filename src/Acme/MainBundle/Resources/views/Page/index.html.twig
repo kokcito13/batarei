@@ -48,99 +48,80 @@
         <!-- Magazine News -->
         <div class="magazine-news">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="magazine-news-img">
-                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/9.jpg" alt=""></a>
-                        <span class="magazine-badge label-red">Travel</span>
-                    </div>
-                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
-                    <div class="by-author">
-                        <strong>By Jack Villo</strong>
-                        <span>/ September 19, 2013</span>
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
-                </div>
-                <div class="col-md-6">
-                    <div class="magazine-news-img">
-                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/10.jpg" alt=""></a>
-                        <span class="magazine-badge label-blue">Event</span>
-                    </div>
-                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
-                    <div class="by-author">
-                        <strong>By Admin</strong>
-                        <span>/ September 19, 2013</span>
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
-                </div>
+                {% for post in entities %}
+                    {% if loop.index < 3 %}
+                        {% set color = 'red' %}
+                        {% if loop.index == 1 %}
+                            {% set color = 'blue' %}
+                        {% endif %}
+                        <div class="col-md-6">
+                            <div class="magazine-news-img">
+                                <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">
+                                    <img class="img-responsive" src="{{ post.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="">
+                                </a>
+                                <span class="magazine-badge label-{{ color }}">{{ post.category.name }}</span>
+                            </div>
+                            <h3><a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">{{ post.name }}</a></h3>
+                            <p>{{ post.getPreviewText() }} ...</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="margin-bottom-35"><hr class="hr-md"></div>
             </div>
         </div>
         <!-- End Magazine News -->
-
-        <div class="margin-bottom-35"><hr class="hr-md"></div>
 
         <!-- Magazine News -->
         <div class="magazine-news">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="magazine-news-img">
-                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/7.jpg" alt=""></a>
-                        <span class="magazine-badge label-yellow">Media</span>
-                    </div>
-                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
-                    <div class="by-author">
-                        <strong>By Jack Villo</strong>
-                        <span>/ September 19, 2013</span>
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
-                </div>
-                <div class="col-md-6">
-                    <div class="magazine-news-img">
-                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/11.jpg" alt=""></a>
-                        <span class="magazine-badge label-green">Education</span>
-                    </div>
-                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
-                    <div class="by-author">
-                        <strong>By Admin</strong>
-                        <span>/ September 19, 2013</span>
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
-                </div>
+                {% for post in entities %}
+                    {% if loop.index < 3 %}
+                        {% set color = 'yellow' %}
+                        {% if loop.index == 1 %}
+                            {% set color = 'green' %}
+                        {% endif %}
+                        <div class="col-md-6">
+                            <div class="magazine-news-img">
+                                <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">
+                                    <img class="img-responsive" src="{{ post.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="">
+                                </a>
+                                <span class="magazine-badge label-{{ color }}">{{ post.category.name }}</span>
+                            </div>
+                            <h3><a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">{{ post.name }}</a></h3>
+                            <p>{{ post.getPreviewText() }} ...</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="margin-bottom-35"><hr class="hr-md"></div>
             </div>
         </div>
         <!-- End Magazine News -->
-
-        <div class="margin-bottom-35"><hr class="hr-md"></div>
 
         <!-- Magazine News -->
         <div class="magazine-news">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="magazine-news-img">
-                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/3(1).jpg" alt=""></a>
-                        <span class="magazine-badge label-purple">Media</span>
-                    </div>
-                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
-                    <div class="by-author">
-                        <strong>By Jack Villo</strong>
-                        <span>/ September 19, 2013</span>
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
-                </div>
-                <div class="col-md-6">
-                    <div class="magazine-news-img">
-                        <a href="./Unify   Welcome..._files/Unify   Welcome....html"><img class="img-responsive" src="./Unify   Welcome..._files/5.jpg" alt=""></a>
-                        <span class="magazine-badge label-dark-blue">Education</span>
-                    </div>
-                    <h3><a href="./Unify   Welcome..._files/Unify   Welcome....html">Simelque Untine Culpaqui Officia Deserunt Blanditiis Praesentium</a></h3>
-                    <div class="by-author">
-                        <strong>By Admin</strong>
-                        <span>/ September 19, 2013</span>
-                    </div>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate...</p>
-                </div>
+                {% for post in entities %}
+                    {% if loop.index < 3 %}
+                        {% set color = 'purple' %}
+                        {% if loop.index == 1 %}
+                            {% set color = 'dark-blue' %}
+                        {% endif %}
+                        <div class="col-md-6">
+                            <div class="magazine-news-img">
+                                <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">
+                                    <img class="img-responsive" src="{{ post.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="">
+                                </a>
+                                <span class="magazine-badge label-{{ color }}">{{ post.category.name }}</span>
+                            </div>
+                            <h3><a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">{{ post.name }}</a></h3>
+                            <p>{{ post.getPreviewText() }} ...</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
         <!-- End Magazine News -->
+
 
         {#<div class="text-center">#}
         {#<ul class="pagination">#}
