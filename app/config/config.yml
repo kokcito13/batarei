@@ -155,7 +155,7 @@ avalanche_imagine:
             options: { size: [409, 258], mode: outbound }
         thumbnail_sidebar_post:
             type:    thumbnail
-            options: { size: [70, 70], mode: outbound }
+            options: { size: [60, 60], mode: outbound }
         thumbnail_footer_post:
             type:    thumbnail
             options: { size: [60, 60], mode: outbound }
