@@ -78,9 +78,9 @@
             <div class="magazine-news">
                 <div class="row">
                     {% for post in entities %}
-                        {% if loop.index < 3 %}
+                        {% if loop.index < 5 and loop.index > 2 %}
                             {% set color = 'yellow' %}
-                            {% if loop.index == 1 %}
+                            {% if loop.index == 3 %}
                                 {% set color = 'green' %}
                             {% endif %}
                             <div class="col-md-6">
@@ -104,9 +104,9 @@
             <div class="magazine-news">
                 <div class="row">
                     {% for post in entities %}
-                        {% if loop.index < 3 %}
+                        {% if loop.index < 7 and loop.index > 4 %}
                             {% set color = 'purple' %}
-                            {% if loop.index == 1 %}
+                            {% if loop.index == 5 %}
                                 {% set color = 'dark-blue' %}
                             {% endif %}
                             <div class="col-md-6">

@@ -139,8 +139,8 @@ avalanche_imagine:
             type:    thumbnail
             options: { size: [1200, 417], mode: outbound }
         in_post:
-            type:    relative_resize
-            options: { widen: 270 }
+            type:    thumbnail
+            options: { size: [973, 352], mode: outbound }
         in_company:
             type:    relative_resize
             options: { widen: 170 }
@@ -165,6 +165,9 @@ avalanche_imagine:
         user_avatar:
             type:    thumbnail
             options: { size: [88, 88], mode: outbound }
+        thumbnail_category_post:
+            type:    thumbnail
+            options: { size: [336, 212], mode: outbound }
 
 knp_paginator:
     page_range: 5                      # default page range used in pagination control

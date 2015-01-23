@@ -2,6 +2,7 @@
 
 {% block title %}{{ entity.title }}{% endblock %}
 {% block description %}{{ entity.description }}{% endblock %}
+{#{% block keywords %}{{ entity.keywords }}{% endblock %}#}
 
 {% block meta %}
 {% endblock %}
@@ -9,70 +10,60 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-        <!-- Blog Posts
-        ================================================== -->
-        <div class="span8 blog">
-            {% for item in entities %}
-                <article class="clearfix">
-                    {% if item.imageName != null %}
-                        <!--noindex-->
-                        <a rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">
-                            <img src="{{ item.getWebPath() | apply_filter('thumbnail_index_post') }}" alt="{{ item.imageAlt }}" class="align-left"
-                                    style="border: 1px solid #333;padding: 4px;"
-                                    >
-                        </a>
-                        <!--/noindex-->
-                    {% endif %}
-                    <div class="h4 title-bg">
-                        <a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">{{ item.name }}</a>
-                    </div>
-                    <!--noindex-->
+
+    <div class="row blog-page">
+    <!-- Left Sidebar -->
+    <div class="col-md-9 md-margin-bottom-40">
+        {% for item in entities %}
+            <!--Blog Post-->
+            <div class="row blog blog-medium margin-bottom-40">
+                <div class="col-md-5">
+                    <img class="img-responsive" src="{{ item.getWebPath() | apply_filter('thumbnail_category_post') }}" alt="{{ item.imageAlt }}">
+                </div>
+                <div class="col-md-7">
+                    <h2><a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">{{ item.name }}</a></h2>
+                    {#<ul class="list-unstyled list-inline blog-info">#}
+                        {#<li><i class="fa fa-calendar"></i> November 02, 2013</li>#}
+                        {#<li><i class="fa fa-comments"></i> <a href="#">24 Comments</a></li>#}
+                        {#<li><i class="fa fa-tags"></i> Technology, Internet</li>#}
+                    {#</ul>#}
                     <p>{{ item.getPreviewText() }} ...</p>
-
-                    <div class="post-summary-footer">
-                        <ul class="post-data-3">
-                            <li><i class="icon-comment"></i> <a rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}#block_comments">0 Комментариев</a></li>
-                            <li><a rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}" class="btn btn-mini btn-inverse">Читать дальше</a></li>
-                            {% if item.tags|length > 0 %}
-                                <li>
-                                    <i class="icon-tags"></i>
-                                    {% for tag in entity.tags %}
-                                        <a rel="nofollow" href="{{ path('client_tag_show', {'tag_url': tag.url}) }}" class="gray-btn">{{ tag.name }}</a>
-                                    {% endfor %}
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <!--/noindex-->
-                </article>
-            {% endfor %}
-            {#
-            <!-- Pagination -->
-            <div class="pagination">
-                <ul>
-                    <li class="active"><a href="#">Prev</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
+                    <p>
+                        <a class="btn-u btn-u-sm" rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">Читать дальше <i class="fa fa-angle-double-right margin-left-5"></i></a></p>
+                </div>
             </div>
-            #}
+            <!--End Blog Post-->
+            <hr class="margin-bottom-40">
+        {% endfor %}
+        <div class="row" id="about">
+            <div class="span12">
+                <h1>{{ entity.name }}</h1>
+                {{ entity.text|raw }}
+            </div>
         </div>
+        {#<!--Pagination-->#}
+        {#<div class="text-center">#}
+            {#<ul class="pagination">#}
+                {#<li><a href="#">«</a></li>#}
+                {#<li><a href="#">1</a></li>#}
+                {#<li><a href="#">2</a></li>#}
+                {#<li class="active"><a href="#">3</a></li>#}
+                {#<li><a href="#">4</a></li>#}
+                {#<li><a href="#">5</a></li>#}
+                {#<li><a href="#">6</a></li>#}
+                {#<li><a href="#">7</a></li>#}
+                {#<li><a href="#">8</a></li>#}
+                {#<li><a href="#">»</a></li>#}
+            {#</ul>#}
+        {#</div>#}
+        {#<!--End Pagination-->#}
+    </div>
+    <!-- End Left Sidebar -->
 
-        <!-- Blog Sidebar
-        ================================================== -->
+        <!-- Right Sidebar -->
         {{ render(controller('AcmeMainBundle:PageLayout:rightSidebar', {
         'post': entity
         })) }}
-        <!-- End sidebar column -->
-    </div>
-    <div class="row" id="about">
-        <div class="span12">
-            {#<h1>{{ entity.name }}</h1>#}
-            {{ entity.text|raw }}
-        </div>
+        <!-- End Right Sidebar -->
     </div>
 {% endblock %}
