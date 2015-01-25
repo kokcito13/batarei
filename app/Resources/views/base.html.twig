@@ -7,6 +7,9 @@
 {% if currentCompany is not defined %}
     {% set currentCompany = false %}
 {% endif %}
+{% if entity is not defined %}
+    {% set entity = false %}
+{% endif %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,21 +61,21 @@
                     <div class="col-md-6">
                         <ul class="list-inline top-v1-contacts">
                             <li>
-                                <i class="fa fa-envelope"></i> Email: <a href="mailto:info@htmlstream.com">info@htmlstream.com</a>
+                                <i class="fa fa-envelope"></i> Email: <a href="mailto:info@htmlstream.com">info(@)ekobatarei.ru</a>
                             </li>
-                            <li>
-                                <i class="fa fa-phone"></i> Hotline: (1) 396 4587 99
-                            </li>
+                            {#<li>#}
+                                {#<i class="fa fa-phone"></i> Hotline: (1) 396 4587 99#}
+                            {#</li>#}
                         </ul>
                     </div>
 
                     <div class="col-md-6">
                         <ul class="list-inline top-v1-data">
-                            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-home"></i></a></li>
-                            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-globe"></i></a></li>
-                            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-shopping-cart"></i></a></li>
-                            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Quicklinks</a></li>
-                            <li><a href="./Unify   Welcome..._files/Unify   Welcome....html">My Account</a></li>
+                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-home"></i></a></li>#}
+                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-globe"></i></a></li>#}
+                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-shopping-cart"></i></a></li>#}
+                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Quicklinks</a></li>#}
+                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Карта сайта</a></li>#}
                         </ul>
                     </div>
                 </div>
@@ -85,6 +88,8 @@
         })) }}
     </div>
     <!--=== End Header v4 ===-->
+
+    {% block breadcrumbs %}{% endblock %}
 
     <!--=== Content Part ===-->
     <div class="container content">

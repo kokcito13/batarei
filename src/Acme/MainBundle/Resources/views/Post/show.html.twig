@@ -56,34 +56,23 @@
 {% endblock %}
 {% set mainCategory = entity.category.url %}
 {% set currentPost = entity %}
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">{{ entity.name }}</h1>
+            <ul class="pull-right breadcrumb" xmlns:v="{{ url('page_home') }}">
+                <li>
+                    <a href="{{ url('page_home') }}" rel="v:url" property="v:title">Главная</a>
+                </li>
+                <li>
+                    <a href="{{ url('client_category_show', {'category_url':mainCategory}) }}" rel="v:url" property="v:title">{{ entity.category.name }}</a>
+                </li>
+                <li class="active"><span typeof="v:Breadcrumb">...</span></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
 {% block body %}
-    {#<div class="row">#}
-        {#<div class="span8">#}
-            {#<div class="">#}
-                {#<div xmlns:v="{{ url('page_home') }}">#}
-                   {#<span typeof="v:Breadcrumb">#}
-                     {#<a href="{{ url('page_home') }}" rel="v:url" property="v:title">#}
-                         {#Страхование#}
-                     {#</a> ›#}
-                   {#</span>#}
-                   {#<span typeof="v:Breadcrumb">#}
-                    {#<a href="{{ url('client_category_show', {'category_url':mainCategory}) }}" rel="v:url" property="v:title">#}
-                        {#{{ entity.category.name }}    </a> ›#}
-                   {#</span>#}
-                    {#<span typeof="v:Breadcrumb">...</span>#}
-                {#</div>#}
-            {#</div>#}
-            {##}
-
-            {#&#123;&#35;{% if entity.shortText | length > 3 %}&#35;&#125;#}
-                {#&#123;&#35;<p class="lead">{{ entity.shortText | raw }}</p>&#35;&#125;#}
-            {#&#123;&#35;{% endif %}&#35;&#125;#}
-            {#<!--start_content-->#}
-            {#<div class="clearfix">#}
-                {#<img src="{{ entity.getWebPath() | apply_filter('in_post') }}" width="270" class="thumbnail align-left" alt="{{ entity.imageAlt }}">#}
-                {#{{ entity.text|raw }}#}
-            {#</div>#}
-            {#<!--end_content-->#}
             {#{% if links | length > 0 %}#}
                 {#<div class="clearfix">#}
                     {#<span class="sub_title_links">Похожие публикации:</span>#}
@@ -121,16 +110,6 @@
                     {#</div>#}
                 {#</div>#}
             {#{% endif %}#}
-        {#</div>#}
-        {#<!-- Blog Sidebar#}
-        {#================================================== -->#}
-
-        {#<!-- End sidebar column -->#}
-    {#</div>#}
-    {#<div class="row"><!-- Begin Bottom Section -->#}
-        {#<!-- Blog Preview#}
-        {#================================================== -->#}
-        {#<div class="span6">#}
             {#<!--noindex-->#}
             {#<div class="h5 title-bg">Рекомендованная публикация#}
                 {#{% if entities|length > 1 %}#}
@@ -160,17 +139,11 @@
                         {#</div>#}
                     {#{% endfor %}#}
                 {#</div>#}
-            {#</div>#}
-        {#</div>#}
-
-    {#</div>#}
-
     <div class="row blog-page">
     <!-- Left Sidebar -->
     <div class="col-md-9 md-margin-bottom-60">
         <!--Blog Post-->
         <div class="blog margin-bottom-40">
-            <h1>{{ entity.name }}</h1>
             {#<div class="blog-post-tags">#}
                 {#<ul class="list-unstyled list-inline blog-info">#}
                     {#<li><i class="fa fa-calendar"></i> February 02, 2013</li>#}

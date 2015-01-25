@@ -4,10 +4,9 @@
 {% block description %}Ваш путиводитель по сайту EkoBatarei.ru{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <!-- Blog Posts
-        ================================================== -->
-        <div class="span8 blog">
+    <div class="row blog-page">
+        <!-- Left Sidebar -->
+        <div class="col-md-9 md-margin-bottom-60">
             <h1>Карта сайта</h1>
             <ul class="post-category-list" style="list-style-type: none;">
                 {% for entity in categories %}
@@ -66,11 +65,12 @@
             </div>
             #}
         </div>
-        <!-- Blog Sidebar
-        ================================================== -->
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
         {{ render(controller('AcmeMainBundle:PageLayout:rightSidebar', {
-        'post': false
+        'post': entity
         })) }}
-        <!-- End sidebar column -->
+        <!-- End Right Sidebar -->
     </div>
 {% endblock %}

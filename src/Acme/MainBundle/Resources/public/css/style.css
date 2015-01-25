@@ -484,7 +484,7 @@ a:hover {
 /*Default Breadcrumbs*/
 .breadcrumbs {
     overflow: hidden;
-    padding: 10px 0 6px;
+    padding: 0px;
     border-bottom: solid 1px #eee;
     background: url(../img/breadcrumbs.png) repeat;
 }
