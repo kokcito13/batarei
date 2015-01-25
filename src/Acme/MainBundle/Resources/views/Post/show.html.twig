@@ -10,8 +10,10 @@
     <meta property="og:url" content="{{ app.request.uri }}"/>
     <meta property="og:site_name" content="EkoBatarei.ru"/>
     <meta property="og:description" content="{{ entity.description }}"/>
-    <meta property="og:image:secure_url" content="{{ app.request.uri }}{{ entity.getWebPath() | apply_filter('big_post') }}" />
-    <meta property="og:image" content="{{ app.request.uri }}{{ entity.getWebPath() | apply_filter('big_post') }}"/>
+    {% if entity.getWebPath() | length > 0 %}
+        <meta property="og:image:secure_url" content="{{ app.request.uri }}{{ entity.getWebPath() | apply_filter('big_post') }}" />
+        <meta property="og:image" content="{{ app.request.uri }}{{ entity.getWebPath() | apply_filter('big_post') }}"/>
+    {% endif %}
 {% endblock %}
 {% block javascripts %}
     <script type= "text/javascript">
@@ -160,9 +162,11 @@
                     {#</li>#}
                 {#</ul>#}
             {#</div>#}
-            <div class="blog-img">
-                <img class="img-responsive" src="{{ entity.getWebPath() | apply_filter('in_post') }}" alt="{{ entity.imageAlt }}" />
-            </div>
+            {% if entity.getWebPath() | length > 0 %}
+                <div class="blog-img">
+                    <img class="img-responsive" src="{{ entity.getWebPath() | apply_filter('in_post') }}" alt="{{ entity.imageAlt }}" />
+                </div>
+            {% endif %}
             {{ entity.text | raw }}
         </div>
         <!--End Blog Post-->

@@ -10,9 +10,11 @@ _configurator:
     resource: "@SensioDistributionBundle/Resources/config/routing/webconfigurator.xml"
     prefix:   /_configurator
 
+# AcmeDemoBundle routes (to be removed)
+_acme_demo:
+    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+
 _main:
     resource: routing.yml
 
-# AcmeDemoBundle routes (to be removed)
-#_acme_demo:
-#    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+

@@ -14,11 +14,13 @@
         <div class="headline headline-md"><h2>Последние публикации</h2></div>
         {% for post in entities %}
             <dl class="dl-horizontal">
-                <dt>
-                    <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">
-                        <img src="{{ post.getWebPath() | apply_filter('thumbnail_sidebar_post') }}" alt="{{ post.imageAlt }}">
-                    </a>
-                </dt>
+                {% if post.getWebPath() | length > 1 %}
+                    <dt>
+                        <a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">
+                            <img src="{{ post.getWebPath() | apply_filter('thumbnail_sidebar_post') }}" alt="{{ post.imageAlt }}">
+                        </a>
+                    </dt>
+                {% endif %}
                 <dd>
                     <p><a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">{{ post.name }}</a></p>
                 </dd>
