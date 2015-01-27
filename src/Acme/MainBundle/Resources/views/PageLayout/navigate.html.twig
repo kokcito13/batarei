@@ -1,45 +1,3 @@
-{#<div class="span9 navigation">#}
-    {#<div class="navbar hidden-phone">#}
-        {#<ul class="nav">#}
-            {#<li {% if route_name == 'page_home' %} class="active" {% endif %}>#}
-                {#{% if route_name == 'page_home' %}#}
-                    {#<span>#}
-                        {#<i class="icon-home"></i>#}
-                    {#</span>#}
-                {#{% else %}#}
-                    {#<a href="{{ path('page_home') }}">#}
-                        {#<i class="icon-home"></i>#}
-                    {#</a>#}
-                {#{% endif %}#}
-            {#</li>#}
-            {#<li {% if route_name == 'page_catalog' or route_name == 'client_company_show' %} class="active" {% endif %}>#}
-                {#{% if route_name == 'page_catalog' %}#}
-                    {#<span>Каталог</span>#}
-                {#{% else %}#}
-                    {#<a href="{{ path('page_catalog') }}">Каталог</a>#}
-                {#{% endif %}#}
-            {#</li>#}
-
-        {#</ul>#}
-    {#</div>#}
-    {#<!--noindex-->#}
-    {#<!-- Mobile Nav#}
-    {#================================================== -->#}
-    {#<form id="mobile-nav" class="visible-phone">#}
-        {#<div class="mobile-nav-select">#}
-            {#<select onchange="window.open(this.options[this.selectedIndex].value,'_top')">#}
-                {#<option value="">Меню...</option>#}
-                {#<option value="{{ path('page_home') }}">Главная</option>#}
-                {#{% for entity in entities %}#}
-                    {#<option value="{{ path('client_category_show',{ 'category_url': entity.url }) }}">{{ entity.name }}</option>#}
-                {#{% endfor %}#}
-                {#<option value="{{ path('page_catalog') }}">Каталог</option>#}
-                {#<option value="{{ path('page_contact') }}">Контакты</option>#}
-            {#</select>#}
-        {#</div>#}
-    {#</form>#}
-    {#<!--/noindex-->#}
-{#</div>#}
 <!-- Navbar -->
 <div class="navbar navbar-default mega-menu" role="navigation">
     <div class="container">
@@ -93,21 +51,21 @@
                     </li>
                 {% endfor %}
             </ul>
-            <!-- Search Block -->
-            <ul class="nav navbar-nav navbar-border-bottom navbar-right">
-                <li class="no-border">
-                    <i class="search fa fa-search search-btn"></i>
-                    <div class="search-open">
-                        <div class="input-group animated fadeInDown">
-                            <input type="text" class="form-control" placeholder="Search" />
-                            <span class="input-group-btn">
-                                <button class="btn-u" type="button">Go</button>
-                            </span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <!-- End Search Block -->
+            {#<!-- Search Block -->#}
+            {#<ul class="nav navbar-nav navbar-border-bottom navbar-right">#}
+                {#<li class="no-border">#}
+                    {#<i class="search fa fa-search search-btn"></i>#}
+                    {#<div class="search-open">#}
+                        {#<div class="input-group animated fadeInDown">#}
+                            {#<input type="text" class="form-control" placeholder="Search" />#}
+                            {#<span class="input-group-btn">#}
+                                {#<button class="btn-u" type="button">Go</button>#}
+                            {#</span>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</li>#}
+            {#</ul>#}
+            {#<!-- End Search Block -->#}
         </div>
         <!--/end container-->
     </div>
