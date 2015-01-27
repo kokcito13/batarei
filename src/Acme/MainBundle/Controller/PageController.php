@@ -215,19 +215,19 @@ class PageController extends Controller
         $countries = $em->getRepository('AcmeMainBundle:Country')->findAll();
         $cities = $em->getRepository('AcmeMainBundle:City')->findAll();
 
-        $title = 'Список страховых компаний с фильтром по странам и городам';
+        $title = 'Список  компаний с фильтром по странам и городам';
         $description = 'Каталог компаний которые связанные со страхованием. Также частные агенты - страхователи.';
         $keywords = 'каталог компании страховые агенты страны города';
 
         if (!is_null($country)) {
             $country = $em->getRepository('AcmeMainBundle:Country')->findOneByUrl($country);
-            $title = 'Каталог страховых компаний страны - '.$country->getName();
-            $description = 'Информации о всех страховых компаниях страны - '.$country->getName();
+            $title = 'Каталог  компаний страны - '.$country->getName();
+            $description = 'Информации о всех  компаниях страны - '.$country->getName();
             $keywords = 'каталог компании '.mb_strtolower($country->getName(), 'UTF8').' страховые агенты города';
             if (!is_null($city)) {
                 $city = $em->getRepository('AcmeMainBundle:City')->findOneByUrl($city);
-                $title = 'Каталог страховых компаний страны - '.$country->getName().' и города - '.$city->getName();
-                $description = 'Информации о всех страховых компаниях страны - '.$country->getName().' и города - '.$city->getName();
+                $title = 'Каталог  компаний страны - '.$country->getName().' и города - '.$city->getName();
+                $description = 'Информации о всех  компаниях страны - '.$country->getName().' и города - '.$city->getName();
                 $keywords = 'каталог компании '.mb_strtolower($country->getName(), 'UTF8').' страховые агенты '.mb_strtolower($city->getName(), 'UTF8');
                 $companies = $em->getRepository('AcmeMainBundle:Company')->findBy(array(
                     'city' => $city
