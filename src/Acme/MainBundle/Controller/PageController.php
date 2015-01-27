@@ -35,7 +35,7 @@ class PageController extends Controller
      */
     public function viewSitemapXmlAction(Request $request)
     {
-        $cacheKey = 'dvestrahovki_sitemap_xml';
+        $cacheKey = 'ekobatarei_sitemap_xml';
         $cache = $this->get('cache.m');
         $sitemap = $cache->fetch($cacheKey);
         if (!$sitemap ) {

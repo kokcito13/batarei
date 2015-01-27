@@ -1,2 +1,94 @@
+User-agent: Yandex
+Crawl-delay: 10
+Disallow: /contact
+Disallow: /search
+Disallow: /admin
+Disallow: /*search*
+Disallow: /trackback
+Disallow: /search
+Disallow: /?s=
+Disallow: */trackback/
+Disallow: */feed/
+Disallow: */feed
+Disallow: /?feed=
+Disallow: */comments/
+Disallow: */comment
+Disallow: /*/?replytocom=*
+Disallow: */tag/*
+Disallow: /tag/*
+Disallow: *page=* 
+Disallow: */page/* 
+Disallow: */attachment/*
+Disallow: */autor/*
+Disallow: /?_openstst*
+Disallow: *?preview=*
+Disallow: /page.php*
+Allow: /uploads
+Allow: /media
+Allow: /wp-content/uploads
+Host: ekobatarei.ru
+
+User-agent: Mediapartners-Google
+Disallow:
+
+User-agent: Googlebot
+
+Disallow: /search
+Disallow: /?s=
+Disallow: */trackback/
+Disallow: */feed/
+Disallow: */feed
+Disallow: /?feed=
+Disallow: */comments/
+Disallow: */comment
+Disallow: /*/?replytocom=*
+Disallow: */tag/*
+Disallow: /tag/*
+Disallow: *page=* 
+Disallow: */page/* 
+Disallow: */attachment/*
+Disallow: */autor/*
+Disallow: /?_openstst*
+Disallow: *?preview=*
+Disallow: /page.php*
+Allow: /uploads
+Allow: /media
+Allow: /wp-content/uploads
+
 User-agent: *
+Crawl-delay: 10
+
+Disallow: /search
+Disallow: /?s=
+Disallow: */trackback/
+Disallow: */feed/
+Disallow: */feed
+Disallow: /?feed=
+Disallow: */comments/
+Disallow: */comment
+Disallow: /*/?replytocom=*
+Disallow: */tag/*
+Disallow: /tag/*
+Disallow: *page=* 
+Disallow: */page/* 
+Disallow: */attachment/*
+Disallow: */autor/*
+Disallow: /?_openstst*
+Disallow: *?preview=*
+Disallow: /page.php*
+Allow: /uploads
+Allow: /media
+Allow: /wp-content/uploads
+
+User-agent: Googlebot-Image
+Allow: /uploads
+Allow: /media
+Allow: /wp-content/uploads
+
+User-agent: YandexImages
+Allow: /uploads
+Allow: /media
+Allow: /wp-content/uploads
+
+User-agent: Slurp
 Disallow: /
