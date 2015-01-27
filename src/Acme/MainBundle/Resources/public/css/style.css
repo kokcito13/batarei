@@ -2237,3 +2237,7 @@ img.img-mouse {
 .team-v1 li > h3 {
     color: #555;
 }
+
+.navbar-header {
+    width: 100%;
+}
