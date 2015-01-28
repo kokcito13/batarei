@@ -2241,3 +2241,64 @@ img.img-mouse {
 .navbar-header {
     width: 100%;
 }
+
+.h2_like {
+    color: #585f69;
+    margin-top: 5px;
+    text-shadow: none;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 33px;
+}
+.headline .h2_like {
+    margin: 0 0 -2px 0;
+    padding-bottom: 5px;
+    display: inline-block;
+    border-bottom: 2px solid #72c02c;
+    font-size: 21px;
+}
+
+.h3_post_list {
+    color: #585f69;
+    margin-top: 5px;
+    text-shadow: none;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.h3_post_list a{
+    color: #555;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 1px;
+    text-decoration: none;
+}
+
+.magazine-page .h3_post_list a:hover {
+    color: #72c02c;
+}
+
+.magazine-news .h3_post_list {
+    margin: 15px 0 10px;
+}
+
+.h2_post_in_category {
+    color: #585f69;
+    margin-top: 5px;
+    text-shadow: none;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    line-height: 33px;
+}
+
+.h2_post_in_category a {
+    color: #72c02c;
+    text-decoration: none;
+    outline: 0 !important;
+}
+
+.h2_post_in_category a:hover {
+    color: #72c02c;
+    text-decoration: underline;
+}

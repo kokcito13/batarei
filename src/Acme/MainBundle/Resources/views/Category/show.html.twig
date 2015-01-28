@@ -22,7 +22,7 @@
                         </div>
                     {% endif %}
                     <div class="col-md-7">
-                        <h2><a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">{{ item.name }}</a></h2>
+                        <div class="h2_post_in_category"><a href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">{{ item.name }}</a></div>
                         {#<ul class="list-unstyled list-inline blog-info">#}
                             {#<li><i class="fa fa-calendar"></i> November 02, 2013</li>#}
                             {#<li><i class="fa fa-comments"></i> <a href="#">24 Comments</a></li>#}
@@ -30,7 +30,8 @@
                         {#</ul>#}
                         <p>{{ item.getPreviewText() }} ...</p>
                         <p>
-                            <a class="btn-u btn-u-sm" rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">Читать дальше <i class="fa fa-angle-double-right margin-left-5"></i></a></p>
+                            <a class="btn-u btn-u-sm" rel="nofollow" href="{{ path('client_post_show',{'category_url':item.category.url, 'post_url':item.url }) }}">Читать дальше <i class="fa fa-angle-double-right margin-left-5"></i></a>
+                        </p>
                     </div>
                 </div>
                 <!--End Blog Post-->
