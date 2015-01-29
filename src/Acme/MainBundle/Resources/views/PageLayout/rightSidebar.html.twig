@@ -1,12 +1,25 @@
 <div class="col-md-3 magazine-page">
     {#<!-- Search Bar -->#}
     {#<div class="headline headline-md"><h2>Search</h2></div>#}
-    {#<div class="input-group margin-bottom-40">#}
+    <div class="input-group">
         {#<input type="text" class="form-control" placeholder="Search">#}
                     {#<span class="input-group-btn">#}
                         {#<button class="btn-u" type="button">Go</button>#}
                     {#</span>#}
-    {#</div>#}
+        <form action="" class="sky-form">
+            {#<header>Подписка</header>#}
+
+            <fieldset>
+                <section>
+                    <div class="h2_like">Подписаться на рассылку</div>
+                    <label class="input state-success">
+                        <input type="text" placeholder="Ваш E-mail">
+                    </label>
+                    <button type="button" class="btn-u">Подписаться</button>
+                </section>
+            </fieldset>
+        </form>
+    </div>
     {#<!-- End Search Bar -->#}
 
     <!-- Posts -->
