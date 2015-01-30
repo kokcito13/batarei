@@ -62,6 +62,9 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        dql:
+          string_functions:
+            md5: DoctrineExtensions\Query\Mysql\Md5
 
 # Swiftmailer Configuration
 swiftmailer:

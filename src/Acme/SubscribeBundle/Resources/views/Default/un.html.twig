@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Страница отписки от рассылки{% endblock %}
+{% block description %}Страница отписки от рассылк{% endblock %}
+
+{% block javascripts %}{% endblock %}
+{% block body %}
+    <div class="row magazine-page">
+        <!-- Begin Content -->
+        <div class="col-md-9">
+            <div class="row" id="about">
+                <div class="span12">
+                    <h4>Вы удачно отписались от подписки на новости</h4>
+                    <p>Спасибо что были нашим подписчиком - {{ email }}</p>
+
+                </div>
+            </div>
+        </div>
+        <!-- End Content -->
+
+        <!-- Right Sidebar -->
+        {{ render(controller('AcmeMainBundle:PageLayout:rightSidebar', {
+        'post': entity
+        })) }}
+        <!-- End Right Sidebar -->
+    </div>
+{% endblock %}
