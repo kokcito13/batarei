@@ -16,43 +16,43 @@
     {% endif %}
 {% endblock %}
 {% block javascripts %}
-    <script type= "text/javascript">
-        function getYouTubeInfo(ele) {
-            $.ajax({
-                url: "http://gdata.youtube.com/feeds/api/videos/"+ele.data('v')+"?v=2&alt=json",
-                dataType: "jsonp",
-                success: function (data) {
-                    parseresults(data, ele);
-                }
-            });
-        }
+    {#<script type= "text/javascript">#}
+        {#function getYouTubeInfo(ele) {#}
+            {#$.ajax({#}
+                {#url: "http://gdata.youtube.com/feeds/api/videos/"+ele.data('v')+"?v=2&alt=json",#}
+                {#dataType: "jsonp",#}
+                {#success: function (data) {#}
+                    {#parseresults(data, ele);#}
+                {#}#}
+            {#});#}
+        {#}#}
 
-        function parseresults(data, ele) {
-            var title = data.entry.title.$t;
-            ele.find('div').html(title);
-        }
+        {#function parseresults(data, ele) {#}
+            {#var title = data.entry.title.$t;#}
+            {#ele.find('div').html(title);#}
+        {#}#}
 
-        function showFrameVideo(ele) {
-            var fHtml = '<iframe title="'+ele.find('div').html()+'" width="520" height="390" ' +
-                    'src="http://www.youtube.com/embed/'+ele.data('v')+'?fs=1&autoplay=0&loop=0" allowfullscreen></iframe>';
-            $('#frameVideo').html(fHtml);
-        }
+        {#function showFrameVideo(ele) {#}
+            {#var fHtml = '<iframe title="'+ele.find('div').html()+'" width="520" height="390" ' +#}
+                    {#'src="http://www.youtube.com/embed/'+ele.data('v')+'?fs=1&autoplay=0&loop=0" allowfullscreen></iframe>';#}
+            {#$('#frameVideo').html(fHtml);#}
+        {#}#}
 
-        $(document).ready(function () {
-            $('#yVideos li').each(function(){
-                getYouTubeInfo($(this));
-            });
-            $('#yVideos li').click(function(){
-                showFrameVideo($(this));
-            });
-            $('#yVideos li').mouseover(function(){
-                $(this).find('div').show();
-            });
-            $('#yVideos li').mouseout(function(){
-                $(this).find('div').hide();
-            });
-        });
-    </script>
+        {#$(document).ready(function () {#}
+            {#$('#yVideos li').each(function(){#}
+                {#getYouTubeInfo($(this));#}
+            {#});#}
+            {#$('#yVideos li').click(function(){#}
+                {#showFrameVideo($(this));#}
+            {#});#}
+            {#$('#yVideos li').mouseover(function(){#}
+                {#$(this).find('div').show();#}
+            {#});#}
+            {#$('#yVideos li').mouseout(function(){#}
+                {#$(this).find('div').hide();#}
+            {#});#}
+        {#});#}
+    {#</script>#}
 {% endblock %}
 {% block stylesheets %}
 {% endblock %}
@@ -167,17 +167,19 @@
                     <img class="img-responsive" src="{{ entity.getWebPath() | apply_filter('in_post') }}" alt="{{ entity.imageAlt }}" />
                 </div>
             {% endif %}
-            <div style="margin: 10px 0px;">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- SB в тексте №1 short -->
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:665px;height:300px"
-                     data-ad-client="ca-pub-3861532892125732"
-                     data-ad-slot="8536552891"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+            {% if app.environment == 'prod' %}
+                <div style="margin: 10px 0px;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- SB в тексте №1 short -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:665px;height:300px"
+                         data-ad-client="ca-pub-3861532892125732"
+                         data-ad-slot="8536552891"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            {% endif %}
             <!--start_content-->
             {{ entity.text | raw }}
             <!--end_content-->

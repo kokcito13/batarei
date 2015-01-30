@@ -4,7 +4,7 @@
 .sky-form {
     margin: 0;
     outline: none;
-    box-shadow: 0 0 20px rgba(0,0,0,.3);
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
     font: 13px/1.55 'Open Sans', Helvetica, Arial, sans-serif;
     color: #666;
 }
@@ -22,7 +22,8 @@
     display: block;
     padding: 5px 30px 5px;
     border: none;
-    background: rgba(255,255,255,.9);
+    /*background: rgba(255,255,255,.9);*/
+    background-color: #dff0d8;
 }
 .sky-form fieldset + fieldset {
     border-top: 1px solid rgba(0,0,0,.1);
@@ -55,7 +56,8 @@
     padding-top: 10px;
 }
 .sky-form .note {
-    margin-top: 6px;
+    margin-top: 5px;
+    margin-bottom: 3px;
     padding: 0 1px;
     font-size: 11px;
     line-height: 15px;
@@ -1039,5 +1041,10 @@
 .sky-form  .h2_like{
     font-size: 15px;
     line-height: 27px;
-    color: #404040;
+    color: #000;
+    font-weight: bold;
+}
+
+.sky-form .note-error {
+    color: indianred;
 }

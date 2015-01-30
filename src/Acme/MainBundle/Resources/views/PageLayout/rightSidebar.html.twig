@@ -6,16 +6,17 @@
                     {#<span class="input-group-btn">#}
                         {#<button class="btn-u" type="button">Go</button>#}
                     {#</span>#}
-        <form action="" class="sky-form">
-            {#<header>Подписка</header>#}
-
+        <form action="{{ path('save_subscriber') }}" class="sky-form subscribe">
             <fieldset>
                 <section>
                     <div class="h2_like">Подписаться на рассылку</div>
-                    <label class="input state-success">
-                        <input type="text" placeholder="Ваш E-mail">
+                    <label class="input">
+                        <i class="icon-append fa fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Ваш E-mail">
                     </label>
-                    <button type="button" class="btn-u">Подписаться</button>
+                    <div class="note note-error" style="display: none;"></div>
+                    <div class="note note-success" style="display: none;"></div>
+                    <button type="button" class="btn-u save">Подписаться</button>
                 </section>
             </fieldset>
         </form>
