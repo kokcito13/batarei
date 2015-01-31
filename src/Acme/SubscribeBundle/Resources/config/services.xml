@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="acme_subscribe.example.class">Acme\SubscribeBundle\Example</parameter>
+        <parameter key="acme_main.example.class">Acme\MainBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="acme_subscribe.example" class="%acme_subscribe.example.class%">
+        <service id="acme_main.example" class="%acme_main.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

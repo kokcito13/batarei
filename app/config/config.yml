@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: '@AcmeMainBundle/Resources/config/services.yml' }
+    - { resource: '@AcmeSubscribeBundle/Resources/config/services.yml' }
 
 framework:
     #esi:             ~

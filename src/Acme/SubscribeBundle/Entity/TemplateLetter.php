@@ -5,12 +5,12 @@ namespace Acme\SubscribeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Subscriber
+ * TemplateLetter
  *
- * @ORM\Table(name="subscribers")
- * @ORM\Entity(repositoryClass="Acme\SubscribeBundle\Entity\SubscriberRepository")
+ * @ORM\Table(name="template_letters")
+ * @ORM\Entity(repositoryClass="Acme\SubscribeBundle\Entity\TemplateLetterRepository")
  */
-class Subscriber
+class TemplateLetter
 {
     /**
      * @var integer
@@ -31,16 +31,16 @@ class Subscriber
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="subject", type="string", length=255)
      */
-    private $email;
+    private $subject;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="status", type="smallint")
+     * @ORM\Column(name="html", type="text")
      */
-    private $status;
+    private $html;
 
     /**
      * @var \DateTime
@@ -50,27 +50,22 @@ class Subscriber
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="rejected_at", type="datetime")
+     * @ORM\Column(name="from_who", type="string", length=255)
      */
-    private $rejectedAt;
+    private $fromWho;
 
     /**
-     * @ORM\ManyToMany(targetEntity="TemplateLetter", mappedBy="subscribers")
+     * @ORM\ManyToMany(targetEntity="Subscriber", inversedBy="letters")
+     * @ORM\JoinTable(name="subscribers_letters")
      **/
-    private $letters;
-
-    const STATUS_ACTIVE = 1;
-    const STATUS_DELETE = 2;
-    const STATUS_CREATE = 0;
+    private $subscribers;
 
     public function __construct()
     {
+        $this->subscribers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new \DateTime('now');
-        $this->rejectedAt = new \DateTime('now');
-        $this->status = self::STATUS_ACTIVE;
-        $this->letters = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -87,7 +82,7 @@ class Subscriber
      * Set name
      *
      * @param string $name
-     * @return Subscriber
+     * @return TemplateLetter
      */
     public function setName($name)
     {
@@ -107,56 +102,56 @@ class Subscriber
     }
 
     /**
-     * Set email
+     * Set subject
      *
-     * @param string $email
-     * @return Subscriber
+     * @param string $subject
+     * @return TemplateLetter
      */
-    public function setEmail($email)
+    public function setSubject($subject)
     {
-        $this->email = $email;
+        $this->subject = $subject;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get subject
      *
      * @return string 
      */
-    public function getEmail()
+    public function getSubject()
     {
-        return $this->email;
+        return $this->subject;
     }
 
     /**
-     * Set status
+     * Set html
      *
-     * @param integer $status
-     * @return Subscriber
+     * @param string $html
+     * @return TemplateLetter
      */
-    public function setStatus($status)
+    public function setHtml($html)
     {
-        $this->status = $status;
+        $this->html = $html;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get html
      *
-     * @return integer 
+     * @return string 
      */
-    public function getStatus()
+    public function getHtml()
     {
-        return $this->status;
+        return $this->html;
     }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Subscriber
+     * @return TemplateLetter
      */
     public function setCreatedAt($createdAt)
     {
@@ -176,25 +171,25 @@ class Subscriber
     }
 
     /**
-     * Set rejectedAt
+     * Set fromWho
      *
-     * @param \DateTime $rejectedAt
-     * @return Subscriber
+     * @param string $fromWho
+     * @return TemplateLetter
      */
-    public function setRejectedAt($rejectedAt)
+    public function setFromWho($fromWho)
     {
-        $this->rejectedAt = $rejectedAt;
+        $this->fromWho = $fromWho;
 
         return $this;
     }
 
     /**
-     * Get rejectedAt
+     * Get fromWho
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getRejectedAt()
+    public function getFromWho()
     {
-        return $this->rejectedAt;
+        return $this->fromWho;
     }
 }

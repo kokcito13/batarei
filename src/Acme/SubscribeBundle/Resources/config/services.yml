@@ -1,0 +1,6 @@
+services:
+    acme_subscribe.admin.template_letter:
+        class: Acme\SubscribeBundle\Admin\TemplateLetterAdmin
+        arguments: [~, Acme\SubscribeBundle\Entity\TemplateLetter, AcmeSubscribeBundle:TemplateLetterAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Рассылка, label: Письма}
