@@ -48,7 +48,6 @@ class Sender
     public function send()
     {
         $em = $this->em;
-
         try {
             $j = 0;
             $entities = $em->getRepository('AcmeSubscribeBundle:TemplateLetter')->findAll();
@@ -62,11 +61,13 @@ class Sender
                     if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                         $failures = array();
                         try {
+                            $html = $this->prepareHtml($entity->getHtml(), $sub);
+
                             $message = \Swift_Message::newInstance()
                                 ->setSubject($entity->getSubject())
                                 ->setFrom($entity->getFromWho(), $entity->getName())
                                 ->setTo($mail)
-                                ->setBody($entity->getHtml(), 'text/html');
+                                ->setBody($html, 'text/html');
 
                             if ($this->mailer->send($message, $failures)) {
                                 //Succes send
@@ -90,8 +91,13 @@ class Sender
             echo $e->getMessage();
             exit;
         }
+    }
 
-        $em->persist($entity);
-        $em->flush();
+    public function prepareHtml($html, Subscriber $subscriber)
+    {
+        $html = str_replace('{{email}}', $subscriber->getEmail(), $html);
+        $html = str_replace('{{email_hash}}', md5($subscriber->getEmail()), $html);
+
+        return $html;
     }
 } 
