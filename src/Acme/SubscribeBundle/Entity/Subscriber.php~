@@ -197,37 +197,4 @@ class Subscriber
     {
         return $this->rejectedAt;
     }
-
-    /**
-     * Add letters
-     *
-     * @param \Acme\SubscribeBundle\Entity\TemplateLetter $letters
-     * @return Subscriber
-     */
-    public function addLetter(\Acme\SubscribeBundle\Entity\TemplateLetter $letters)
-    {
-        $this->letters[] = $letters;
-
-        return $this;
-    }
-
-    /**
-     * Remove letters
-     *
-     * @param \Acme\SubscribeBundle\Entity\TemplateLetter $letters
-     */
-    public function removeLetter(\Acme\SubscribeBundle\Entity\TemplateLetter $letters)
-    {
-        $this->letters->removeElement($letters);
-    }
-
-    /**
-     * Get letters
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLetters()
-    {
-        return $this->letters;
-    }
 }

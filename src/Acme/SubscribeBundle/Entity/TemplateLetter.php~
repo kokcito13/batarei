@@ -192,37 +192,4 @@ class TemplateLetter
     {
         return $this->fromWho;
     }
-
-    /**
-     * Add subscribers
-     *
-     * @param \Acme\SubscribeBundle\Entity\Subscriber $subscribers
-     * @return TemplateLetter
-     */
-    public function addSubscriber(\Acme\SubscribeBundle\Entity\Subscriber $subscribers)
-    {
-        $this->subscribers[] = $subscribers;
-
-        return $this;
-    }
-
-    /**
-     * Remove subscribers
-     *
-     * @param \Acme\SubscribeBundle\Entity\Subscriber $subscribers
-     */
-    public function removeSubscriber(\Acme\SubscribeBundle\Entity\Subscriber $subscribers)
-    {
-        $this->subscribers->removeElement($subscribers);
-    }
-
-    /**
-     * Get subscribers
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSubscribers()
-    {
-        return $this->subscribers;
-    }
 }

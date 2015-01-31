@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class TemplateLetterAdmin extends Admin
 {
@@ -36,6 +37,9 @@ class TemplateLetterAdmin extends Admin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
+                    'start' => array(
+                        'template' => 'AcmeSubscribeBundle:TemplateLetterAdmin:list__action_start.html.twig'
+                    )
                 )
             ))
         ;
@@ -67,5 +71,11 @@ class TemplateLetterAdmin extends Admin
             ->add('createdAt')
             ->add('fromWho')
         ;
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('clone', $this->getRouterIdParameter().'/clone');
+        $collection->add('start', $this->getRouterIdParameter().'/start');
     }
 }
