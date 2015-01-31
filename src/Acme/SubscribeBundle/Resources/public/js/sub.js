@@ -3,47 +3,51 @@ var sub = {
     elButton: 'button.save',
     init: function(){
         $(sub.elForm+' '+sub.elButton).click(function(){
-            sub.submitForm();
+            sub.submitForm($(this));
 
             return false;
         });
         $(sub.elForm+' input[name=email]').keyup(function(){
             sub.validateEmail($(this));
         });
+        $(sub.elForm).submit(function(){
+            sub.submitForm($(this));
+
+            return false;
+        });
     },
-    validateFrom: function()
+    validateFrom: function(form)
     {
         var result = true;
-        var email = $(sub.elForm+' input[name=email]').val().trim();
+        var email = form.find('input[name=email]').val().trim();
         if (!sub.validateInput(email)) {
             result = false;
         }
 
         return result;
     },
-    submitForm: function()
+    submitForm: function(form)
     {
-        $(sub.elForm+' div.note-error').hide();
+        form.find('div.note-error').hide();
 
-        if (sub.validateFrom()) {
-            var email = $(sub.elForm+' input[name=email]').val().trim();
+        if (sub.validateFrom(form)) {
+            var email = form.find('input[name=email]').val().trim();
             $.ajax({
-                url: $(sub.elForm).attr("action"),
+                url: form.attr("action"),
                 data: {email: email},
                 type: "POST",
                 dataType: 'json',
                 success: function(data) {
                     if (typeof data.success != "undefined" && data.success) {
                         $(sub.elButton).hide();
-                        $(sub.elForm+' div.note-success').html('Вы успешно подписались');
-                        $(sub.elForm+' div.note-success').show();
+                        form.find('div.note-success').html('Вы успешно подписались');
+                        form.find('div.note-success').show();
                     }
                 }
             });
-
         } else {
-            $(sub.elForm+' div.note-error').html('E-mail указан не корректно');
-            $(sub.elForm+' div.note-error').show();
+            form.find('div.note-error').html('E-mail указан не корректно');
+            form.find('div.note-error').show();
         }
 
         return false;
