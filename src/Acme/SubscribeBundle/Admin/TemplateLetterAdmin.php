@@ -30,8 +30,6 @@ class TemplateLetterAdmin extends Admin
         $listMapper
             ->add('name')
             ->add('subject')
-            ->add('html')
-            ->add('fromWho')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
