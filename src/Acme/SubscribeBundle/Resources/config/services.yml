@@ -4,3 +4,6 @@ services:
         arguments: [~, Acme\SubscribeBundle\Entity\TemplateLetter, AcmeSubscribeBundle:TemplateLetterAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: Рассылка, label: Письма}
+    mailt.sendering:
+        class: Acme\SubscribeBundle\Service\Sender
+        arguments: [ @doctrine.orm.entity_manager, '@service_container', '@mailer' ]
