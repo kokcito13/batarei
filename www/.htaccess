@@ -1,5 +1,9 @@
 DirectoryIndex app.php
 
+<IfModule php5_module>
+    php_value date.timezone "Europe/Kiev"
+</IfModule>
+
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/css
     AddOutputFilterByType DEFLATE text/javascript
