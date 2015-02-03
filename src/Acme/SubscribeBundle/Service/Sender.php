@@ -49,14 +49,10 @@ class Sender
     {
         $em = $this->em;
         try {
-            $j = 0;
             $entities = $em->getRepository('AcmeSubscribeBundle:TemplateLetter')->findAll();
             foreach ($entities as $entity) {/** @var TemplateLetter $entity */
-                $subscribers = $em->getRepository('AcmeSubscribeBundle:Subscriber')->getLimit($entity, 30); //$entity->getLimitSubscribers();
+                $subscribers = $em->getRepository('AcmeSubscribeBundle:Subscriber')->getLimit($entity, 100); //$entity->getLimitSubscribers();
                 foreach ($subscribers as $sub) {/** @var $sub Subscriber $entity */
-                    if ($j > 30) {
-                        break;
-                    }
                     $mail = trim($sub->getEmail());
                     if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                         $failures = array();
