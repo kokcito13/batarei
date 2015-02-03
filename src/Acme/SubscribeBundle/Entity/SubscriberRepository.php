@@ -12,4 +12,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class SubscriberRepository extends EntityRepository
 {
+    public function getLimit($template, $limit = false)
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQueryBuilder()
+            ->select('s')
+            ->from('AcmeSubscribeBundle:Subscriber', 's')
+            ->leftJoin("s.letters", "l")
+            ->where('l = :letter')
+            ->setParameter('letter', $template)
+
+            ->orderBy('s.email', 'DESC')
+        ;
+        if ($limit) {
+            $query->setMaxResults($limit);
+        }
+
+        return $query->getQuery()->getResult();
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace Acme\SubscribeBundle\Entity;
 
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -224,5 +225,13 @@ class TemplateLetter
     public function getSubscribers()
     {
         return $this->subscribers;
+    }
+
+    public function getLimitSubscribers()
+    {
+        $criteria = Criteria::create()
+            ->setMaxResults(30);
+
+        return $this->subscribers->matching($criteria);
     }
 }

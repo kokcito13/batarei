@@ -52,7 +52,7 @@ class Sender
             $j = 0;
             $entities = $em->getRepository('AcmeSubscribeBundle:TemplateLetter')->findAll();
             foreach ($entities as $entity) {/** @var TemplateLetter $entity */
-                $subscribers = $entity->getSubscribers();
+                $subscribers = $em->getRepository('AcmeSubscribeBundle:Subscriber')->getLimit($entity, 30); //$entity->getLimitSubscribers();
                 foreach ($subscribers as $sub) {/** @var $sub Subscriber $entity */
                     if ($j > 30) {
                         break;
