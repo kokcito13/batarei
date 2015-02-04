@@ -10,9 +10,22 @@
         <div class="col-md-9">
             <div class="row" id="about">
                 <div class="span12">
-                    <h4>Вы удачно отписались от подписки на новости</h4>
+                    <h3>Вы удачно отписались от подписки на новости</h3>
                     <p>Спасибо что были нашим подписчиком - {{ email }}</p>
-
+                    {% if app.environment == 'prod' %}
+                        <br/>
+                        <div style="margin: 15px;">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- Eko un Sub -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:580px;height:400px"
+                                 data-ad-client="ca-pub-3861532892125732"
+                                 data-ad-slot="3189096092"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

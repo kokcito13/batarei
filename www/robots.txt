@@ -16,6 +16,8 @@ Disallow: */comment
 Disallow: /*/?replytocom=*
 Disallow: */tag/*
 Disallow: /tag/*
+Disallow: */subscribe/*
+Disallow: /subscribe/*
 Disallow: *page=* 
 Disallow: */page/* 
 Disallow: */attachment/*
@@ -44,6 +46,8 @@ Disallow: */comment
 Disallow: /*/?replytocom=*
 Disallow: */tag/*
 Disallow: /tag/*
+Disallow: */subscribe/*
+Disallow: /subscribe/*
 Disallow: *page=* 
 Disallow: */page/* 
 Disallow: */attachment/*
@@ -69,6 +73,8 @@ Disallow: */comment
 Disallow: /*/?replytocom=*
 Disallow: */tag/*
 Disallow: /tag/*
+Disallow: */subscribe/*
+Disallow: /subscribe/*
 Disallow: *page=* 
 Disallow: */page/* 
 Disallow: */attachment/*

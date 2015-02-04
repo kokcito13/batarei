@@ -75,18 +75,7 @@
     </div>
 {% endblock %}
 {% block body %}
-            {#{% if links | length > 0 %}#}
-                {#<div class="clearfix">#}
-                    {#<span class="sub_title_links">Похожие публикации:</span>#}
-                    {#<ul>#}
-                        {#{% for link in links %}#}
-                            {#<li>#}
-                                {#<a href="{{ link.link }}" title="{{ link.key }}">{{ link.key }}</a>#}
-                            {#</li>#}
-                        {#{% endfor %}#}
-                    {#</ul>#}
-                {#</div>#}
-            {#{% endif %}#}
+
 
             {#{% if entity.getArrayVideoId()|length > 0 %}#}
                 {#<div class="clearfix">#}
@@ -182,18 +171,32 @@
             {% endif %}
             <!--start_content-->
             {{ entity.text | raw }}
+            {% if links | length > 0 %}
+                <div class="clearfix" style="margin: 10px 0px;">
+                    <span class="sub_title_links">Похожие публикации:</span>
+                    <ul>
+                        {% for link in links %}
+                            <li>
+                                <a href="{{ link.link }}" title="{{ link.key }}">{{ link.key }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
             <!--end_content-->
-            <div style="margin: 10px 0px;">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- SB в тексте №2 -->
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:580px;height:400px"
-                     data-ad-client="ca-pub-3861532892125732"
-                     data-ad-slot="4583620893"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+            {% if app.environment == 'prod' %}
+                <div style="margin: 10px 0px;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- SB в тексте №2 -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:580px;height:400px"
+                         data-ad-client="ca-pub-3861532892125732"
+                         data-ad-slot="4583620893"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            {% endif %}
             <div style="margin: 10px 0px;">
                 <form action="{{ path('save_subscriber') }}" class="sky-form subscribe">
                     <fieldset>
@@ -213,13 +216,26 @@
         </div>
         <!--End Blog Post-->
         <hr>
-        {#<!-- Recent Comments -->#}
-        {#<div class="media">#}
+        <!-- Recent Comments -->
+        <div class="media">
             {#<h3>Comments</h3>#}
             {#<a class="pull-left" href="#">#}
                 {#<img class="media-object" src="assets/img/sliders/elastislide/2.jpg" alt="">#}
             {#</a>#}
-            {#<div class="media-body">#}
+            <div class="media-body">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'ekobatarei'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+
                 {#<h4 class="media-heading">Media heading <span>5 hours ago / <a href="#">Reply</a></span></h4>#}
                 {#<p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>#}
 
@@ -246,8 +262,8 @@
                         {#<p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum anibhut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>#}
                     {#</div>#}
                 {#</div>#}
-            {#</div>#}
-        {#</div><!--/media-->#}
+            </div>
+        </div><!--/media-->
 
         {#<div class="media">#}
             {#<a class="pull-left" href="#">#}
