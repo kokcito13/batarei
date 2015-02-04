@@ -4,51 +4,115 @@
 {% block description %}Список контактных данных для связи с нами{% endblock %}
 
 {% block body %}
-    <div class="row"><!--Container row-->
-        <div class="span8 contact"><!--Begin page content column-->
-            <h1>Контакты</h1>
-            <p>Заполните поля и отправьте нам сообщение</p>
-            <div class="alert alert-success">
-                Спасибо, ваш запрос отправлен.
-            </div>
-            <form action="#" id="contact-form">
-                <div class="input-prepend">
-                    <span class="add-on"><i class="icon-user"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Имя">
-                </div>
-                <div class="input-prepend">
-                    <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Email">
-                </div>
-                <textarea class="span6"></textarea>
-                <div class="row">
-                    <div class="span2">
-                        <input type="submit" class="btn btn-inverse" value="Отправить сообщение">
-                    </div>
-                </div>
-            </form>
-        </div> <!--End page content column-->
-        <!-- Sidebar
-        ================================================== -->
-        <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
-            <h5 class="title-bg">Адрес</h5>
-            <address>
-                <strong>Россия</strong><br>
-                г. Москва<br>
-                {#San Francisco, CA 94107<br>#}
-                {#<abbr title="Phone">P:</abbr> (123) 456-7890#}
-            </address>
-            <address>
-                <strong>Сокол Иван</strong><br>
-                <a href="mailto:#">ivan.sokol@EkoBatarei.ru<script type="text/javascript">
-                        /* <![CDATA[ */
-                        (function(){try{var s,a,i,j,r,c,l,b=document.getElementsByTagName("script");l=b[b.length-1].previousSibling;a=l.getAttribute('data-cfemail');if(a){s='';r=parseInt(a.substr(0,2),16);for(j=2;a.length-j;j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}s=document.createTextNode(s);l.parentNode.replaceChild(s,l);}}catch(e){}})();
-                        /* ]]> */
-                    </script></a>
-            </address>
+    <div class="container content our-location">
+        <div class="title-box-v2">
+            <h2>Контакты</h2>
+            {#<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et#}
+                {#dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip#}
+                {#ex ea commodo consequat.</p>#}
+        </div>
 
-            <h5 class="title-bg">Мы на карте</h5>
-            <img src="{{ asset('bundles/acmemain/images/map.jpg') }}" alt="map">
-        </div><!-- End sidebar column -->
+        <div class="row margin-bottom-30">
+            <div class="col-md-8 text-justify md-margin-bottom-20">
+                <form action="" onsubmit="return false;" method="post" id="sky-form3" class="sky-form" novalidate="novalidate">
+                    <header>Обратная связь</header>
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-6">
+                                <label class="label">Имя</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="name" id="name">
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label class="label">E-mail</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-envelope-o"></i>
+                                    <input type="email" name="email" id="email">
+                                </label>
+                            </section>
+                        </div>
+                        <section>
+                            <label class="label">Тема</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-tag"></i>
+                                <input type="text" name="subject" id="subject">
+                            </label>
+                        </section>
+                        <section>
+                            <label class="label">Сообщение</label>
+                            <label class="textarea">
+                                <i class="icon-append fa fa-comment"></i>
+                                <textarea rows="4" name="message" id="message"></textarea>
+                            </label>
+                        </section>
+                        <section>
+                            <label class="label">Введите код с картинки:</label>
+                            <label class="input input-captcha">
+                                <img src="assets/plugins/sky-forms/version-2.0.1/captcha/image.php?&lt;?php echo time(); ?&gt;" width="100" height="32" alt="Captcha image">
+                                <input type="text" maxlength="6" name="captcha" id="captcha">
+                            </label>
+                        </section>
+                        <section>
+                            <label class="checkbox"><input type="checkbox" name="copy"><i></i>Отправить копию на ваш e-mail</label>
+                        </section>
+                    </fieldset>
+                    <footer>
+                        <button type="submit" class="button">Отправить сообщение</button>
+                    </footer>
+                    <div class="message">
+                        <i class="rounded-x fa fa-check"></i>
+                        <p>Your message was successfully sent!</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-4">
+                <!-- Google Map -->
+                <div id="map" class="map margin-bottom-40"
+                     style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
+                    <img src="{{ asset('bundles/acmemain/images/map.jpg') }}" alt="map">
+                </div>
+                <!-- End Google Map -->
+
+                <!-- The Office -->
+                <h3>Адрес</h3>
+                <ul class="list-unstyled who">
+                    <li><a><i class="fa fa-home"></i>Россия, г. Москва</a></li>
+                    <li><a href="mailto:info@ekobatarei.ru"><i class="fa fa-envelope"></i>info@ekobatarei.ru</a></li>
+                    {#<li><a href="#"><i class="fa fa-phone"></i>1(222) 5x86 x97x</a></li>#}
+                    <li><a href="http://ekobatarei.ru"><i class="fa fa-globe"></i>http://ekobatarei.ru</a></li>
+                </ul>
+                <!-- End The Office -->
+            </div>
+        </div>
+
+
     </div>
+    {#<div class="row"><!--Container row-->#}
+
+        {#<!-- Sidebar#}
+        {#================================================== -->#}
+        {#<div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->#}
+            {#<h5 class="title-bg">Адрес</h5>#}
+            {#<address>#}
+                {#<strong>Россия</strong><br>#}
+                {#г. Москва<br>#}
+                {#&#123;&#35;San Francisco, CA 94107<br>&#35;&#125;#}
+                {#&#123;&#35;<abbr title="Phone">P:</abbr> (123) 456-7890&#35;&#125;#}
+            {#</address>#}
+            {#<address>#}
+                {#<strong>Сокол Иван</strong><br>#}
+                {#<a href="mailto:#">ivan.sokol@EkoBatarei.ru<script type="text/javascript">#}
+                        {#/* <![CDATA[ */#}
+                        {#(function(){try{var s,a,i,j,r,c,l,b=document.getElementsByTagName("script");l=b[b.length-1].previousSibling;a=l.getAttribute('data-cfemail');if(a){s='';r=parseInt(a.substr(0,2),16);for(j=2;a.length-j;j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}s=document.createTextNode(s);l.parentNode.replaceChild(s,l);}}catch(e){}})();#}
+                        {#/* ]]> */#}
+                    {#</script></a>#}
+            {#</address>#}
+
+            {#<h5 class="title-bg">Мы на карте</h5>#}
+            {#<img src="{{ asset('bundles/acmemain/images/map.jpg') }}" alt="map">#}
+        {#</div><!-- End sidebar column -->#}
+    {#</div>#}
 {% endblock %}

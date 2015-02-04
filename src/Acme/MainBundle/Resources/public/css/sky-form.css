@@ -1048,3 +1048,7 @@
 .sky-form .note-error {
     color: indianred;
 }
+
+#sky-form3 fieldset {
+    margin-top: 0px;
+}

@@ -7,20 +7,17 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        $('div#category_description > ul').addClass('list mark-circle');
-        $('div#category_description > ol').addClass('list mark-circle-numbers');
-    </script>
 {% endblock %}
 
 {% block body %}
-    <div class="main-container">
-        <div id="category_description">
-            <h1>404 ошибка</h1>
-            <p>Вы попали на страницу которая не существует или уже была удалена.</p>
-            <br/>
-            <br/>
-            <small>The server returned a "{{ status_code }} {{ status_text }}".</small>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="error-v1">
+                <span class="error-v1-title">404 ошибка</span>
+                <span>ошибка</span>
+                <p>Вы попали на страницу которая не существует или уже была удалена.</p>
+                <a class="btn-u btn-bordered" href="{{ path('page_home') }}">На главную</a>
+            </div>
         </div>
     </div>
 {% endblock %}
