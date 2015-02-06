@@ -51,3 +51,6 @@ services:
     binet.perelink:
         class: Acme\MainBundle\Service\Perelink
         arguments: [ '@service_container' ]
+
+    post.edit:
+        class: Acme\MainBundle\Service\PostEdit

@@ -151,11 +151,6 @@
                     {#</li>#}
                 {#</ul>#}
             {#</div>#}
-            {% if entity.getWebPath() | length > 0 %}
-                <div class="blog-img">
-                    <img class="img-responsive" src="{{ entity.getWebPath() | apply_filter('in_post') }}" alt="{{ entity.imageAlt }}" />
-                </div>
-            {% endif %}
             {% if app.environment == 'prod' %}
                 <div style="margin: 10px 0px;">
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -167,6 +162,11 @@
                     <script>
                         (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
+                </div>
+            {% endif %}
+            {% if entity.getWebPath() | length > 0 %}
+                <div class="blog-img">
+                    <img class="img-responsive" src="{{ entity.getWebPath() | apply_filter('in_post') }}" alt="{{ entity.imageAlt }}" />
                 </div>
             {% endif %}
             <!--start_content-->

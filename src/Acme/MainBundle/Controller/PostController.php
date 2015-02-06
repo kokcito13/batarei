@@ -54,7 +54,10 @@ class PostController extends Controller
         $em->persist($entity);
         $em->flush();
 
+        $postEdit = $this->get('post.edit');
+
         $text = $entity->getText();
+        $text = $postEdit->setAdvertising($text);
 
         $cacheKey = 'post_pereink_'.$entity->getId();
         $cache = $this->get('cache.m');

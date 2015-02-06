@@ -65,34 +65,34 @@
 <div class="wrapper">
     <!--=== Header v4 ===-->
     <div class="header-v4">
-        <!-- Topbar -->
-        <div class="topbar-v1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul class="list-inline top-v1-contacts">
-                            <li>
-                                <i class="fa fa-envelope"></i> Email: <a href="mailto:info(@)ekobatarei.ru">info(@)ekobatarei.ru</a>
-                            </li>
+        {#<!-- Topbar -->#}
+        {#<div class="topbar-v1">#}
+            {#<div class="container">#}
+                {#<div class="row">#}
+                    {#<div class="col-md-6">#}
+                        {#<ul class="list-inline top-v1-contacts">#}
                             {#<li>#}
-                                {#<i class="fa fa-phone"></i> Hotline: (1) 396 4587 99#}
+                                {#<i class="fa fa-envelope"></i> Email: <a href="mailto:info(@)ekobatarei.ru">info(@)ekobatarei.ru</a>#}
                             {#</li>#}
-                        </ul>
-                    </div>
+                            {#&#123;&#35;<li>&#35;&#125;#}
+                                {#&#123;&#35;<i class="fa fa-phone"></i> Hotline: (1) 396 4587 99&#35;&#125;#}
+                            {#&#123;&#35;</li>&#35;&#125;#}
+                        {#</ul>#}
+                    {#</div>#}
 
-                    <div class="col-md-6">
-                        <ul class="list-inline top-v1-data">
-                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-home"></i></a></li>#}
-                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-globe"></i></a></li>#}
-                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-shopping-cart"></i></a></li>#}
-                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Quicklinks</a></li>#}
-                            {#<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Карта сайта</a></li>#}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Topbar -->
+                    {#<div class="col-md-6">#}
+                        {#<ul class="list-inline top-v1-data">#}
+                            {#&#123;&#35;<li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-home"></i></a></li>&#35;&#125;#}
+                            {#&#123;&#35;<li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-globe"></i></a></li>&#35;&#125;#}
+                            {#&#123;&#35;<li><a href="./Unify   Welcome..._files/Unify   Welcome....html"><i class="fa fa-shopping-cart"></i></a></li>&#35;&#125;#}
+                            {#&#123;&#35;<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Quicklinks</a></li>&#35;&#125;#}
+                            {#&#123;&#35;<li><a href="./Unify   Welcome..._files/Unify   Welcome....html">Карта сайта</a></li>&#35;&#125;#}
+                        {#</ul>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<!-- End Topbar -->#}
         {{ render(controller('AcmeMainBundle:PageLayout:navigate', {
         'main': mainCategory,
         'route_name':  app.request.get('_route')
