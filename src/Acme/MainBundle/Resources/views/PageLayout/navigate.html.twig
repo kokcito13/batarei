@@ -17,13 +17,15 @@
                 </div>
                 <div class="col-md-10" style="">
                     {#{% if app.environment == 'prod' %}
-                    <div style="width: 100%; height: 99px; display: block;">
-                    <a href="{{ path('page_home') }}#banner_top">
+                    {#<div style="width: 100%; height: 99px; display: block;">#}
+                    <!--noindex-->
+                    <a href="https://vk.com/ekobatarei" target="_blank" rel="nofollow">
                         <img class="header-banner img-responsive"
-                             src="http://htmlstream.com/preview/unify-v1.6-production/assets/img/banners/adds.jpg"
-                             width="1000" alt="">
+                             src="{{ asset('bundles/acmemain/img/banner_soc.jpg') }}"
+                             width="600" alt="Соцыальный баннер" style="margin-left: 35%;">
                     </a>
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!--noindex-->
+                    {#<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- header_1 -->
                     <ins class="adsbygoogle"
                          style="display:block"
