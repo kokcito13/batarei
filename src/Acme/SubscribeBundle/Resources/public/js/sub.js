@@ -3,7 +3,7 @@ var sub = {
     elButton: 'button.save',
     init: function(){
         $(sub.elForm+' '+sub.elButton).click(function(){
-            sub.submitForm($(this));
+            sub.submitForm($(this).parent().parent().parent());
 
             return false;
         });
