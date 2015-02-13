@@ -107,7 +107,7 @@ EOD2;
     public function setContents($text)
     {
         $contents = array();
-        preg_match_all("/<h(2|3) .*?<\/h(2|3)>/si", $text, $m);
+        preg_match_all("/<h(2|3).*?<\/h(2|3)>/si", $text, $m);
 
         if (!empty($m) && isset($m[0]) && !empty($m[0])) {
             foreach ($m[0] as $value) {
