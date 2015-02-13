@@ -81,12 +81,16 @@ class PostController extends Controller
             $links = $result[1];
         }
 
+        list($text, $links) = $postEdit->setReadMore($text, $links);
         $entity->setText($text);
+
+        $contents = $postEdit->setContents($text);
 
         return array(
             'entity'        => $entity,
             'entities'      => $entities,
-            'links' => $links
+            'links' => $links,
+            'contents' => $contents
         );
     }
 

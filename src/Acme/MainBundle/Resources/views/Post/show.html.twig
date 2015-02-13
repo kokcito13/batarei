@@ -16,7 +16,27 @@
     {% endif %}
 {% endblock %}
 {% block javascripts %}
-    {#<script type= "text/javascript">#}
+    <script type= "text/javascript">
+        $(document).ready(function () {
+            $('#contentsGoTo li').click(function(){
+               var t = $(this).text().trim();
+               var hedLine = false;
+
+               $('#post_content h2, #post_content h3').each(function(index, item){
+                    if ( $(item).html().trim() == t) {
+                        hedLine = $(item);
+
+                        return false;
+                    }
+                });
+
+               if (hedLine) {
+                   $('html, body').animate({
+                       scrollTop: hedLine.offset().top + 'px'
+                   }, '500');
+               }
+            });
+        });
         {#function getYouTubeInfo(ele) {#}
             {#$.ajax({#}
                 {#url: "http://gdata.youtube.com/feeds/api/videos/"+ele.data('v')+"?v=2&alt=json",#}
@@ -52,7 +72,7 @@
                 {#$(this).find('div').hide();#}
             {#});#}
         {#});#}
-    {#</script>#}
+    </script>
 {% endblock %}
 {% block stylesheets %}
 {% endblock %}
@@ -134,7 +154,7 @@
     <!-- Left Sidebar -->
     <div class="col-md-9 md-margin-bottom-60">
         <!--Blog Post-->
-        <div class="blog margin-bottom-40">
+        <div class="blog margin-bottom-40" id="post_content">
             {#<div class="blog-post-tags">#}
                 {#<ul class="list-unstyled list-inline blog-info">#}
                     {#<li><i class="fa fa-calendar"></i> February 02, 2013</li>#}
@@ -165,8 +185,25 @@
                 </div>
             {% endif %}
             {% if entity.getWebPath() | length > 0 %}
-                <div class="blog-img">
-                    <img class="img-responsive" src="{{ entity.getWebPath() | apply_filter('in_post') }}" alt="{{ entity.imageAlt }}" />
+                {#<div class="blog-img">#}
+                    {#<img class="img-responsive" src=""  />#}
+                {#</div>#}
+                <div class="row contents">
+                    <div class="col-md-4 funny-boxes-img">
+                        <img alt="{{ entity.imageAlt }}" src="{{ entity.getWebPath() | apply_filter('in_post') }}" class="img-responsive">
+                    </div>
+                    {% if contents|length > 2 %}
+                        <!--noindex-->
+                        <div class="col-md-8">
+                            <div class="h2_like">Содержание:</div>
+                            <ul class="list" id="contentsGoTo">
+                                {% for content in contents %}
+                                    <li>{{ content|raw }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!--/noindex-->
+                    {% endif %}
                 </div>
             {% endif %}
             <!--start_content-->

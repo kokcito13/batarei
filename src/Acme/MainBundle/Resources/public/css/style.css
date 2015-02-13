@@ -2302,3 +2302,13 @@ img.img-mouse {
     color: #72c02c;
     text-decoration: underline;
 }
+
+.contents .h2_like {
+    margin: 0 0 -2px 0;
+    padding-bottom: 5px;
+    display: inline-block;
+    font-size: 21px;
+}
+#contentsGoTo li {
+    cursor: pointer;
+}

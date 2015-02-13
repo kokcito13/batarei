@@ -72,4 +72,50 @@ EOD2;
         return $text;
     }
 
+    public function setReadMore($text, $links = array())
+    {
+        if (count($links) > 0 && !empty($text)) {
+            if (substr_count($text, '<h2') > 2) {
+                $pageText = $text;
+                $text = '';
+                $i = 0;
+                $contents = explode("<h2", $pageText);
+                foreach ($contents as $k => $content) {
+                    $text .= $content;
+                    if ( count($links) > 0 && in_array($k, array(2,4,6,7)) ) {
+                        $text .= "<!--noindex--><p class='read_more_p'>Читайте также:</p><!--/noindex-->";
+                        $text .= "<ul class='read_more_ul'>
+                                        <li>
+                                            <a href=\"".$links[$i]['link']."\"
+                                                title=\"".$links[$i]['key']."\"
+                                            >".$links[$i]['key']."</a>
+                                        </li>
+                                   </ul>";
+                        unset($links[$i]);
+                        $i++;
+                    }
+
+                    $text .= (count($contents) == ($k + 1)) ? "" : "<h2";
+                    $text .= "";
+                }
+            }
+        }
+
+        return array($text, $links);
+    }
+
+    public function setContents($text)
+    {
+        $contents = array();
+        preg_match_all("/<h(2|3) .*?<\/h(2|3)>/si", $text, $m);
+
+        if (!empty($m) && isset($m[0]) && !empty($m[0])) {
+            foreach ($m[0] as $value) {
+                $value = strip_tags($value);
+                $contents[] = trim($value);
+            }
+        }
+
+        return $contents;
+    }
 }

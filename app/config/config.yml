@@ -145,7 +145,7 @@ avalanche_imagine:
             options: { size: [1200, 417], mode: outbound }
         in_post:
             type:    thumbnail
-            options: { size: [973, 352], mode: outbound }
+            options: { size: [336, 212], mode: outbound }
         in_company:
             type:    relative_resize
             options: { widen: 170 }
