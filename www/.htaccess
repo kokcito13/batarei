@@ -1,5 +1,9 @@
 DirectoryIndex app.php
 
+Redirect 301 /karta-sajta http://ekobatarei.ru/sitemap
+Redirect 301 /kontakty http://ekobatarei.ru/contact
+Redirect 301 //author/admin http://ekobatarei.ru/
+
 <IfModule php5_module>
     php_value date.timezone "Europe/Kiev"
 </IfModule>
