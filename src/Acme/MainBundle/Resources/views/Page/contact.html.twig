@@ -14,8 +14,9 @@
 
         <div class="row margin-bottom-30">
             <div class="col-md-8 text-justify md-margin-bottom-20">
-                <form action="" onsubmit="return false;" method="post" id="sky-form3" class="sky-form" novalidate="novalidate">
+                <form action="{{ path('page_contact') }}" method="post" id="sky-form3" class="sky-form" novalidate="novalidate">
                     <header>Обратная связь</header>
+                    {% if done == false %}
                     <fieldset>
                         <div class="row">
                             <section class="col col-6">
@@ -47,24 +48,26 @@
                                 <textarea rows="4" name="message" id="message"></textarea>
                             </label>
                         </section>
-                        <section>
+                        <section style="display: none">
                             <label class="label">Введите код с картинки:</label>
                             <label class="input input-captcha">
                                 <img src="assets/plugins/sky-forms/version-2.0.1/captcha/image.php?&lt;?php echo time(); ?&gt;" width="100" height="32" alt="Captcha image">
-                                <input type="text" maxlength="6" name="captcha" id="captcha">
+                                <input type="text" maxlength="6" name="captcha" id="captcha" value="">
                             </label>
                         </section>
-                        <section>
-                            <label class="checkbox"><input type="checkbox" name="copy"><i></i>Отправить копию на ваш e-mail</label>
-                        </section>
+                        {#<section>#}
+                            {#<label class="checkbox"><input type="checkbox" name="copy"><i></i>Отправить копию на ваш e-mail</label>#}
+                        {#</section>#}
                     </fieldset>
                     <footer>
                         <button type="submit" class="button">Отправить сообщение</button>
                     </footer>
-                    <div class="message">
-                        <i class="rounded-x fa fa-check"></i>
-                        <p>Your message was successfully sent!</p>
-                    </div>
+                    {% else %}
+                        <div class="message" style="display: block;">
+                            <i class="rounded-x fa fa-check"></i>
+                            <p>Ваше сообщение успешно отправлено.</p>
+                        </div>
+                    {% endif %}
                 </form>
             </div>
 

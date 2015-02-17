@@ -166,8 +166,53 @@ class PageController extends Controller
      */
     public function contactAction(Request $request)
     {
+        $done = false;
+        if ($request->isMethod('POST')) {
+            $data = $request->request->all();
+            if (isset($data['captcha']) && empty($data['captcha'])) {
+                $html = "<html>
+                            <body>
+                                <table>
+                                    <tr>
+                                        <td>name</td>
+                                        <td>".$data['name']."</td>
+                                    </tr>
+                                    <tr>
+                                        <td>email</td>
+                                        <td>".$data['email']."</td>
+                                    </tr>
+                                    <tr>
+                                        <td>subject</td>
+                                        <td>".$data['subject']."</td>
+                                    </tr>
+                                    <tr>
+                                        <td>message</td>
+                                        <td>".$data['message']."</td>
+                                    </tr>
+                                    <tr>
+                                        <td>date</td>
+                                        <td>".date('d.m.Y H:i')."</td>
+                                    </tr>
+                                </table>
+                            </body>
+                        </html>
+                ";
 
-        return array();
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Письмо с обратной связи EkoBatarei.ru')
+                    ->setFrom('info@ekobatarei.ru')
+                    ->setTo('info@ekobatarei.ru')
+                    ->setBody($html, 'text/html');
+
+                $this->get('mailer')->send($message);
+            }
+
+            $done = true;
+        }
+
+        return array(
+            'done' => $done
+        );
     }
 
     /**
