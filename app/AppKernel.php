@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Ornicar\ApcBundle\OrnicarApcBundle(),
             new Acme\SubscribeBundle\AcmeSubscribeBundle(),
+            new Ads\OfferBundle\AdsOfferBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: '@AcmeMainBundle/Resources/config/services.yml' }
     - { resource: '@AcmeSubscribeBundle/Resources/config/services.yml' }
+    - { resource: '@AdsOfferBundle/Resources/config/services.yml' }
 
 framework:
     #esi:             ~
