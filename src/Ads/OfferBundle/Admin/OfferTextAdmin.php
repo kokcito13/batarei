@@ -16,12 +16,8 @@ class OfferTextAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
             ->add('title')
-            ->add('shortText')
-            ->add('text')
             ->add('status')
-            ->add('createdAt')
         ;
     }
 
@@ -31,15 +27,11 @@ class OfferTextAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
             ->add('title')
-            ->add('shortText')
-            ->add('text')
             ->add('status')
             ->add('createdAt')
             ->add('_action', 'actions', array(
                 'actions' => array(
-                    'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
                 )
@@ -53,12 +45,14 @@ class OfferTextAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            ->with('Главное')
             ->add('title')
-            ->add('shortText')
-            ->add('text')
-            ->add('status')
-            ->add('createdAt')
+            ->add('shortText', 'textarea', array('label'=>'Короткий текст', 'required'=>false, 'attr' => array('class' => 'ckeditor')))
+            ->add('text', 'textarea', array('label'=>'Большой текст', 'required'=>false, 'attr' => array('class' => 'ckeditor')))
+            ->add('status', 'choice', array(
+                'label' => 'Статус',
+                'choices' => array(0 => 'скрыт', 1 => 'виден')))
+            ->end()
         ;
     }
 

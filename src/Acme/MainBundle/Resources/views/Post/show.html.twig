@@ -37,6 +37,8 @@
                }
             });
         });
+        var getTextOffer = "{{ path("get_text_offer") }}",
+                postId = {{ entity.id }};
         {#function getYouTubeInfo(ele) {#}
             {#$.ajax({#}
                 {#url: "http://gdata.youtube.com/feeds/api/videos/"+ele.data('v')+"?v=2&alt=json",#}
@@ -73,6 +75,7 @@
             {#});#}
         {#});#}
     </script>
+    <script src="{{ asset('bundles/acmemain/js/post-page.js') }}"></script>
 {% endblock %}
 {% block stylesheets %}
 {% endblock %}
@@ -206,6 +209,9 @@
                     {% endif %}
                 </div>
             {% endif %}
+            <!--noindex-->
+                <div id="offerShortText"></div>
+            <!--/noindex-->
             <!--start_content-->
             {{ entity.text | raw }}
             {% if links | length > 0 %}
@@ -221,6 +227,9 @@
                 </div>
             {% endif %}
             <!--end_content-->
+            <!--noindex-->
+                <div id="offerText"></div>
+            <!--/noindex-->
             {% if app.environment == 'prod' %}
                 <div style="margin: 10px 0px;">
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

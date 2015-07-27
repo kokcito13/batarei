@@ -21,6 +21,35 @@ use Acme\MainBundle\Form\PostType;
 class PostController extends Controller
 {
     /**
+     * @Route("/offers/text", name="get_text_offer")
+     * @Method("GET")
+     */
+    public function getOfferTextAction(Request $request)
+    {
+        $resp = array();
+        $resp['success'] = false;
+        if ($request->isXmlHttpRequest()) {
+            $em = $this->getDoctrine()->getManager();
+            $adsOffers = $em->getRepository('AdsOfferBundle:OfferText')->findBy(array("status"=>true));
+            if (!empty($adsOffers)) {
+                $offer = $adsOffers[array_rand($adsOffers)];
+
+                $resp['success'] = true;
+                $resp['data'] = array(
+                    'title' => $offer->getTitle(),
+                    'shortText' => $offer->getShortText(),
+                    'text' => $offer->getText()
+                );
+            }
+        } else {
+            $resp['error'] = "You are robot?";
+            throw $this->createNotFoundException('Данную статью мы неможем найти!');
+        }
+
+        return new JsonResponse($resp);
+    }
+
+    /**
      * Finds and displays a Post entity.
      *
      * @Route("/{category_url}/{post_url}", name="client_post_show")
@@ -92,44 +121,5 @@ class PostController extends Controller
             'links' => $links,
             'contents' => $contents
         );
-    }
-
-    /**
-     * add one share
-     *
-     * @Route("/social/share", name="add_one_social_for_post")
-     * @Method("POST")
-     * @Template()
-     */
-    public function addOneSharedAction(Request $request)
-    {
-        $arr = array();
-        $em = $this->getDoctrine()->getManager();
-        if ($request->isXmlHttpRequest()) {
-            $data = (object)$request->request->all();
-            /** @var Post $entity */
-            $entity = $em->getRepository('AcmeMainBundle:Post')->find($data->id);
-
-            switch ($data->social) {
-                case 'fb':
-                    $entity->setSharedFb($entity->getSharedFb()+1);
-                    break;
-                case 'vk':
-                    $entity->setSharedVk($entity->getSharedVk()+1);
-                    break;
-                case 'tw':
-                    $entity->setSharedTw($entity->getSharedTw()+1);
-                    break;
-            }
-
-            $em->persist($entity);
-            $em->flush();
-
-            $arr['done'] = true;
-        } else {
-            $arr['error'] = 'NOT AJAX';
-        }
-
-        return new JsonResponse($arr);
     }
 }
