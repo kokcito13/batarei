@@ -39,41 +39,7 @@
         });
         var getTextOffer = "{{ path("get_text_offer") }}",
                 postId = {{ entity.id }};
-        {#function getYouTubeInfo(ele) {#}
-            {#$.ajax({#}
-                {#url: "http://gdata.youtube.com/feeds/api/videos/"+ele.data('v')+"?v=2&alt=json",#}
-                {#dataType: "jsonp",#}
-                {#success: function (data) {#}
-                    {#parseresults(data, ele);#}
-                {#}#}
-            {#});#}
-        {#}#}
 
-        {#function parseresults(data, ele) {#}
-            {#var title = data.entry.title.$t;#}
-            {#ele.find('div').html(title);#}
-        {#}#}
-
-        {#function showFrameVideo(ele) {#}
-            {#var fHtml = '<iframe title="'+ele.find('div').html()+'" width="520" height="390" ' +#}
-                    {#'src="http://www.youtube.com/embed/'+ele.data('v')+'?fs=1&autoplay=0&loop=0" allowfullscreen></iframe>';#}
-            {#$('#frameVideo').html(fHtml);#}
-        {#}#}
-
-        {#$(document).ready(function () {#}
-            {#$('#yVideos li').each(function(){#}
-                {#getYouTubeInfo($(this));#}
-            {#});#}
-            {#$('#yVideos li').click(function(){#}
-                {#showFrameVideo($(this));#}
-            {#});#}
-            {#$('#yVideos li').mouseover(function(){#}
-                {#$(this).find('div').show();#}
-            {#});#}
-            {#$('#yVideos li').mouseout(function(){#}
-                {#$(this).find('div').hide();#}
-            {#});#}
-        {#});#}
     </script>
     <script src="{{ asset('bundles/acmemain/js/post-page.js') }}"></script>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
