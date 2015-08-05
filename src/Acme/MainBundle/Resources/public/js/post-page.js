@@ -6,7 +6,7 @@ $(function(){
             $.getJSON(getTextOffer)
                 .done(function (data) {
                     if (data.success) {
-                        if (data.data.shortText && data.data.shortText.length > 100) {
+                        if (data.data.shortText && data.data.shortText.length > 20) {
                             $('#offerShortText').html(data.data.shortText);
                         }
                         if (data.data.text && data.data.text.length > 100) {

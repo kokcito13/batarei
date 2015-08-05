@@ -177,9 +177,6 @@
                     {% endif %}
                 </div>
             {% endif %}
-            <!--noindex-->
-                <div id="offerShortText"></div>
-            <!--/noindex-->
             <!--start_content-->
             {{ entity.text | raw }}
             {% if links | length > 0 %}
@@ -196,7 +193,7 @@
             {% endif %}
             <!--end_content-->
             <!--noindex-->
-                <div id="offerText"></div>
+                <div id="offerText" style="margin-top: 5px;display: block;padding: 5px 30px 5px;border: 1px solid #dff0d8;"></div>
             <!--/noindex-->
             {% if app.environment == 'prod' %}
                 <div style="margin: 10px 0px;">
