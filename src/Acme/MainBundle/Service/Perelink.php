@@ -17,7 +17,7 @@ class Perelink
     public function __construct(Container $container)
     {
         $this->container = $container;
-        $this->url = "http://perelink.binet.pro/service/otvet.php?proj=ekobatarei.ru&url=";
+        $this->url = "http://perelink.binet.pro/service/otvet.php?proj=ekobatarei.ru&code=EXALOXISWPGNARXXQJENWOTKBRRNYUBW&url=";
 
         $this->content = "[]";
     }
