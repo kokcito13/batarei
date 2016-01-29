@@ -49,6 +49,7 @@ class OfferTextAdmin extends Admin
             ->add('title')
             ->add('shortText', 'textarea', array('label'=>'Короткий текст', 'required'=>false, 'attr' => array('class' => 'ckeditor')))
             ->add('text', 'textarea', array('label'=>'Большой текст', 'required'=>false, 'attr' => array('class' => 'ckeditor')))
+            ->add('firstTextBlock', 'textarea', array('label'=>'Внутри текста', 'required'=>false, 'attr' => array('class' => 'ckeditor')))
             ->add('status', 'choice', array(
                 'label' => 'Статус',
                 'choices' => array(0 => 'скрыт', 1 => 'виден')))
