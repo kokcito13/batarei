@@ -1,5 +1,5 @@
 $(function(){
-    $('div#firstAdd').insertAfter( $('div.article p').find('img').first() );
+    $('div#firstAdd').insertAfter( $('div#post_content p').find('img').first() );
     setTimeout(function(){
         var a = document.createElement('script');
         var m = document.getElementsByTagName('head')[0];
