@@ -66,85 +66,11 @@
     </div>
 {% endblock %}
 {% block body %}
-
-
-            {#{% if entity.getArrayVideoId()|length > 0 %}#}
-                {#<div class="clearfix">#}
-                    {#<div class="row" style="padding: 4px; border: 1px solid #ddd;">#}
-                        {#<div class="span{% if entity.getArrayVideoId()|length > 1 %}6{% else %}8 one_video{% endif %}" id="frameVideo" style="margin-left: 0px;">#}
-                            {#<iframe width="520" height="390" src="http://www.youtube.com/embed/{{ entity.getArrayVideoId()[0] }}?fs=1&autoplay=0&loop=0" allowfullscreen></iframe>#}
-                        {#</div>#}
-                        {#{% if entity.getArrayVideoId()|length > 1 %}#}
-                        {#<div class="span2">#}
-                            {#<!--noindex-->#}
-                            {#<span class="sub_title_links">Еще видео:</span>#}
-                            {#<!--/noindex-->#}
-                            {#<ul id="yVideos">#}
-                                {#{% for v in entity.getArrayVideoId() %}#}
-                                    {#<li id="v_{{ v }}" data-v="{{ v }}">#}
-                                        {#<img src="http://img.youtube.com/vi/{{ v }}/mqdefault.jpg" width="150"/>#}
-                                        {#<div>{{ v }}</div>#}
-                                    {#</li>#}
-                                {#{% endfor %}#}
-                            {#</ul>#}
-                        {#</div>#}
-                        {#{% endif %}#}
-                    {#</div>#}
-                {#</div>#}
-            {#{% endif %}#}
-            {#<!--noindex-->#}
-            {#<div class="h5 title-bg">Рекомендованная публикация#}
-                {#{% if entities|length > 1 %}#}
-                    {#<button id="btn-blog-next" class="btn btn-inverse btn-mini" type="button">»</button>#}
-                    {#<button id="btn-blog-prev" class="btn btn-inverse btn-mini" type="button">«</button>#}
-                {#{% endif %}#}
-            {#</div>#}
-            {#<!--/noindex-->#}
-            {#<div id="blogCarousel" class="carousel slide ">#}
-                {#<!-- Carousel items -->#}
-                {#<div class="carousel-inner">#}
-                    {#{% for post in entities %}#}
-                        {#<div class="{% if loop.index == 1 %}active{% endif %} item">#}
-                            {#<a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">#}
-                                {#<img src="{{ post.getWebPath() | apply_filter('thumbnail_same_post') }}" width="150" alt="{{ post.imageAlt }}" class="align-left blog-thumb-preview">#}
-                            {#</a>#}
-                            {#<div class="post-info clearfix">#}
-                                {#<div class="h4">#}
-                                    {#<a href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">{{ post.name }}</a>#}
-                                {#</div>#}
-                                {#{% if post.getPreviewText() | length >5 %}#}
-                                    {#<!--noindex-->#}
-                                    {#<p class="blog-summary">{{ post.getPreviewText() }} ... <a rel="nofollow" href="{{ path('client_post_show',{'category_url':post.category.url, 'post_url':post.url }) }}">Читать дальше</a></p>#}
-                                    {#<!--/noindex-->#}
-                                {#{% endif %}#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#{% endfor %}#}
-                {#</div>#}
     <div class="row blog-page">
-    <!-- Left Sidebar -->
     <div class="col-md-9 md-margin-bottom-60">
-        <!--Blog Post-->
         <div class="blog margin-bottom-40" id="post_content">
-            {#<div class="blog-post-tags">#}
-                {#<ul class="list-unstyled list-inline blog-info">#}
-                    {#<li><i class="fa fa-calendar"></i> February 02, 2013</li>#}
-                    {#<li><i class="fa fa-pencil"></i> Diana Anderson</li>#}
-                    {#<li><i class="fa fa-comments"></i> <a href="#">24 Comments</a></li>#}
-                {#</ul>#}
-                {#<ul class="list-unstyled list-inline blog-tags">#}
-                    {#<li>#}
-                        {#<i class="fa fa-tags"></i>#}
-                        {#<a href="#">Technology</a>#}
-                        {#<a href="#">Education</a>#}
-                        {#<a href="#">Internet</a>#}
-                        {#<a href="#">Media</a>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#</div>#}
             {% if app.environment == 'prod' %}
-                <div style="margin: 10px 0px;">
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <div style="margin: 10px 0px;" id="firstAdd">
                     <!-- SB в тексте №1 short -->
                     <ins class="adsbygoogle"
                          style="display:inline-block;width:665px;height:300px"
@@ -156,16 +82,13 @@
                 </div>
             {% endif %}
             {% if entity.getWebPath() | length > 0 %}
-                {#<div class="blog-img">#}
-                    {#<img class="img-responsive" src=""  />#}
-                {#</div>#}
                 <div class="row contents">
                     <div class="col-md-4 funny-boxes-img">
                         <img alt="{{ entity.imageAlt }}" src="{{ entity.getWebPath() | apply_filter('in_post') }}" class="img-responsive">
                     </div>
                     {% if contents|length > 1 %}
                         <!--noindex-->
-                        <div class="col-md-8">
+                        <div class="col-md-8" id="toc_container">
                             <div class="h2_like">Содержание:</div>
                             <ul class="list" id="contentsGoTo">
                                 {% for content in contents %}
@@ -177,6 +100,9 @@
                     {% endif %}
                 </div>
             {% endif %}
+            <!--noindex-->
+            <div id="offerShortText"></div>
+            <!--/noindex-->
             <!--start_content-->
             {{ entity.text | raw }}
             {% if links | length > 0 %}
@@ -193,12 +119,10 @@
             {% endif %}
             <!--end_content-->
             <!--noindex-->
-                <div id="offerText" style="margin-top: 5px;display: block;padding: 5px 30px 5px;border: 1px solid #dff0d8;"></div>
+                <div id="offerText"></div>
             <!--/noindex-->
             {% if app.environment == 'prod' %}
                 <div style="margin: 10px 0px;">
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- SB в тексте №2 -->
                     <ins class="adsbygoogle"
                          style="display:inline-block;width:580px;height:400px"
                          data-ad-client="ca-pub-3861532892125732"
@@ -225,106 +149,23 @@
                 </form>
             </div>
         </div>
-        <!--End Blog Post-->
         <hr>
-        <!-- Recent Comments -->
         <div class="media">
-            {#<h3>Comments</h3>#}
-            {#<a class="pull-left" href="#">#}
-                {#<img class="media-object" src="assets/img/sliders/elastislide/2.jpg" alt="">#}
-            {#</a>#}
             <div class="media-body">
                 <div id="disqus_thread"></div>
                 <script type="text/javascript">
-                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                    var disqus_shortname = 'ekobatarei'; // required: replace example with your forum shortname
-
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    var disqus_shortname = 'ekobatarei';
                     (function() {
                         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
                     })();
                 </script>
-
-                {#<h4 class="media-heading">Media heading <span>5 hours ago / <a href="#">Reply</a></span></h4>#}
-                {#<p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>#}
-
-                {#<hr>#}
-
-                {#<div class="media">#}
-                    {#<a class="pull-left" href="#">#}
-                        {#<img class="media-object" src="assets/img/sliders/elastislide/5.jpg" alt="">#}
-                    {#</a>#}
-                    {#<div class="media-body">#}
-                        {#<h4 class="media-heading">Media heading <span>17 hours ago / <a href="#">Reply</a></span></h4>#}
-                        {#<p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum anibhut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>#}
-                    {#</div>#}
-                {#</div>#}
-
-                {#<hr>#}
-
-                {#<div class="media">#}
-                    {#<a class="pull-left" href="#">#}
-                        {#<img class="media-object" src="assets/img/sliders/elastislide/11.jpg" alt="">#}
-                    {#</a>#}
-                    {#<div class="media-body">#}
-                        {#<h4 class="media-heading">Media heading <span>2 days ago / <a href="#">Reply</a></span></h4>#}
-                        {#<p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum anibhut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>#}
-                    {#</div>#}
-                {#</div>#}
             </div>
-        </div><!--/media-->
-
-        {#<div class="media">#}
-            {#<a class="pull-left" href="#">#}
-                {#<img class="media-object" src="assets/img/sliders/elastislide/9.jpg" alt="">#}
-            {#</a>#}
-            {#<div class="media-body">#}
-                {#<h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>#}
-                {#<p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>#}
-            {#</div>#}
-        {#</div><!--/media-->#}
-        {#<!-- End Recent Comments -->#}
-
-        {#<hr>#}
-
-        {#<!-- Comment Form -->#}
-        {#<div class="post-comment">#}
-            {#<h3>Leave a Comment</h3>#}
-            {#<form>#}
-                {#<label>Name</label>#}
-                {#<div class="row margin-bottom-20">#}
-                    {#<div class="col-md-7 col-md-offset-0">#}
-                        {#<input type="text" class="form-control">#}
-                    {#</div>#}
-                {#</div>#}
-
-                {#<label>Email <span class="color-red">*</span></label>#}
-                {#<div class="row margin-bottom-20">#}
-                    {#<div class="col-md-7 col-md-offset-0">#}
-                        {#<input type="text" class="form-control">#}
-                    {#</div>#}
-                {#</div>#}
-
-                {#<label>Message</label>#}
-                {#<div class="row margin-bottom-20">#}
-                    {#<div class="col-md-11 col-md-offset-0">#}
-                        {#<textarea class="form-control" rows="8"></textarea>#}
-                    {#</div>#}
-                {#</div>#}
-
-                {#<p><button class="btn-u" type="submit">Send Message</button></p>#}
-            {#</form>#}
-        {#</div>#}
-        {#<!-- End Comment Form -->#}
+        </div>
     </div>
-    <!-- End Left Sidebar -->
-
-    <!-- Right Sidebar -->
     {{ render(controller('AcmeMainBundle:PageLayout:rightSidebar', {
     'post': entity
     })) }}
-    <!-- End Right Sidebar -->
     </div>
 {% endblock %}

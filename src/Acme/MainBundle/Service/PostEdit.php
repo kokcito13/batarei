@@ -29,15 +29,7 @@ class PostEdit
 
         // 2 - номер после какого абзаца и <<<EOD1 ... EOD1; - содержимое что будет выводится
         $arrAdvert['2'] = <<<EOD2
-                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                            <!-- SB в тексте №2 -->
-                            <ins class="adsbygoogle"
-                                 style="display:inline-block;width:580px;height:400px"
-                                 data-ad-client="ca-pub-3861532892125732"
-                                 data-ad-slot="4583620893"></ins>
-                            <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
+                                <div id="offerBlockText"></div>
 EOD2;
 
         return $this->getContents($text, $arrAdvert);

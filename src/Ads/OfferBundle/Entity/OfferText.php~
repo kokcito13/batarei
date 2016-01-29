@@ -194,27 +194,4 @@ class OfferText
     {
         return $this->createdAt;
     }
-
-    /**
-     * Set firstTextBlock
-     *
-     * @param string $firstTextBlock
-     * @return OfferText
-     */
-    public function setFirstTextBlock($firstTextBlock)
-    {
-        $this->firstTextBlock = $firstTextBlock;
-
-        return $this;
-    }
-
-    /**
-     * Get firstTextBlock
-     *
-     * @return string 
-     */
-    public function getFirstTextBlock()
-    {
-        return $this->firstTextBlock;
-    }
 }

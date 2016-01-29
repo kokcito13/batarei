@@ -2330,3 +2330,81 @@ img.img-mouse {
 .read_more_ul a{
     color: #72c02c;
 }
+
+#offerShortText {
+    /*margin: 10px;*/
+}
+#offerShortText a{
+    color: #72c02c;
+    font-weight: bold;
+}
+#offerShortText a:hover{
+    color: #72c02c;
+    border-bottom: 1px solid #72c02c;
+}
+
+#offerText {
+    margin: 10px;
+}
+#offerText a{
+    color: #72c02c;
+}
+#offerText a:hover{
+    color: #1abc9c;
+    border-bottom: 1px solid #72c02c;
+}
+
+#offerBlockText {
+    display: none;
+    border: 3px dashed #ff0000;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-right-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    background-color: #eaf6fa;
+}
+
+#toc_container {
+    background: #fff;
+    border: 1px solid #aaa;
+    padding: 10px;
+    margin-bottom: 1em;
+    width: auto;
+    display: table;
+    text-align: center;
+}
+
+#toc_container .h2_like {
+
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+#toc_container li {
+    color: #007ac9;
+}
+
+#toc_container li:hover {
+    text-decoration: underline;
+}
+
+#toc_container ul {
+    text-align: left;
+    list-style: decimal;
+}

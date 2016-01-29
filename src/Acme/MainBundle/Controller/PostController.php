@@ -4,6 +4,7 @@ namespace Acme\MainBundle\Controller;
 
 use Acme\MainBundle\Entity\PostRepository;
 use Acme\MainBundle\Service\Perelink;
+use Ads\OfferBundle\Entity\OfferText;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -32,13 +33,15 @@ class PostController extends Controller
             $em = $this->getDoctrine()->getManager();
             $adsOffers = $em->getRepository('AdsOfferBundle:OfferText')->findBy(array("status"=>true));
             if (!empty($adsOffers)) {
+                /** @var OfferText $offer */
                 $offer = $adsOffers[array_rand($adsOffers)];
 
                 $resp['success'] = true;
                 $resp['data'] = array(
                     'title' => $offer->getTitle(),
                     'shortText' => $offer->getShortText(),
-                    'text' => $offer->getText()
+                    'text' => $offer->getText(),
+                    'firstTextBlock' => $offer->getFirstTextBlock(),
                 );
             }
         } else {
